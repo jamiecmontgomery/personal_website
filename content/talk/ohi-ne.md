@@ -2,8 +2,6 @@
 date = "2017-05-02T00:00:00"
 
 title = "Ocean Health Index in the US Northeast"
-time_start = 
-time_end = 
 abstract = ""
 abstract_short = ""
 event = "Northeast Regional Planning Body Stakeholder Forum  "
