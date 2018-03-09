@@ -23,7 +23,7 @@ Install and/or load packages:
 
 I use `ggplot2`, `gganimate`, `ggthemes` anad `tweenr` for customizing the figures.
 
-```
+```{r}
 library(ggplot2)
 #devtools::install_github("dgrtwo/gganimate")
 library(gganimate)
@@ -56,7 +56,7 @@ If you’re interested in the data I used, here is a screenshot of the manual qu
 
 I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I'll wrangle these two datasets together as best I can.
 
-```
+```{r}
 #read in the seafood data queried from FAOSTAT and get totals per year  
 seafood <- read_csv("https://raw.githubusercontent.com/CART-sci/storymap/master/data/FAOSTAT_data_12-21-2017.csv") %>%
   group_by(Year) %>%
@@ -67,7 +67,7 @@ seafood <- read_csv("https://raw.githubusercontent.com/CART-sci/storymap/master/
 
 Since no dataset from FAO has exactly what I want, I can take the seafood dataset, calculate total production (tons) per year, and then remove the total aquaculture production for each year calculated from the `fao` dataset. Then I have wild capture seafood per year (from the `seafood` dataset), and aquaculture production per year (from the `fao` dataset).
 
-```
+```{r}
 data <- fao %>%
   left_join(spp) %>%
   mutate(source = 
@@ -93,7 +93,7 @@ The data only goes to 2013, but I want to include forecasted growth of these two
 
 I create two new dataframes, one for all years 2014-2024 with two years full of `NA`, one for Aquaculture and one for `Wild_for_food` (Wild Capture). The second is a one row dataframe for the year 2025 with the `Aquaculture` and `Wild_fod_food` values equal to 139% and 101% of their 2013 values respectively. Using the `zoo::na.approx()` function I simply do a linear interpolation of production values between 2013 and 2025.
 
-```
+```{r}
 #forecast forward to 2025
 #Projected 1% of growth in wild capture by 2025
 #projected 39% for aquaculture
@@ -126,7 +126,7 @@ Here's how I went from creating a static `ggplot` to animating with `gganimate` 
 
 ### Static ggplot
 
-```
+```{r}
 static_plot <- ggplot(plot_data, aes(x = time, y = y)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = "Year",
@@ -142,7 +142,7 @@ static_plot
 
 You can animate a static ggplot just with the [`gganimate()` package](https://github.com/dgrtwo/gganimate).
 
-```
+```{r}
 dynam_plot <- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = "Year",
@@ -165,7 +165,7 @@ To make the animation smoother, I’m using the tweenr package. Specifically, th
 
 After creating the new dataframe with `tween_elements()` you use `ggplot` and `gganimate` to create the final animation.
 
-```
+```{r}
 data_tween <- plot_data %>%
   tween_elements(., "time", "id", "ease", nframes = 100) %>%   #using tweenr!
   mutate(year = round(time), id = .group) %>%
