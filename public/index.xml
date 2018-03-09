@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
@@ -269,16 +269,6 @@ gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
     </item>
     
     <item>
-      <title>Example Talk</title>
-      <link>/talk/example-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 -0800</pubDate>
-      
-      <guid>/talk/example-talk/</guid>
-      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://sourcethemes.com/academic/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>A Person Re-Identification System For Mobile Devices</title>
       <link>/publication/person-re-identification/</link>
       <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
@@ -307,21 +297,20 @@ gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
     </item>
     
     <item>
-      <title>Mobile visual clothing search</title>
-      <link>/publication/clothing-search/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
-      
-      <guid>/publication/clothing-search/</guid>
-      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Reef coral reproduction in the equatorial eastern Pacific: Costa Rica, Panamá, and the Galápagos Islands (Ecuador). VII. Siderastreidae, Psammocora stellata and Psammocora profundacella.</title>
       <link>/publication/coral_repro_2012/</link>
       <pubDate>Sat, 01 Sep 2012 00:00:00 +0000</pubDate>
       
       <guid>/publication/coral_repro_2012/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Environmental determinants of motile cryptofauna on an eastern Pacific coral reef</title>
+      <link>/publication/cryptofauna_meps_2011/</link>
+      <pubDate>Wed, 05 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/cryptofauna_meps_2011/</guid>
       <description></description>
     </item>
     
