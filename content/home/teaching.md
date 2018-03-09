@@ -15,14 +15,11 @@ weight = 60
 
 +++
 
-This is an example of using the *custom* widget to create your own homepage section.
+## Tutorials:
 
-I am a teaching instructor for the following courses at University X:
+**[Intro to Spatial Analysis in R](https://github.com/jafflerbach/spatial-analysis-R)** (focus on rasters)
 
-- CS101: An intro to computer science
-- CS102: An intro to computer science
-- CS103: An intro to computer science
-- CS104: An intro to computer science
-- CS105: An intro to computer science
-- CS106: An intro to computer science
-- CS107: An intro to computer science
+**[Data Wrangling](http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html) and [Visualization](http://www.datacarpentry.org/R-ecology-lesson/04-visualization-ggplot2.html)** (SWC for Ecology Materials)
+[UC Merced Software Carpentry](https://snacktavish.github.io/2017-08-17-Yosemite/)
+Merced, CA
+August 18, 2017
