@@ -14,8 +14,71 @@
     
     <url>
     
-      <loc>https://agitated-wilson-0f2190.netlify.com/talk/example-talk/</loc>
-      <lastmod>2017-01-01T00:00:00-08:00</lastmod>
+      <loc>https://agitated-wilson-0f2190.netlify.com/project/datalimited/</loc>
+      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/project/oceanhealthindex/</loc>
+      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/ohi_fiveyears_plos/</loc>
+      <lastmod>2017-07-05T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/path_to_science_ecoevo/</loc>
+      <lastmod>2017-05-23T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/iucn-aquamaps/</loc>
+      <lastmod>2017-05-03T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/talk/ohi-ne/</loc>
+      <lastmod>2017-05-02T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/fish_status_cons_letters_2017/</loc>
+      <lastmod>2017-04-12T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/ensembles_fish_and_fisheries_2017/</loc>
+      <lastmod>2017-01-30T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -59,24 +122,6 @@
     
     <url>
     
-      <loc>https://agitated-wilson-0f2190.netlify.com/project/deep-learning/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://agitated-wilson-0f2190.netlify.com/project/example-external-project/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://agitated-wilson-0f2190.netlify.com/publication/person-re-identification/</loc>
       <lastmod>2015-09-01T00:00:00+00:00</lastmod>
     </url>
@@ -86,8 +131,35 @@
     
     <url>
     
-      <loc>https://agitated-wilson-0f2190.netlify.com/publication/clothing-search/</loc>
-      <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/turfs_gecco_2014/</loc>
+      <lastmod>2014-12-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/fish_response_el_nino_meps/</loc>
+      <lastmod>2014-01-09T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/coral_repro_2012/</loc>
+      <lastmod>2012-09-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://agitated-wilson-0f2190.netlify.com/publication/cryptofauna_meps_2011/</loc>
+      <lastmod>2011-10-05T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -96,7 +168,7 @@
     <url>
     
       <loc>https://agitated-wilson-0f2190.netlify.com/publication_types/1/</loc>
-      <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+      <lastmod>2011-10-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -106,7 +178,7 @@
     <url>
     
       <loc>https://agitated-wilson-0f2190.netlify.com/publication_types/2/</loc>
-      <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+      <lastmod>2017-07-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -144,18 +216,8 @@
     
     <url>
     
-      <loc>https://agitated-wilson-0f2190.netlify.com/tags/deep-learning/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://agitated-wilson-0f2190.netlify.com/tags/demo/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <loc>https://agitated-wilson-0f2190.netlify.com/tags/datalimited/</loc>
+      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -174,8 +236,18 @@
     
     <url>
     
+      <loc>https://agitated-wilson-0f2190.netlify.com/tags/ohi/</loc>
+      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://agitated-wilson-0f2190.netlify.com/project/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -185,7 +257,7 @@
     <url>
     
       <loc>https://agitated-wilson-0f2190.netlify.com/publication_types/</loc>
-      <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+      <lastmod>2011-10-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

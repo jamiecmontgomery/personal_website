@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jamie Afflerbach on Jamie Afflerbach</title>
-    <link>https://agitated-wilson-0f2190.netlify.com/</link>
+    <link>/</link>
     <description>Recent content in Jamie Afflerbach on Jamie Afflerbach</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Visualizing growth in global seafood production</title>
-      <link>https://agitated-wilson-0f2190.netlify.com/post/global_seafood_growth_dataviz/</link>
+      <link>/post/global_seafood_growth_dataviz/</link>
       <pubDate>Tue, 23 Jan 2018 12:00:00 +0000</pubDate>
       
-      <guid>https://agitated-wilson-0f2190.netlify.com/post/global_seafood_growth_dataviz/</guid>
+      <guid>/post/global_seafood_growth_dataviz/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;m excited to be part of a new research group - the &lt;a href=&#34;http://www.cart-sci.org/&#34; target=&#34;_blank&#34;&gt;Conservation Aquaculture Research Team&lt;/a&gt; at NCEAS. Our group is interested in helping shape the future of &lt;strong&gt;sustainable aquaculture&lt;/strong&gt;. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the &lt;a href=&#34;http://www.fao.org/home/en/&#34; target=&#34;_blank&#34;&gt;Food and Agriculture Organization&lt;/a&gt; (FAO). This also gave me the opportunity to play with some of the packages out there that create dynamic visualizations. I&amp;rsquo;ve used the &lt;a href=&#34;https://plot.ly/ggplot2/getting-started/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;plotly&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://github.com/mages/googleVis#googlevis&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;googlevis&lt;/code&gt;&lt;/a&gt; R packages to create interactive plots, and the &lt;a href=&#34;https://yihui.name/animation/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;animation&lt;/code&gt;&lt;/a&gt; package to create gifs from raster data (e.g. Sea Surface Temperature over time), but I&amp;rsquo;ve never created a high-quality dynamic visualization. I know &lt;a href=&#34;https://d3js.org/&#34; target=&#34;_blank&#34;&gt;D3.js&lt;/a&gt; is often used to create beautiful figures, but I don&amp;rsquo;t have the time to learn D3.js (yet) and I figured there &lt;em&gt;had&lt;/em&gt; to be a way to do something fancy in R. And of course, I was right. So this is my process of creating a dynamic visualization with the &lt;a href=&#34;https://github.com/thomasp85/tweenr&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tweenr&lt;/code&gt;&lt;/a&gt; package.&lt;/p&gt;
@@ -55,7 +55,7 @@ spp &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/stor
 
 &lt;p&gt;If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/fao_query.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/fao_query.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I&amp;rsquo;ll wrangle these two datasets together as best I can.&lt;/p&gt;
 
@@ -135,7 +135,7 @@ plot_data &amp;lt;- data %&amp;gt;%
 static_plot
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/static.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/static.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;animate-with-gganimate&#34;&gt;Animate with &lt;code&gt;gganimate()&lt;/code&gt;&lt;/h3&gt;
 
@@ -155,7 +155,7 @@ gganimate(dynam_plot, filename = &amp;quot;fao_gganimate.gif&amp;quot;, title_fr
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/fao_gganimate.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/fao_gganimate.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;smooth-animation-with-tweenr-ggplot-gganimate&#34;&gt;Smooth animation with &lt;code&gt;tweenr&lt;/code&gt; + &lt;code&gt;ggplot&lt;/code&gt; + &lt;code&gt;gganimate&lt;/code&gt;&lt;/h3&gt;
 
@@ -190,67 +190,139 @@ tween_plot &amp;lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color 
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/fao_aq_capture_fig.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/fao_aq_capture_fig.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, &lt;code&gt;geom_segment()&lt;/code&gt;). While I could keep tweaking this forever, I think it&amp;rsquo;s good enough as is. The whole process of learning how to use &lt;code&gt;tweenr&lt;/code&gt; took me just a couple hours and I&amp;rsquo;m excited for the next opportunity to make something like this!&lt;/p&gt;
 </description>
     </item>
     
     <item>
+      <title>Data-Limited Fisheries</title>
+      <link>/project/datalimited/</link>
+      <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/project/datalimited/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ocean Health Index</title>
+      <link>/project/oceanhealthindex/</link>
+      <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/project/oceanhealthindex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Drivers and implications of change in global ocean health over the past five years</title>
+      <link>/publication/ohi_fiveyears_plos/</link>
+      <pubDate>Wed, 05 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/ohi_fiveyears_plos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Our path to better science in less time using open data science tools</title>
+      <link>/publication/path_to_science_ecoevo/</link>
+      <pubDate>Tue, 23 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/path_to_science_ecoevo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aligning marine species range data to better serve science and conservation</title>
+      <link>/publication/iucn-aquamaps/</link>
+      <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/iucn-aquamaps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ocean Health Index in the US Northeast</title>
+      <link>/talk/ohi-ne/</link>
+      <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/ohi-ne/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Applying a New Ensemble Approach to Estimating Stock Status of Marine Fisheries Around the World</title>
+      <link>/publication/fish_status_cons_letters_2017/</link>
+      <pubDate>Wed, 12 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/fish_status_cons_letters_2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Improving estimates of population status and trend with superensemble models</title>
+      <link>/publication/ensembles_fish_and_fisheries_2017/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/ensembles_fish_and_fisheries_2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Example Talk</title>
-      <link>https://agitated-wilson-0f2190.netlify.com/talk/example-talk/</link>
+      <link>/talk/example-talk/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 -0800</pubDate>
       
-      <guid>https://agitated-wilson-0f2190.netlify.com/talk/example-talk/</guid>
+      <guid>/talk/example-talk/</guid>
       <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://sourcethemes.com/academic/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Deep Learning</title>
-      <link>https://agitated-wilson-0f2190.netlify.com/project/deep-learning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>A Person Re-Identification System For Mobile Devices</title>
+      <link>/publication/person-re-identification/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://agitated-wilson-0f2190.netlify.com/project/deep-learning/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+      <guid>/publication/person-re-identification/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>External Project</title>
-      <link>https://agitated-wilson-0f2190.netlify.com/project/example-external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <title>A global survey of TURF-reserves, Territorial Use Rights for Fisheries coupled with marine reserves</title>
+      <link>/publication/turfs_gecco_2014/</link>
+      <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://agitated-wilson-0f2190.netlify.com/project/example-external-project/</guid>
+      <guid>/publication/turfs_gecco_2014/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>https://agitated-wilson-0f2190.netlify.com/publication/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      <title>Eastern Pacific reef fish responses to coral recovery following El Niño disturbances</title>
+      <link>/publication/fish_response_el_nino_meps/</link>
+      <pubDate>Thu, 09 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://agitated-wilson-0f2190.netlify.com/publication/person-re-identification/</guid>
+      <guid>/publication/fish_response_el_nino_meps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mobile visual clothing search</title>
+      <link>/publication/clothing-search/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/clothing-search/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Mobile visual clothing search</title>
-      <link>https://agitated-wilson-0f2190.netlify.com/publication/clothing-search/</link>
-      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      <title>Reef coral reproduction in the equatorial eastern Pacific: Costa Rica, Panamá, and the Galápagos Islands (Ecuador). VII. Siderastreidae, Psammocora stellata and Psammocora profundacella.</title>
+      <link>/publication/coral_repro_2012/</link>
+      <pubDate>Sat, 01 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://agitated-wilson-0f2190.netlify.com/publication/clothing-search/</guid>
-      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
+      <guid>/publication/coral_repro_2012/</guid>
+      <description></description>
     </item>
     
   </channel>
