@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jamie Afflerbach on Jamie Afflerbach</title>
+    <link>https://agitated-wilson-0f2190.netlify.com/</link>
+    <description>Recent content in Jamie Afflerbach on Jamie Afflerbach</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0700</lastBuildDate>
+    <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Visualizing growth in global seafood production</title>
+      <link>https://agitated-wilson-0f2190.netlify.com/post/global_seafood_growth_dataviz/</link>
+      <pubDate>Tue, 23 Jan 2018 12:00:00 +0000</pubDate>
+      
+      <guid>https://agitated-wilson-0f2190.netlify.com/post/global_seafood_growth_dataviz/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;m excited to be part of a new research group - the &lt;a href=&#34;http://www.cart-sci.org/&#34; target=&#34;_blank&#34;&gt;Conservation Aquaculture Research Team&lt;/a&gt; at NCEAS. Our group is interested in helping shape the future of &lt;strong&gt;sustainable aquaculture&lt;/strong&gt;. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the &lt;a href=&#34;http://www.fao.org/home/en/&#34; target=&#34;_blank&#34;&gt;Food and Agriculture Organization&lt;/a&gt; (FAO). This also gave me the opportunity to play with some of the packages out there that create dynamic visualizations. I&amp;rsquo;ve used the &lt;a href=&#34;https://plot.ly/ggplot2/getting-started/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;plotly&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://github.com/mages/googleVis#googlevis&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;googlevis&lt;/code&gt;&lt;/a&gt; R packages to create interactive plots, and the &lt;a href=&#34;https://yihui.name/animation/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;animation&lt;/code&gt;&lt;/a&gt; package to create gifs from raster data (e.g. Sea Surface Temperature over time), but I&amp;rsquo;ve never created a high-quality dynamic visualization. I know &lt;a href=&#34;https://d3js.org/&#34; target=&#34;_blank&#34;&gt;D3.js&lt;/a&gt; is often used to create beautiful figures, but I don&amp;rsquo;t have the time to learn D3.js (yet) and I figured there &lt;em&gt;had&lt;/em&gt; to be a way to do something fancy in R. And of course, I was right. So this is my process of creating a dynamic visualization with the &lt;a href=&#34;https://github.com/thomasp85/tweenr&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tweenr&lt;/code&gt;&lt;/a&gt; package.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Install and/or load packages:&lt;/p&gt;
+
+&lt;p&gt;I use &lt;code&gt;ggplot2&lt;/code&gt;, &lt;code&gt;gganimate&lt;/code&gt;, &lt;code&gt;ggthemes&lt;/code&gt; anad &lt;code&gt;tweenr&lt;/code&gt; for customizing the figures.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;library(ggplot2)
+#devtools::install_github(&amp;quot;dgrtwo/gganimate&amp;quot;)
+library(gganimate)
+library(tweenr)
+library(ggthemes)
+library(tidyverse)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;data-wrangling&#34;&gt;Data wrangling&lt;/h2&gt;
+
+&lt;p&gt;I start with data downloaded from &lt;a href=&#34;http://www.fao.org/fishery/statistics/global-production/en&#34; target=&#34;_blank&#34;&gt;FAO’s website&lt;/a&gt;, specifically the “Total Production” dataset CSV. One problem with using this dataset to understand how seafood production from wild capture (i.e. wild-caught from the ocean) and aquaculture (farmed, not wild) has grown over time, is that this data does not differentiate between fish caught for consumption versus non-consumption (e.g. fish used for feed).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#this data identifies aquaculture vs wild capture production  
+source &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/CL_FI_PRODUCTION_SOURCE.csv&amp;quot;)
+    
+#this is the time series data for global production (does not discern b/w seafood and nonseafood)  
+fao &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/TS_FI_PRODUCTION.csv&amp;quot;)
+    
+##species info  
+spp &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/CL_FI_SPECIES_GROUPS.csv&amp;quot;) %&amp;gt;%
+  mutate(Species = `3Alpha_Code`) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By using a second dataset on global food supply of seafood, I can calculate the amount of fish caught for consumption. Why not only use this dataset? Because this one does not differentiate between wild capture and aquaculture.&lt;/p&gt;
+
+&lt;p&gt;If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/fao_query.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I&amp;rsquo;ll wrangle these two datasets together as best I can.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#read in the seafood data queried from FAOSTAT and get totals per year  
+seafood &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/FAOSTAT_data_12-21-2017.csv&amp;quot;) %&amp;gt;%
+  group_by(Year) %&amp;gt;%
+  summarize(sf_tons = sum(Value))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;calculate-annual-capture-and-aquaculture-production&#34;&gt;Calculate annual capture and aquaculture production&lt;/h3&gt;
+
+&lt;p&gt;Since no dataset from FAO has exactly what I want, I can take the seafood dataset, calculate total production (tons) per year, and then remove the total aquaculture production for each year calculated from the &lt;code&gt;fao&lt;/code&gt; dataset. Then I have wild capture seafood per year (from the &lt;code&gt;seafood&lt;/code&gt; dataset), and aquaculture production per year (from the &lt;code&gt;fao&lt;/code&gt; dataset).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;data &amp;lt;- fao %&amp;gt;%
+  left_join(spp) %&amp;gt;%
+  mutate(source = 
+           case_when(
+             Source %in% c(1,2,3,5) ~ &amp;quot;Aquaculture&amp;quot;,
+             Source == 4 ~ &amp;quot;Wild_Capture&amp;quot;
+           )) %&amp;gt;%
+  filter(Major_Group != &amp;quot;PLANTAE AQUATICAE&amp;quot;) %&amp;gt;% #removing aquatic plants  
+  mutate(source = as.factor(source)) %&amp;gt;%         #doing this for tweenr...still don&#39;t know why we need to  
+  group_by(source, Year) %&amp;gt;%
+  summarize(tons = sum(Quantity, na.rm = T)/1000000) %&amp;gt;%
+  filter(Year &amp;gt; 1989) %&amp;gt;%                        #only interested in showing 1990 onwards  
+  spread(source, tons) %&amp;gt;%
+  left_join(seafood, by = &amp;quot;Year&amp;quot;) %&amp;gt;%
+  mutate(Wild_for_food = (sf_tons/1000000) - Aquaculture) %&amp;gt;% #subtract aquaculture from seafood series to get wild capture for seafood  
+  filter(!is.na(Wild_for_food)) %&amp;gt;%
+  select(Year, Aquaculture, Wild_for_food)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;forecast-production-values&#34;&gt;Forecast production values&lt;/h3&gt;
+
+&lt;p&gt;The data only goes to 2013, but I want to include forecasted growth of these two sectors. The 2016 &lt;a href=&#34;http://www.fao.org/publications/sofia/2016/en/&#34; target=&#34;_blank&#34;&gt;State of the Worlds Fisheries and Aquaculture report&lt;/a&gt; projects a 39% growth in Aquaculture production and just a 1% growth in Wild Capture. To make this easy, I simply used the 2013 production values and set the 2025 values to 139% and 101% of those values.&lt;/p&gt;
+
+&lt;p&gt;I create two new dataframes, one for all years 2014-2024 with two years full of &lt;code&gt;NA&lt;/code&gt;, one for Aquaculture and one for &lt;code&gt;Wild_for_food&lt;/code&gt; (Wild Capture). The second is a one row dataframe for the year 2025 with the &lt;code&gt;Aquaculture&lt;/code&gt; and &lt;code&gt;Wild_fod_food&lt;/code&gt; values equal to 139% and 101% of their 2013 values respectively. Using the &lt;code&gt;zoo::na.approx()&lt;/code&gt; function I simply do a linear interpolation of production values between 2013 and 2025.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#forecast forward to 2025
+#Projected 1% of growth in wild capture by 2025
+#projected 39% for aquaculture
+    
+yrs &amp;lt;- data.frame(Year = 2014:2024,
+                  Aquaculture = NA,
+                  Wild_for_food = NA)
+    
+data_2025 &amp;lt;- data.frame(Year = 2025,
+                        Aquaculture = 1.39*last(data$Aquaculture),
+                        Wild_for_food = 1.01*last(data$Wild_for_food))
+    
+plot_data &amp;lt;- data %&amp;gt;%
+  rbind(yrs, data_2025) %&amp;gt;%
+  mutate(Aquaculture = zoo::na.approx(.$Aquaculture),
+         Wild_for_food = zoo::na.approx(.$Wild_for_food)) %&amp;gt;%
+  gather(source, tons, Aquaculture, Wild_for_food)%&amp;gt;%
+  mutate(ease = &amp;quot;linear&amp;quot;,
+         x = Year) %&amp;gt;%
+  rename(y = tons,
+         id = source,
+         time = Year)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice I renamed the columns to &lt;code&gt;x&lt;/code&gt;, &lt;code&gt;y&lt;/code&gt;, &lt;code&gt;id&lt;/code&gt;, and &lt;code&gt;time&lt;/code&gt;. This is for use in the next section with &lt;code&gt;tweenr&lt;/code&gt;. The &lt;code&gt;x&lt;/code&gt; column identifies what I want on the x-axis (years), &lt;code&gt;y&lt;/code&gt; identifies the y-axis (tons), &lt;code&gt;id&lt;/code&gt; identifies the different series for plotting (Aquaculture or Wild_for_food) and &lt;code&gt;time&lt;/code&gt; is used to tell &lt;code&gt;tween_elements()&lt;/code&gt; what the different time points will be for interpolation. The &lt;code&gt;ease&lt;/code&gt; column will tell &lt;code&gt;tween_elements()&lt;/code&gt; what the easing (or interpolation) function will be. In this case, I just want a linear interpolation between my datapoints.&lt;/p&gt;
+
+&lt;h2 id=&#34;making-the-plot&#34;&gt;Making the plot&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how I went from creating a static &lt;code&gt;ggplot&lt;/code&gt; to animating with &lt;code&gt;gganimate&lt;/code&gt; then improving it with &lt;code&gt;tweenr&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;static-ggplot&#34;&gt;Static ggplot&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;static_plot &amp;lt;- ggplot(plot_data, aes(x = time, y = y)) +
+  geom_line(aes(color = id), show.legend = F) +
+  labs(x = &amp;quot;Year&amp;quot;,
+       y = &amp;quot;Seafood Production (million tonnes)&amp;quot;) +
+  theme_minimal()
+    
+static_plot
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/static.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;animate-with-gganimate&#34;&gt;Animate with &lt;code&gt;gganimate()&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;You can animate a static ggplot just with the &lt;a href=&#34;https://github.com/dgrtwo/gganimate&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;gganimate()&lt;/code&gt; package&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dynam_plot &amp;lt;- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
+  geom_line(aes(color = id), show.legend = F) +
+  labs(x = &amp;quot;Year&amp;quot;,
+       y = &amp;quot;Seafood Production (million tonnes)&amp;quot;) +
+  theme_hc() +
+  scale_y_continuous(breaks = seq(0, 100, by = 25)) +
+  scale_color_manual(values = c(&amp;quot;#24757A&amp;quot;, &amp;quot;#7FBAC0&amp;quot;)) +
+  ylim(0, 100) +
+  theme_hc() 
+      
+gganimate(dynam_plot, filename = &amp;quot;fao_gganimate.gif&amp;quot;, title_frame = F)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/fao_gganimate.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;smooth-animation-with-tweenr-ggplot-gganimate&#34;&gt;Smooth animation with &lt;code&gt;tweenr&lt;/code&gt; + &lt;code&gt;ggplot&lt;/code&gt; + &lt;code&gt;gganimate&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;To make the animation smoother, I’m using the tweenr package. Specifically, the &lt;code&gt;tween_elements()&lt;/code&gt; function creates a new dataframe with interpolated points between your datapoints (called &amp;ldquo;tweens&amp;rdquo; !) allowing &lt;code&gt;gganimate&lt;/code&gt; to plot all these points one after the other, resulting in a smooth dynamic visualization. The &lt;code&gt;nframes&lt;/code&gt; argument allows you to set how many total timepoints you want. I played around with this and chose 100 because I thought it gave the right speed. The more &lt;code&gt;nframes&lt;/code&gt;, the more points to plot and thus the slower the visualization. I suggest just playing with this argument until the animation looks right to you.&lt;/p&gt;
+
+&lt;p&gt;After creating the new dataframe with &lt;code&gt;tween_elements()&lt;/code&gt; you use &lt;code&gt;ggplot&lt;/code&gt; and &lt;code&gt;gganimate&lt;/code&gt; to create the final animation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;data_tween &amp;lt;- plot_data %&amp;gt;%
+  tween_elements(., &amp;quot;time&amp;quot;, &amp;quot;id&amp;quot;, &amp;quot;ease&amp;quot;, nframes = 100) %&amp;gt;%   #using tweenr!
+  mutate(year = round(time), id = .group) %&amp;gt;%
+  left_join(plot_data)
+    
+tween_plot &amp;lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color = id)) +
+  geom_path(aes(group = id, cumulative = T), size = 1, show.legend = F) +
+  xlab(&amp;quot;&amp;quot;) +
+  ylab(&amp;quot;Seafood Production (million tonnes)&amp;quot;) +
+  scale_y_continuous(breaks = seq(0, 100, by = 25)) +
+  scale_color_manual(values = c(&amp;quot;#24757A&amp;quot;, &amp;quot;#7FBAC0&amp;quot;)) +
+  ylim(0, 100) +
+  theme_hc() +
+  theme(axis.title.y = element_text(size=14),
+        axis.text.y = element_text( size=12),
+        axis.text.x = element_text(size = 12)) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 1994, y = 29, label = &amp;quot;Aquaculture&amp;quot;, 
+           cex = 6, angle = 22, fontface = &amp;quot;bold&amp;quot;, color = &amp;quot;#24757A&amp;quot;) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 1994, y = 70, label = &amp;quot;Wild Capture&amp;quot;, 
+           cex = 6, fontface = &amp;quot;bold&amp;quot;, color = &amp;quot;#7FBAC0&amp;quot;) +
+  geom_segment(aes(x=2015,xend=2020, y=88, yend=88),arrow=arrow(length=unit(0.2,&amp;quot;cm&amp;quot;)),show.legend=F, color = &amp;quot;darkgray&amp;quot;) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 2013, y = 88, label = &amp;quot;Estimated \nfuture growth&amp;quot;, color= &amp;quot;darkgray&amp;quot;, fontface = &amp;quot;bold&amp;quot;, cex = 4.5, angle = 90) +
+  geom_vline(xintercept=c(2015), linetype=&amp;quot;dotted&amp;quot;); tween_plot
+    
+gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://agitated-wilson-0f2190.netlify.com/img/fao_aq_capture_fig.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, &lt;code&gt;geom_segment()&lt;/code&gt;). While I could keep tweaking this forever, I think it&amp;rsquo;s good enough as is. The whole process of learning how to use &lt;code&gt;tweenr&lt;/code&gt; took me just a couple hours and I&amp;rsquo;m excited for the next opportunity to make something like this!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Example Talk</title>
+      <link>https://agitated-wilson-0f2190.netlify.com/talk/example-talk/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 -0800</pubDate>
+      
+      <guid>https://agitated-wilson-0f2190.netlify.com/talk/example-talk/</guid>
+      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://sourcethemes.com/academic/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://agitated-wilson-0f2190.netlify.com/project/deep-learning/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://agitated-wilson-0f2190.netlify.com/project/deep-learning/</guid>
+      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
+
+&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
+
+&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
+
+&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
+
+&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>External Project</title>
+      <link>https://agitated-wilson-0f2190.netlify.com/project/example-external-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://agitated-wilson-0f2190.netlify.com/project/example-external-project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Person Re-Identification System For Mobile Devices</title>
+      <link>https://agitated-wilson-0f2190.netlify.com/publication/person-re-identification/</link>
+      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://agitated-wilson-0f2190.netlify.com/publication/person-re-identification/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mobile visual clothing search</title>
+      <link>https://agitated-wilson-0f2190.netlify.com/publication/clothing-search/</link>
+      <pubDate>Mon, 01 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://agitated-wilson-0f2190.netlify.com/publication/clothing-search/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
