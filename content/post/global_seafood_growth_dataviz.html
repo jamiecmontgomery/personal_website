@@ -35,7 +35,7 @@ spp &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/mas
 <p>By using a second dataset on global food supply of seafood, I can calculate the amount of fish caught for consumption. Why not only use this dataset? Because this one does not differentiate between wild capture and aquaculture.</p>
 <p>If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.</p>
 <div class="figure">
-<img src="/Users/jamieafflerbach/github/personal_website/static/img/fao_query.png" />
+<img src="/img/fao_query.png" />
 
 </div>
 <p>I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I’ll wrangle these two datasets together as best I can.</p>
@@ -106,7 +106,7 @@ plot_data &lt;- data %&gt;%
     
 static_plot</code></pre>
 <div class="figure">
-<img src="/Users/jamieafflerbach/github/personal_website/static/img/static.png" />
+<img src="/img/static.png" />
 
 </div>
 </div>
@@ -125,7 +125,7 @@ static_plot</code></pre>
       
 gganimate(dynam_plot, filename = &quot;fao_gganimate.gif&quot;, title_frame = F)</code></pre>
 <div class="figure">
-<img src="/Users/jamieafflerbach/github/personal_website/static/img/fao_gganimate.gif" />
+<img src="/img/fao_gganimate.gif" />
 
 </div>
 </div>
@@ -159,7 +159,7 @@ tween_plot &lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color = id
     
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)</code></pre>
 <div class="figure">
-<img src="/Users/jamieafflerbach/github/personal_website/static/img/fao_aq_capture_fig.gif" />
+<img src="/img/fao_aq_capture_fig.gif" />
 
 </div>
 <p>I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, <code>geom_segment()</code>). While I could keep tweaking this forever, I think it’s good enough as is. The whole process of learning how to use <code>tweenr</code> took me just a couple hours and I’m excited for the next opportunity to make something like this!</p>

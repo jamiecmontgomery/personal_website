@@ -11,15 +11,6 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>test</title>
-      <link>/post/test/</link>
-      <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/test/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Visualizing growth in global seafood production</title>
       <link>/post/global_seafood_growth_dataviz/</link>
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
@@ -52,7 +43,7 @@ spp &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/stor
 &lt;p&gt;By using a second dataset on global food supply of seafood, I can calculate the amount of fish caught for consumption. Why not only use this dataset? Because this one does not differentiate between wild capture and aquaculture.&lt;/p&gt;
 &lt;p&gt;If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/Users/jamieafflerbach/github/personal_website/static/img/fao_query.png&#34; /&gt;
+&lt;img src=&#34;/img/fao_query.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I’ll wrangle these two datasets together as best I can.&lt;/p&gt;
@@ -123,7 +114,7 @@ plot_data &amp;lt;- data %&amp;gt;%
     
 static_plot&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/Users/jamieafflerbach/github/personal_website/static/img/static.png&#34; /&gt;
+&lt;img src=&#34;/img/static.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -142,7 +133,7 @@ static_plot&lt;/code&gt;&lt;/pre&gt;
       
 gganimate(dynam_plot, filename = &amp;quot;fao_gganimate.gif&amp;quot;, title_frame = F)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/Users/jamieafflerbach/github/personal_website/static/img/fao_gganimate.gif&#34; /&gt;
+&lt;img src=&#34;/img/fao_gganimate.gif&#34; /&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -176,7 +167,7 @@ tween_plot &amp;lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color 
     
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/Users/jamieafflerbach/github/personal_website/static/img/fao_aq_capture_fig.gif&#34; /&gt;
+&lt;img src=&#34;/img/fao_aq_capture_fig.gif&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, &lt;code&gt;geom_segment()&lt;/code&gt;). While I could keep tweaking this forever, I think it’s good enough as is. The whole process of learning how to use &lt;code&gt;tweenr&lt;/code&gt; took me just a couple hours and I’m excited for the next opportunity to make something like this!&lt;/p&gt;
