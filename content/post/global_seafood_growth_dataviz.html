@@ -1,10 +1,13 @@
+---
+title: "Visualizing growth in global seafood production"
+date: '2018-01-23'
+tags: ["aquaculture", "data visualization", "rstats"]
+math: true
+summary: "Creating a dynamic figure using gganimate and tweenr."
+---
 
 
 
-<p>+++ title = “Visualizing growth in global seafood production” date = 2018-01-23 draft = false tags = [“aquaculture”, “data visualization”, “rstats”]</p>
-<p>math = true summary = “Creating a dynamic figure using gganimate and tweenr.”</p>
-<p>[header] image = “” caption = “”</p>
-<p>+++</p>
 <p>I’m excited to be part of a new research group - the <a href="http://www.cart-sci.org/">Conservation Aquaculture Research Team</a> at NCEAS. Our group is interested in helping shape the future of <strong>sustainable aquaculture</strong>. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the <a href="http://www.fao.org/home/en/">Food and Agriculture Organization</a> (FAO). This also gave me the opportunity to play with some of the packages out there that create dynamic visualizations. I’ve used the <a href="https://plot.ly/ggplot2/getting-started/"><code>plotly</code></a> and <a href="https://github.com/mages/googleVis#googlevis"><code>googlevis</code></a> R packages to create interactive plots, and the <a href="https://yihui.name/animation/"><code>animation</code></a> package to create gifs from raster data (e.g. Sea Surface Temperature over time), but I’ve never created a high-quality dynamic visualization. I know <a href="https://d3js.org/">D3.js</a> is often used to create beautiful figures, but I don’t have the time to learn D3.js (yet) and I figured there <em>had</em> to be a way to do something fancy in R. And of course, I was right. So this is my process of creating a dynamic visualization with the <a href="https://github.com/thomasp85/tweenr"><code>tweenr</code></a> package. ___</p>
 <div id="installation" class="section level2">
 <h2>Installation</h2>

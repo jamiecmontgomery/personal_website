@@ -14,6 +14,15 @@
     
     <url>
     
+      <loc>/post/global_seafood_growth_dataviz/</loc>
+      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/publication/bsr/</loc>
       <lastmod>2017-10-31T00:00:00+00:00</lastmod>
     </url>
@@ -167,14 +176,6 @@
     
     <url>
     
-      <loc>/post/global_seafood_growth_dataviz/</loc>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/publication_types/1/</loc>
       <lastmod>2011-10-05T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -195,7 +196,27 @@
     
     <url>
     
+      <loc>/tags/aquaculture/</loc>
+      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/data-visualization/</loc>
+      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -246,6 +267,16 @@
     
       <loc>/publication_types/</loc>
       <lastmod>2011-10-05T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>/tags/rstats/</loc>
+      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

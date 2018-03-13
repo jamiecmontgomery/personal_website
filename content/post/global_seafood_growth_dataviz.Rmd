@@ -1,18 +1,10 @@
-+++
-title = "Visualizing growth in global seafood production"
-date = 2018-01-23
-draft = false
-tags = ["aquaculture", "data visualization", "rstats"]
-
-math = true
-summary = "Creating a dynamic figure using gganimate and tweenr."
-
-[header]
-image = ""
-caption = ""
-
-+++
-
+---
+title: "Visualizing growth in global seafood production"
+date: '2018-01-23'
+tags: ["aquaculture", "data visualization", "rstats"]
+math: true
+summary: "Creating a dynamic figure using gganimate and tweenr."
+---
 I'm excited to be part of a new research group - the [Conservation Aquaculture Research Team](http://www.cart-sci.org/) at NCEAS. Our group is interested in helping shape the future of **sustainable aquaculture**. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the [Food and Agriculture Organization](http://www.fao.org/home/en/) (FAO). This also gave me the opportunity to play with some of the packages out there that create dynamic visualizations. I've used the [`plotly`](https://plot.ly/ggplot2/getting-started/) and [`googlevis`](https://github.com/mages/googleVis#googlevis) R packages to create interactive plots, and the [`animation`](https://yihui.name/animation/) package to create gifs from raster data (e.g. Sea Surface Temperature over time), but I've never created a high-quality dynamic visualization. I know [D3.js](https://d3js.org/) is often used to create beautiful figures, but I don't have the time to learn D3.js (yet) and I figured there *had* to be a way to do something fancy in R. And of course, I was right. So this is my process of creating a dynamic visualization with the [`tweenr`](https://github.com/thomasp85/tweenr) package.
 ___
 

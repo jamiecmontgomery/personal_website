@@ -13,12 +13,21 @@
     
     
     <item>
+      <title>test</title>
+      <link>/post/test/</link>
+      <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Visualizing growth in global seafood production</title>
       <link>/post/global_seafood_growth_dataviz/</link>
-      <pubDate>Tue, 23 Jan 2018 12:00:00 +0000</pubDate>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/global_seafood_growth_dataviz/</guid>
-      <description>I&amp;rsquo;m excited to be part of a new research group - the Conservation Aquaculture Research Team at NCEAS. Our group is interested in helping shape the future of sustainable aquaculture. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the Food and Agriculture Organization (FAO).</description>
+      <description>I’m excited to be part of a new research group - the Conservation Aquaculture Research Team at NCEAS. Our group is interested in helping shape the future of sustainable aquaculture. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the Food and Agriculture Organization (FAO).</description>
     </item>
     
   </channel>
