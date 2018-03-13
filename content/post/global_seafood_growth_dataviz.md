@@ -23,7 +23,7 @@ Install and/or load packages:
 
 I use `ggplot2`, `gganimate`, `ggthemes` anad `tweenr` for customizing the figures.
 
-```{r}
+```r
 library(ggplot2)
 #devtools::install_github("dgrtwo/gganimate")
 library(gganimate)
@@ -36,7 +36,7 @@ library(tidyverse)
 
 I start with data downloaded from [FAO’s website](http://www.fao.org/fishery/statistics/global-production/en), specifically the “Total Production” dataset CSV. One problem with using this dataset to understand how seafood production from wild capture (i.e. wild-caught from the ocean) and aquaculture (farmed, not wild) has grown over time, is that this data does not differentiate between fish caught for consumption versus non-consumption (e.g. fish used for feed).
 
-```
+```r
 #this data identifies aquaculture vs wild capture production  
 source <- read_csv("https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/CL_FI_PRODUCTION_SOURCE.csv")
     
@@ -52,11 +52,11 @@ By using a second dataset on global food supply of seafood, I can calculate the 
 
 If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.
 
-![](/img/fao_query.png)
+![](~/github/personal_website/static/img/fao_query.png)
 
 I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I'll wrangle these two datasets together as best I can.
 
-```{r}
+```r
 #read in the seafood data queried from FAOSTAT and get totals per year  
 seafood <- read_csv("https://raw.githubusercontent.com/CART-sci/storymap/master/data/FAOSTAT_data_12-21-2017.csv") %>%
   group_by(Year) %>%
@@ -67,7 +67,7 @@ seafood <- read_csv("https://raw.githubusercontent.com/CART-sci/storymap/master/
 
 Since no dataset from FAO has exactly what I want, I can take the seafood dataset, calculate total production (tons) per year, and then remove the total aquaculture production for each year calculated from the `fao` dataset. Then I have wild capture seafood per year (from the `seafood` dataset), and aquaculture production per year (from the `fao` dataset).
 
-```{r}
+```r
 data <- fao %>%
   left_join(spp) %>%
   mutate(source = 
@@ -93,7 +93,7 @@ The data only goes to 2013, but I want to include forecasted growth of these two
 
 I create two new dataframes, one for all years 2014-2024 with two years full of `NA`, one for Aquaculture and one for `Wild_for_food` (Wild Capture). The second is a one row dataframe for the year 2025 with the `Aquaculture` and `Wild_fod_food` values equal to 139% and 101% of their 2013 values respectively. Using the `zoo::na.approx()` function I simply do a linear interpolation of production values between 2013 and 2025.
 
-```{r}
+```r
 #forecast forward to 2025
 #Projected 1% of growth in wild capture by 2025
 #projected 39% for aquaculture
@@ -126,7 +126,7 @@ Here's how I went from creating a static `ggplot` to animating with `gganimate` 
 
 ### Static ggplot
 
-```{r}
+```r
 static_plot <- ggplot(plot_data, aes(x = time, y = y)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = "Year",
@@ -136,13 +136,13 @@ static_plot <- ggplot(plot_data, aes(x = time, y = y)) +
 static_plot
 ```
 
-![](/img/static.png)
+![](~/github/personal_website/static/img/static.png)
 
 ### Animate with `gganimate()`
 
 You can animate a static ggplot just with the [`gganimate()` package](https://github.com/dgrtwo/gganimate).
 
-```{r}
+```r
 dynam_plot <- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = "Year",
@@ -157,7 +157,7 @@ gganimate(dynam_plot, filename = "fao_gganimate.gif", title_frame = F)
 
 ```
 
-![](/img/fao_gganimate.gif)
+![](~/github/personal_website/static/img/fao_gganimate.gif)
 
 ### Smooth animation with `tweenr` + `ggplot` + `gganimate`
 
@@ -165,7 +165,7 @@ To make the animation smoother, I’m using the tweenr package. Specifically, th
 
 After creating the new dataframe with `tween_elements()` you use `ggplot` and `gganimate` to create the final animation.
 
-```{r}
+```r
 data_tween <- plot_data %>%
   tween_elements(., "time", "id", "ease", nframes = 100) %>%   #using tweenr!
   mutate(year = round(time), id = .group) %>%
@@ -192,7 +192,7 @@ tween_plot <- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color = id)) 
     
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
 ```
-![](/img/fao_aq_capture_fig.gif)
+![](~/github/personal_website/static/img/fao_aq_capture_fig.gif)
 
 I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, `geom_segment()`). While I could keep tweaking this forever, I think it's good enough as is. The whole process of learning how to use `tweenr` took me just a couple hours and I'm excited for the next opportunity to make something like this!
 
