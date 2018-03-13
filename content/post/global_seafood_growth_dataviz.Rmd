@@ -1,12 +1,11 @@
 +++
-date = "2018-01-23T12:00:00"
+title = "Visualizing growth in global seafood production"
+date = 2018-01-23
 draft = false
 tags = ["aquaculture", "data visualization", "rstats"]
-title = "Visualizing growth in global seafood production"
+
 math = true
-summary = """
-Creating a dynamic figure using gganimate and tweenr. 
-"""
+summary = "Creating a dynamic figure using gganimate and tweenr."
 
 [header]
 image = ""
