@@ -1,0 +1,163 @@
+
+
+
+<p>+++ date = “2018-01-23T12:00:00” draft = false tags = [“aquaculture”, “data visualization”, “rstats”] title = “Visualizing growth in global seafood production” math = true summary = “”&quot; Creating a dynamic figure using gganimate and tweenr. “”&quot;</p>
+<p>[header] image = “” caption = “”</p>
+<p>+++</p>
+<p>I’m excited to be part of a new research group - the <a href="http://www.cart-sci.org/">Conservation Aquaculture Research Team</a> at NCEAS. Our group is interested in helping shape the future of <strong>sustainable aquaculture</strong>. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the <a href="http://www.fao.org/home/en/">Food and Agriculture Organization</a> (FAO). This also gave me the opportunity to play with some of the packages out there that create dynamic visualizations. I’ve used the <a href="https://plot.ly/ggplot2/getting-started/"><code>plotly</code></a> and <a href="https://github.com/mages/googleVis#googlevis"><code>googlevis</code></a> R packages to create interactive plots, and the <a href="https://yihui.name/animation/"><code>animation</code></a> package to create gifs from raster data (e.g. Sea Surface Temperature over time), but I’ve never created a high-quality dynamic visualization. I know <a href="https://d3js.org/">D3.js</a> is often used to create beautiful figures, but I don’t have the time to learn D3.js (yet) and I figured there <em>had</em> to be a way to do something fancy in R. And of course, I was right. So this is my process of creating a dynamic visualization with the <a href="https://github.com/thomasp85/tweenr"><code>tweenr</code></a> package. ___</p>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>Install and/or load packages:</p>
+<p>I use <code>ggplot2</code>, <code>gganimate</code>, <code>ggthemes</code> anad <code>tweenr</code> for customizing the figures.</p>
+<pre class="r"><code>library(ggplot2)
+#devtools::install_github(&quot;dgrtwo/gganimate&quot;)
+library(gganimate)
+library(tweenr)
+library(ggthemes)
+library(tidyverse)</code></pre>
+</div>
+<div id="data-wrangling" class="section level2">
+<h2>Data wrangling</h2>
+<p>I start with data downloaded from <a href="http://www.fao.org/fishery/statistics/global-production/en">FAO’s website</a>, specifically the “Total Production” dataset CSV. One problem with using this dataset to understand how seafood production from wild capture (i.e. wild-caught from the ocean) and aquaculture (farmed, not wild) has grown over time, is that this data does not differentiate between fish caught for consumption versus non-consumption (e.g. fish used for feed).</p>
+<pre class="r"><code>#this data identifies aquaculture vs wild capture production  
+source &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/CL_FI_PRODUCTION_SOURCE.csv&quot;)
+    
+#this is the time series data for global production (does not discern b/w seafood and nonseafood)  
+fao &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/TS_FI_PRODUCTION.csv&quot;)
+    
+##species info  
+spp &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/CL_FI_SPECIES_GROUPS.csv&quot;) %&gt;%
+  mutate(Species = `3Alpha_Code`) </code></pre>
+<p>By using a second dataset on global food supply of seafood, I can calculate the amount of fish caught for consumption. Why not only use this dataset? Because this one does not differentiate between wild capture and aquaculture.</p>
+<p>If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.</p>
+<div class="figure">
+<img src="/home/afflerbach/github/personal_website/static/img/fao_query.png" />
+
+</div>
+<p>I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I’ll wrangle these two datasets together as best I can.</p>
+<pre class="r"><code>#read in the seafood data queried from FAOSTAT and get totals per year  
+seafood &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/FAOSTAT_data_12-21-2017.csv&quot;) %&gt;%
+  group_by(Year) %&gt;%
+  summarize(sf_tons = sum(Value))</code></pre>
+<div id="calculate-annual-capture-and-aquaculture-production" class="section level3">
+<h3>Calculate annual capture and aquaculture production</h3>
+<p>Since no dataset from FAO has exactly what I want, I can take the seafood dataset, calculate total production (tons) per year, and then remove the total aquaculture production for each year calculated from the <code>fao</code> dataset. Then I have wild capture seafood per year (from the <code>seafood</code> dataset), and aquaculture production per year (from the <code>fao</code> dataset).</p>
+<pre class="r"><code>data &lt;- fao %&gt;%
+  left_join(spp) %&gt;%
+  mutate(source = 
+           case_when(
+             Source %in% c(1,2,3,5) ~ &quot;Aquaculture&quot;,
+             Source == 4 ~ &quot;Wild_Capture&quot;
+           )) %&gt;%
+  filter(Major_Group != &quot;PLANTAE AQUATICAE&quot;) %&gt;% #removing aquatic plants  
+  mutate(source = as.factor(source)) %&gt;%         #doing this for tweenr...still don&#39;t know why we need to  
+  group_by(source, Year) %&gt;%
+  summarize(tons = sum(Quantity, na.rm = T)/1000000) %&gt;%
+  filter(Year &gt; 1989) %&gt;%                        #only interested in showing 1990 onwards  
+  spread(source, tons) %&gt;%
+  left_join(seafood, by = &quot;Year&quot;) %&gt;%
+  mutate(Wild_for_food = (sf_tons/1000000) - Aquaculture) %&gt;% #subtract aquaculture from seafood series to get wild capture for seafood  
+  filter(!is.na(Wild_for_food)) %&gt;%
+  select(Year, Aquaculture, Wild_for_food)</code></pre>
+</div>
+<div id="forecast-production-values" class="section level3">
+<h3>Forecast production values</h3>
+<p>The data only goes to 2013, but I want to include forecasted growth of these two sectors. The 2016 <a href="http://www.fao.org/publications/sofia/2016/en/">State of the Worlds Fisheries and Aquaculture report</a> projects a 39% growth in Aquaculture production and just a 1% growth in Wild Capture. To make this easy, I simply used the 2013 production values and set the 2025 values to 139% and 101% of those values.</p>
+<p>I create two new dataframes, one for all years 2014-2024 with two years full of <code>NA</code>, one for Aquaculture and one for <code>Wild_for_food</code> (Wild Capture). The second is a one row dataframe for the year 2025 with the <code>Aquaculture</code> and <code>Wild_fod_food</code> values equal to 139% and 101% of their 2013 values respectively. Using the <code>zoo::na.approx()</code> function I simply do a linear interpolation of production values between 2013 and 2025.</p>
+<pre class="r"><code>#forecast forward to 2025
+#Projected 1% of growth in wild capture by 2025
+#projected 39% for aquaculture
+    
+yrs &lt;- data.frame(Year = 2014:2024,
+                  Aquaculture = NA,
+                  Wild_for_food = NA)
+    
+data_2025 &lt;- data.frame(Year = 2025,
+                        Aquaculture = 1.39*last(data$Aquaculture),
+                        Wild_for_food = 1.01*last(data$Wild_for_food))
+    
+plot_data &lt;- data %&gt;%
+  rbind(yrs, data_2025) %&gt;%
+  mutate(Aquaculture = zoo::na.approx(.$Aquaculture),
+         Wild_for_food = zoo::na.approx(.$Wild_for_food)) %&gt;%
+  gather(source, tons, Aquaculture, Wild_for_food)%&gt;%
+  mutate(ease = &quot;linear&quot;,
+         x = Year) %&gt;%
+  rename(y = tons,
+         id = source,
+         time = Year)</code></pre>
+<p>Notice I renamed the columns to <code>x</code>, <code>y</code>, <code>id</code>, and <code>time</code>. This is for use in the next section with <code>tweenr</code>. The <code>x</code> column identifies what I want on the x-axis (years), <code>y</code> identifies the y-axis (tons), <code>id</code> identifies the different series for plotting (Aquaculture or Wild_for_food) and <code>time</code> is used to tell <code>tween_elements()</code> what the different time points will be for interpolation. The <code>ease</code> column will tell <code>tween_elements()</code> what the easing (or interpolation) function will be. In this case, I just want a linear interpolation between my datapoints.</p>
+</div>
+</div>
+<div id="making-the-plot" class="section level2">
+<h2>Making the plot</h2>
+<p>Here’s how I went from creating a static <code>ggplot</code> to animating with <code>gganimate</code> then improving it with <code>tweenr</code></p>
+<div id="static-ggplot" class="section level3">
+<h3>Static ggplot</h3>
+<pre class="r"><code>static_plot &lt;- ggplot(plot_data, aes(x = time, y = y)) +
+  geom_line(aes(color = id), show.legend = F) +
+  labs(x = &quot;Year&quot;,
+       y = &quot;Seafood Production (million tonnes)&quot;) +
+  theme_minimal()
+    
+static_plot</code></pre>
+<div class="figure">
+<img src="/home/afflerbach/github/personal_website/static/img/static.png" />
+
+</div>
+</div>
+<div id="animate-with-gganimate" class="section level3">
+<h3>Animate with <code>gganimate()</code></h3>
+<p>You can animate a static ggplot just with the <a href="https://github.com/dgrtwo/gganimate"><code>gganimate()</code> package</a>.</p>
+<pre class="r"><code>dynam_plot &lt;- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
+  geom_line(aes(color = id), show.legend = F) +
+  labs(x = &quot;Year&quot;,
+       y = &quot;Seafood Production (million tonnes)&quot;) +
+  theme_hc() +
+  scale_y_continuous(breaks = seq(0, 100, by = 25)) +
+  scale_color_manual(values = c(&quot;#24757A&quot;, &quot;#7FBAC0&quot;)) +
+  ylim(0, 100) +
+  theme_hc() 
+      
+gganimate(dynam_plot, filename = &quot;fao_gganimate.gif&quot;, title_frame = F)</code></pre>
+<div class="figure">
+<img src="/home/afflerbach/github/personal_website/static/img/fao_gganimate.gif" />
+
+</div>
+</div>
+<div id="smooth-animation-with-tweenr-ggplot-gganimate" class="section level3">
+<h3>Smooth animation with <code>tweenr</code> + <code>ggplot</code> + <code>gganimate</code></h3>
+<p>To make the animation smoother, I’m using the tweenr package. Specifically, the <code>tween_elements()</code> function creates a new dataframe with interpolated points between your datapoints (called “tweens” !) allowing <code>gganimate</code> to plot all these points one after the other, resulting in a smooth dynamic visualization. The <code>nframes</code> argument allows you to set how many total timepoints you want. I played around with this and chose 100 because I thought it gave the right speed. The more <code>nframes</code>, the more points to plot and thus the slower the visualization. I suggest just playing with this argument until the animation looks right to you.</p>
+<p>After creating the new dataframe with <code>tween_elements()</code> you use <code>ggplot</code> and <code>gganimate</code> to create the final animation.</p>
+<pre class="r"><code>data_tween &lt;- plot_data %&gt;%
+  tween_elements(., &quot;time&quot;, &quot;id&quot;, &quot;ease&quot;, nframes = 100) %&gt;%   #using tweenr!
+  mutate(year = round(time), id = .group) %&gt;%
+  left_join(plot_data)
+    
+tween_plot &lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color = id)) +
+  geom_path(aes(group = id, cumulative = T), size = 1, show.legend = F) +
+  xlab(&quot;&quot;) +
+  ylab(&quot;Seafood Production (million tonnes)&quot;) +
+  scale_y_continuous(breaks = seq(0, 100, by = 25)) +
+  scale_color_manual(values = c(&quot;#24757A&quot;, &quot;#7FBAC0&quot;)) +
+  ylim(0, 100) +
+  theme_hc() +
+  theme(axis.title.y = element_text(size=14),
+        axis.text.y = element_text( size=12),
+        axis.text.x = element_text(size = 12)) +
+  annotate(geom = &quot;text&quot;, x = 1994, y = 29, label = &quot;Aquaculture&quot;, 
+           cex = 6, angle = 22, fontface = &quot;bold&quot;, color = &quot;#24757A&quot;) +
+  annotate(geom = &quot;text&quot;, x = 1994, y = 70, label = &quot;Wild Capture&quot;, 
+           cex = 6, fontface = &quot;bold&quot;, color = &quot;#7FBAC0&quot;) +
+  geom_segment(aes(x=2015,xend=2020, y=88, yend=88),arrow=arrow(length=unit(0.2,&quot;cm&quot;)),show.legend=F, color = &quot;darkgray&quot;) +
+  annotate(geom = &quot;text&quot;, x = 2013, y = 88, label = &quot;Estimated \nfuture growth&quot;, color= &quot;darkgray&quot;, fontface = &quot;bold&quot;, cex = 4.5, angle = 90) +
+  geom_vline(xintercept=c(2015), linetype=&quot;dotted&quot;); tween_plot
+    
+gganimate(tween_plot, title_frame = FALSE, interval = 0.05)</code></pre>
+<div class="figure">
+<img src="/home/afflerbach/github/personal_website/static/img/fao_aq_capture_fig.gif" />
+
+</div>
+<p>I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, <code>geom_segment()</code>). While I could keep tweaking this forever, I think it’s good enough as is. The whole process of learning how to use <code>tweenr</code> took me just a couple hours and I’m excited for the next opportunity to make something like this!</p>
+</div>
+</div>
