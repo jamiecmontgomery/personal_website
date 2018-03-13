@@ -28,7 +28,7 @@
 
 &lt;p&gt;I use &lt;code&gt;ggplot2&lt;/code&gt;, &lt;code&gt;gganimate&lt;/code&gt;, &lt;code&gt;ggthemes&lt;/code&gt; anad &lt;code&gt;tweenr&lt;/code&gt; for customizing the figures.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;library(ggplot2)
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;library(ggplot2)
 #devtools::install_github(&amp;quot;dgrtwo/gganimate&amp;quot;)
 library(gganimate)
 library(tweenr)
@@ -40,7 +40,7 @@ library(tidyverse)
 
 &lt;p&gt;I start with data downloaded from &lt;a href=&#34;http://www.fao.org/fishery/statistics/global-production/en&#34; target=&#34;_blank&#34;&gt;FAO’s website&lt;/a&gt;, specifically the “Total Production” dataset CSV. One problem with using this dataset to understand how seafood production from wild capture (i.e. wild-caught from the ocean) and aquaculture (farmed, not wild) has grown over time, is that this data does not differentiate between fish caught for consumption versus non-consumption (e.g. fish used for feed).&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;#this data identifies aquaculture vs wild capture production  
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#this data identifies aquaculture vs wild capture production  
 source &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/CL_FI_PRODUCTION_SOURCE.csv&amp;quot;)
     
 #this is the time series data for global production (does not discern b/w seafood and nonseafood)  
@@ -55,11 +55,11 @@ spp &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/stor
 
 &lt;p&gt;If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;/img/fao_query.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;~/github/personal_website/static/img/fao_query.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I&amp;rsquo;ll wrangle these two datasets together as best I can.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;#read in the seafood data queried from FAOSTAT and get totals per year  
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#read in the seafood data queried from FAOSTAT and get totals per year  
 seafood &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/FAOSTAT_data_12-21-2017.csv&amp;quot;) %&amp;gt;%
   group_by(Year) %&amp;gt;%
   summarize(sf_tons = sum(Value))
@@ -69,7 +69,7 @@ seafood &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/
 
 &lt;p&gt;Since no dataset from FAO has exactly what I want, I can take the seafood dataset, calculate total production (tons) per year, and then remove the total aquaculture production for each year calculated from the &lt;code&gt;fao&lt;/code&gt; dataset. Then I have wild capture seafood per year (from the &lt;code&gt;seafood&lt;/code&gt; dataset), and aquaculture production per year (from the &lt;code&gt;fao&lt;/code&gt; dataset).&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;data &amp;lt;- fao %&amp;gt;%
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data &amp;lt;- fao %&amp;gt;%
   left_join(spp) %&amp;gt;%
   mutate(source = 
            case_when(
@@ -94,7 +94,7 @@ seafood &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/
 
 &lt;p&gt;I create two new dataframes, one for all years 2014-2024 with two years full of &lt;code&gt;NA&lt;/code&gt;, one for Aquaculture and one for &lt;code&gt;Wild_for_food&lt;/code&gt; (Wild Capture). The second is a one row dataframe for the year 2025 with the &lt;code&gt;Aquaculture&lt;/code&gt; and &lt;code&gt;Wild_fod_food&lt;/code&gt; values equal to 139% and 101% of their 2013 values respectively. Using the &lt;code&gt;zoo::na.approx()&lt;/code&gt; function I simply do a linear interpolation of production values between 2013 and 2025.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;#forecast forward to 2025
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;#forecast forward to 2025
 #Projected 1% of growth in wild capture by 2025
 #projected 39% for aquaculture
     
@@ -126,7 +126,7 @@ plot_data &amp;lt;- data %&amp;gt;%
 
 &lt;h3 id=&#34;static-ggplot&#34;&gt;Static ggplot&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;static_plot &amp;lt;- ggplot(plot_data, aes(x = time, y = y)) +
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;static_plot &amp;lt;- ggplot(plot_data, aes(x = time, y = y)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = &amp;quot;Year&amp;quot;,
        y = &amp;quot;Seafood Production (million tonnes)&amp;quot;) +
@@ -135,13 +135,13 @@ plot_data &amp;lt;- data %&amp;gt;%
 static_plot
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;/img/static.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;~/github/personal_website/static/img/static.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;animate-with-gganimate&#34;&gt;Animate with &lt;code&gt;gganimate()&lt;/code&gt;&lt;/h3&gt;
 
 &lt;p&gt;You can animate a static ggplot just with the &lt;a href=&#34;https://github.com/dgrtwo/gganimate&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;gganimate()&lt;/code&gt; package&lt;/a&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;dynam_plot &amp;lt;- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;dynam_plot &amp;lt;- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = &amp;quot;Year&amp;quot;,
        y = &amp;quot;Seafood Production (million tonnes)&amp;quot;) +
@@ -155,7 +155,7 @@ gganimate(dynam_plot, filename = &amp;quot;fao_gganimate.gif&amp;quot;, title_fr
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;/img/fao_gganimate.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;~/github/personal_website/static/img/fao_gganimate.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;smooth-animation-with-tweenr-ggplot-gganimate&#34;&gt;Smooth animation with &lt;code&gt;tweenr&lt;/code&gt; + &lt;code&gt;ggplot&lt;/code&gt; + &lt;code&gt;gganimate&lt;/code&gt;&lt;/h3&gt;
 
@@ -163,7 +163,7 @@ gganimate(dynam_plot, filename = &amp;quot;fao_gganimate.gif&amp;quot;, title_fr
 
 &lt;p&gt;After creating the new dataframe with &lt;code&gt;tween_elements()&lt;/code&gt; you use &lt;code&gt;ggplot&lt;/code&gt; and &lt;code&gt;gganimate&lt;/code&gt; to create the final animation.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;data_tween &amp;lt;- plot_data %&amp;gt;%
+&lt;pre&gt;&lt;code class=&#34;language-r&#34;&gt;data_tween &amp;lt;- plot_data %&amp;gt;%
   tween_elements(., &amp;quot;time&amp;quot;, &amp;quot;id&amp;quot;, &amp;quot;ease&amp;quot;, nframes = 100) %&amp;gt;%   #using tweenr!
   mutate(year = round(time), id = .group) %&amp;gt;%
   left_join(plot_data)
@@ -190,9 +190,19 @@ tween_plot &amp;lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color 
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;/img/fao_aq_capture_fig.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;~/github/personal_website/static/img/fao_aq_capture_fig.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, &lt;code&gt;geom_segment()&lt;/code&gt;). While I could keep tweaking this forever, I think it&amp;rsquo;s good enough as is. The whole process of learning how to use &lt;code&gt;tweenr&lt;/code&gt; took me just a couple hours and I&amp;rsquo;m excited for the next opportunity to make something like this!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cumulative human impacts in the Bering Strait Region</title>
+      <link>/publication/bsr/</link>
+      <pubDate>Tue, 31 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/bsr/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
@@ -266,16 +276,6 @@ gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
       
       <guid>/publication/ensembles_fish_and_fisheries_2017/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>/publication/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/publication/person-re-identification/</guid>
-      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
     </item>
     
     <item>

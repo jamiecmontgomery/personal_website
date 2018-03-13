@@ -349,7 +349,7 @@
 
 <p>I use <code>ggplot2</code>, <code>gganimate</code>, <code>ggthemes</code> anad <code>tweenr</code> for customizing the figures.</p>
 
-<pre><code>library(ggplot2)
+<pre><code class="language-r">library(ggplot2)
 #devtools::install_github(&quot;dgrtwo/gganimate&quot;)
 library(gganimate)
 library(tweenr)
@@ -361,7 +361,7 @@ library(tidyverse)
 
 <p>I start with data downloaded from <a href="http://www.fao.org/fishery/statistics/global-production/en" target="_blank">FAO’s website</a>, specifically the “Total Production” dataset CSV. One problem with using this dataset to understand how seafood production from wild capture (i.e. wild-caught from the ocean) and aquaculture (farmed, not wild) has grown over time, is that this data does not differentiate between fish caught for consumption versus non-consumption (e.g. fish used for feed).</p>
 
-<pre><code>#this data identifies aquaculture vs wild capture production  
+<pre><code class="language-r">#this data identifies aquaculture vs wild capture production  
 source &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/GlobalProuction_2017.1.1/CL_FI_PRODUCTION_SOURCE.csv&quot;)
     
 #this is the time series data for global production (does not discern b/w seafood and nonseafood)  
@@ -376,11 +376,11 @@ spp &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/mas
 
 <p>If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.</p>
 
-<p><img src="/img/fao_query.png" alt="" /></p>
+<p><img src="~/github/personal_website/static/img/fao_query.png" alt="" /></p>
 
 <p>I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I&rsquo;ll wrangle these two datasets together as best I can.</p>
 
-<pre><code>#read in the seafood data queried from FAOSTAT and get totals per year  
+<pre><code class="language-r">#read in the seafood data queried from FAOSTAT and get totals per year  
 seafood &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/master/data/FAOSTAT_data_12-21-2017.csv&quot;) %&gt;%
   group_by(Year) %&gt;%
   summarize(sf_tons = sum(Value))
@@ -390,7 +390,7 @@ seafood &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap
 
 <p>Since no dataset from FAO has exactly what I want, I can take the seafood dataset, calculate total production (tons) per year, and then remove the total aquaculture production for each year calculated from the <code>fao</code> dataset. Then I have wild capture seafood per year (from the <code>seafood</code> dataset), and aquaculture production per year (from the <code>fao</code> dataset).</p>
 
-<pre><code>data &lt;- fao %&gt;%
+<pre><code class="language-r">data &lt;- fao %&gt;%
   left_join(spp) %&gt;%
   mutate(source = 
            case_when(
@@ -415,7 +415,7 @@ seafood &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap
 
 <p>I create two new dataframes, one for all years 2014-2024 with two years full of <code>NA</code>, one for Aquaculture and one for <code>Wild_for_food</code> (Wild Capture). The second is a one row dataframe for the year 2025 with the <code>Aquaculture</code> and <code>Wild_fod_food</code> values equal to 139% and 101% of their 2013 values respectively. Using the <code>zoo::na.approx()</code> function I simply do a linear interpolation of production values between 2013 and 2025.</p>
 
-<pre><code>#forecast forward to 2025
+<pre><code class="language-r">#forecast forward to 2025
 #Projected 1% of growth in wild capture by 2025
 #projected 39% for aquaculture
     
@@ -447,7 +447,7 @@ plot_data &lt;- data %&gt;%
 
 <h3 id="static-ggplot">Static ggplot</h3>
 
-<pre><code>static_plot &lt;- ggplot(plot_data, aes(x = time, y = y)) +
+<pre><code class="language-r">static_plot &lt;- ggplot(plot_data, aes(x = time, y = y)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = &quot;Year&quot;,
        y = &quot;Seafood Production (million tonnes)&quot;) +
@@ -456,13 +456,13 @@ plot_data &lt;- data %&gt;%
 static_plot
 </code></pre>
 
-<p><img src="/img/static.png" alt="" /></p>
+<p><img src="~/github/personal_website/static/img/static.png" alt="" /></p>
 
 <h3 id="animate-with-gganimate">Animate with <code>gganimate()</code></h3>
 
 <p>You can animate a static ggplot just with the <a href="https://github.com/dgrtwo/gganimate" target="_blank"><code>gganimate()</code> package</a>.</p>
 
-<pre><code>dynam_plot &lt;- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
+<pre><code class="language-r">dynam_plot &lt;- ggplot(plot_data, aes(x = x, y = y, cumulative = TRUE, frame = time)) +
   geom_line(aes(color = id), show.legend = F) +
   labs(x = &quot;Year&quot;,
        y = &quot;Seafood Production (million tonnes)&quot;) +
@@ -476,7 +476,7 @@ gganimate(dynam_plot, filename = &quot;fao_gganimate.gif&quot;, title_frame = F)
 
 </code></pre>
 
-<p><img src="/img/fao_gganimate.gif" alt="" /></p>
+<p><img src="~/github/personal_website/static/img/fao_gganimate.gif" alt="" /></p>
 
 <h3 id="smooth-animation-with-tweenr-ggplot-gganimate">Smooth animation with <code>tweenr</code> + <code>ggplot</code> + <code>gganimate</code></h3>
 
@@ -484,7 +484,7 @@ gganimate(dynam_plot, filename = &quot;fao_gganimate.gif&quot;, title_frame = F)
 
 <p>After creating the new dataframe with <code>tween_elements()</code> you use <code>ggplot</code> and <code>gganimate</code> to create the final animation.</p>
 
-<pre><code>data_tween &lt;- plot_data %&gt;%
+<pre><code class="language-r">data_tween &lt;- plot_data %&gt;%
   tween_elements(., &quot;time&quot;, &quot;id&quot;, &quot;ease&quot;, nframes = 100) %&gt;%   #using tweenr!
   mutate(year = round(time), id = .group) %&gt;%
   left_join(plot_data)
@@ -511,7 +511,7 @@ tween_plot &lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color = id
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)
 </code></pre>
 
-<p><img src="/img/fao_aq_capture_fig.gif" alt="" /></p>
+<p><img src="~/github/personal_website/static/img/fao_aq_capture_fig.gif" alt="" /></p>
 
 <p>I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, <code>geom_segment()</code>). While I could keep tweaking this forever, I think it&rsquo;s good enough as is. The whole process of learning how to use <code>tweenr</code> took me just a couple hours and I&rsquo;m excited for the next opportunity to make something like this!</p>
 

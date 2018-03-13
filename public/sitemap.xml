@@ -14,6 +14,15 @@
     
     <url>
     
+      <loc>/publication/bsr/</loc>
+      <lastmod>2017-10-31T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>/project/datalimited/</loc>
       <lastmod>2017-08-16T00:00:00+00:00</lastmod>
     </url>
@@ -122,15 +131,6 @@
     
     <url>
     
-      <loc>/publication/person-re-identification/</loc>
-      <lastmod>2015-09-01T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>/publication/turfs_gecco_2014/</loc>
       <lastmod>2014-12-01T00:00:00+00:00</lastmod>
     </url>
@@ -178,7 +178,7 @@
     <url>
     
       <loc>/publication_types/2/</loc>
-      <lastmod>2017-07-05T00:00:00+00:00</lastmod>
+      <lastmod>2017-10-31T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
