@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Cropping (rasters) down to size</title>
+      <link>/post/cropping-rasters-down-to-size/</link>
+      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cropping-rasters-down-to-size/</guid>
+      <description>A significant portion of my early work on the Ocean Health Index (OHI) involves working with raster data, a specific type of spatial data where values are held in grid cells of various sizes. The data I work with varies from Sea Surface Temperature at (X) degree cell size to global fish catch data at half-degree cells. Since I was working on the [global assessment], I was working with raster data at the global scale.</description>
+    </item>
+    
+    <item>
       <title>Visualizing growth in global seafood production</title>
       <link>/post/global_seafood_growth_dataviz/</link>
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
