@@ -11,6 +11,18 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Cropping (rasters) down to size</title>
+      <link>/post/cropping-rasters-down-to-size/</link>
+      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cropping-rasters-down-to-size/</guid>
+      <description>&lt;p&gt;A significant portion of my early work on the Ocean Health Index (OHI) involves working with &lt;a href=&#34;http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm&#34;&gt;raster data&lt;/a&gt;, a specific type of spatial data where values are held in grid cells of various sizes. The data I work with varies from Sea Surface Temperature at (X) degree cell size to global fish catch data at half-degree cells. Since I was working on the [global assessment], I was working with raster data at the global scale. Now that I’m working on the [US Northeast OHI], I often need to use the same data from the global assessment but crop it to my regional scale. Since I know I’m not the only one doing this (we have &lt;a href=&#34;http://ohi-science.org/projects/ohi-assessments/&#34;&gt;X OHI+ assessments happening around the world&lt;/a&gt; right now), I wanted to share my process for making our global raster layers usable in regional assessments.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(raster)
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Visualizing growth in global seafood production</title>
       <link>/post/global_seafood_growth_dataviz/</link>
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
