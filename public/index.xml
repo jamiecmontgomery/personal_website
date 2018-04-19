@@ -147,6 +147,15 @@ plot(bang_sp, add = T)&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
+      <title>Creating a personal website with blogdown</title>
+      <link>/talk/blogdown_website/</link>
+      <pubDate>Wed, 14 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talk/blogdown_website/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Visualizing growth in global seafood production</title>
       <link>/post/global_seafood_growth_dataviz/</link>
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
@@ -418,15 +427,6 @@ gganimate(tween_plot, title_frame = FALSE, interval = 0.05)&lt;/code&gt;&lt;/pre
       <pubDate>Sat, 01 Sep 2012 00:00:00 +0000</pubDate>
       
       <guid>/publication/coral_repro_2012/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Environmental determinants of motile cryptofauna on an eastern Pacific coral reef</title>
-      <link>/publication/cryptofauna_meps_2011/</link>
-      <pubDate>Wed, 05 Oct 2011 00:00:00 +0000</pubDate>
-      
-      <guid>/publication/cryptofauna_meps_2011/</guid>
       <description></description>
     </item>
     
