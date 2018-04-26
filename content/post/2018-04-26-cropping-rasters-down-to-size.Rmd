@@ -12,6 +12,7 @@ tags: ["spatial", "Ocean Health Index"]
 A significant portion of my work on the Ocean Health Index (OHI) involves working with [raster data](http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm), a specific type of spatial data where values are held in grid cells. The data I work with varies from high resolution, remotely sensed data on [sea surface temperature](https://www.nodc.noaa.gov/sog/cortad/) to coarse, modeled data on global [fish catch](http://www.seaaroundus.org/data/#/spatial-catch). When I was working on the [global assessment](http://ohi-science.org/ohi-global/), I dealt with raster data at a global scale. 
 
 ![](/img/example_rasters.png)
+*Examples of raster data used in the Ocean Health Index*
 
 Now that I am working on a regional assessment in the [US Northeast](http://www.ohi-northeast.org/), I often need to use the same data from the global assessment but cropped to my regional scale. Since I know I am not the only one doing this (we currently have [over 20 OHI+ assessments occurring around the world](http://ohi-science.org/projects/ohi-assessments/)), I wanted to share my process for making our global raster layers usable at regional scales.
 
@@ -24,15 +25,16 @@ dir_M             <- c('Windows' = '//mazu.nceas.ucsb.edu/ohi',
                        'Linux'   = '/home/shares/ohi')[[ Sys.info()[['sysname']] ]]
 ```
 
-To demonstrate how to crop a global raster layer to a regional scale, here are step-by-step instructions you can follow along with on your computer using the programming language R, which we use for OHI assessments. Essentially, we are going to treat a country’s spatial boundaries like a cookie cutter. When we use it on a global mangrove raster layer for the whole world, we will end up with mangrove data only in the shape of the cookie cutter, in a process called “cropping."  
+To demonstrate how to crop a global raster layer to a regional scale, here are step-by-step instructions you can follow along with on your computer using the programming language R, which we use for OHI assessments. Essentially, we are going to treat a country’s spatial boundaries like a cookie cutter. When we use it on a global mangrove raster layer for the whole world, we will end up with mangrove data only in the shape of the cookie cutter, in a process I've named “crop & mask."  
 
 We will do the following:
 
 1. Read in a global mangrove dataset
 2. Select a single country's spatial boundary from the OHI global region file
-3. `crop` the mangrove data to the region scale
+3. `crop` the mangrove data to a *bounding box* equal to the extent of the region
+4. `mask` out the mangrove data to retain only the data within region boundaries
 
-The package you will need are [`raster`](https://cran.r-project.org/web/packages/raster/vignettes/Raster.pdf),  [`sf`](https://r-spatial.github.io/sf/), and [`dplyr`](https://dplyr.tidyverse.org/).
+The packages you will need are [`raster`](https://cran.r-project.org/web/packages/raster/vignettes/Raster.pdf),  [`sf`](https://r-spatial.github.io/sf/), and [`dplyr`](https://dplyr.tidyverse.org/).
 
 ```{r libraries}
 ## load these three packages using the library() function
@@ -41,11 +43,11 @@ library(sf)
 library(dplyr)
 ```
 
-Throughout this post, I’ll use the packagename::function nomenclature to identify which package functions come from.
+Throughout this post, I’ll use the `packagename::function` nomenclature to identify which package functions come from.
 
 ## Load raster data
 
-For this blog, I will use a raster that contains global mangrove data. This file is too large to store on our [OHI-Science GitHub account](https://github.com/OHI-Science/), where most of our OHI data is held. Instead, it is stored on a server at NCEAS and can be downloaded [here](https://ohi.nceas.ucsb.edu/data/data/mangrove_2012_mw_km2.tif). I have downloaded this data onto my personal computer and saved it in a folder called `big`.
+For this blog, I will use a raster that contains global mangrove data. This file is too large to store on our [OHI-Science GitHub account](https://github.com/OHI-Science/), where most of our OHI data is held. Instead, it is stored on a server at NCEAS and can be downloaded [here](https://ohi.nceas.ucsb.edu/data/data/mangrove_2012_mw_km2.tif).
 
 Some important information about this dataset:
 
@@ -58,6 +60,8 @@ Some important information about this dataset:
 >
 >These data could be useful for estimating mangrove cover in regions without local mangrove surveys.
 >
+
+I have downloaded this data onto my personal computer and saved it in a folder called `big`.
 
 Let's first take a look at the downloaded mangrove data. Since mangroves tend to be limited to coastal regions at tropical latitudes, it is difficult to make sense of this data when visualizing it at a global scale, even when I make all cells black in color. This is also due to the high resolution of the data.
 
@@ -85,26 +89,16 @@ We provide a shapefile of 240 global regions including country exclusive economi
 
 ![](/img/eezs.png)
 
-```{r, eval = F}
-# The primary spatial polygon file is "regions"
-download.file("https://ohi.nceas.ucsb.edu/data/data/regions.zip", destfile = "/home/afflerbach/big/ohi-global-regions.zip", quiet = TRUE)
+Once downloaded, you will have two different regions files, one in a **Mollweide** projection and one in **WGS84**. You can select whichever suits your needs. If you need more information on coordinate reference systems see [here](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf). 
 
-#unzip file
-unzip("/home/afflerbach/big/ohi-global-regions.zip", exdir="/home/afflerbach/big/regions")
-```
-
-Once downloaded, you will have two different regions files, one in **Mollweide** and one in **WGS84**. You can select whichever suits your needs. If you need more information on coordinate reference systems see [here](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf). 
-
-Since the mangrove data is already in a Mollweide projection, we will use the regions file in the same projection, `regions_mol`. I am going to use the function `st_read()` to load the shapefile. This comes from the `sf` package and is a preferred method of loading and working with spatial data as opposed to using `readOGR()` from the `rgdal` package. The `st_read()` function will read in the shapefile as a Simple Feature object, meaning the spatial information is stored in a dataframe. This allows you to use data wrangling tools such as `dplyr` to work with the data. 
-
-MAYBE MOVE ->But, as you'll see later, when working with both polygons and rasters it is often necessary to convert a simple feature object to a `SpatialPolygonsDataFrame`.
+Since the mangrove data is already in a Mollweide projection, we will use the regions file in the same projection, `regions_mol`. I am going to use the function `st_read()` to load the shapefile. This comes from the `sf` package and is a preferred method of loading and working with spatial data as opposed to using `readOGR()` from the `rgdal` package. The `st_read()` function will read in the shapefile as a **simple feature** object, meaning the spatial information is stored in a dataframe. This allows you to use data wrangling tools such as `dplyr` to work with the data. 
 
 ```{r st_read}
-## use st_read to read in the global regions shapefile as a Simple Feature object
-regions <- st_read("/home/afflerbach/big/regions/regions_mol.shp")
+## use st_read to read in the global regions shapefile as a simple feature object
+regions <- st_read("/home/afflerbach/big/regions/regions_mol.shp", quiet = TRUE)
 ```
 
-The `regions` object is a simple feature with an attribute table that lists some important variables including the type of region (land or EEZ), name, our three-letter key, and total area.
+The `regions` object is a simple feature with an attribute table in the form of a dataframe that lists some important variables including the type of region (land or EEZ), name, our OHI three-letter key, and total area.
 
 ```{r head_rgns}
 head(regions)
@@ -116,6 +110,8 @@ Let's plot the object to make sure what we have is what we expect. With simple f
 plot(regions[3])
 ```
 
+OK this looks like what we want!
+
 ## Select region of interest
 
 For the sake of demonstration, we are going to use Bangladesh as our region of interest. Since we loaded the shapefile as a simple feature object, we can now select Bangladesh using `dplyr::filter()`. When we plot our new object, we see there are two distinct polygons included - the land (lime green) and (teal) eez polygons for Bangladesh.
@@ -125,7 +121,7 @@ For the sake of demonstration, we are going to use Bangladesh as our region of i
 bangladesh <- regions %>% 
   dplyr::filter(rgn_nam == "Bangladesh")
 
-plot(bangladesh[1])
+plot(bangladesh[1], key.pos = 1)
 ```
 
 This looks like what we want, so I recommend saving this object with `st_write()` to use in other parts of your analysis.
@@ -146,9 +142,9 @@ bang_sp
 
 In a `SpatialPolygonsDataFrame`, attribute data is stored as a `data.frame` in the data slot, but the actual geometric features are stored in a polygons slot. This structure can be confusing to work with but until the `raster` package improves compatibility with `sf` objects, it is necessary to use `SpatialPolygonsDataFrames` with the `raster` package.
 
-Now we can use `bang_sp` to get the mangrove data that we are interested in, which is all mangrove habitat within the borders of Bangladesh. This requires two steps:
-1. `raster::crop()`
-2. `raster::mask()`
+Now we can use `bang_sp` to get the mangrove data that we are interested in, which is all mangrove habitat within the borders of Bangladesh. This requires two steps:  
+1. `raster::crop()`  
+2. `raster::mask()`  
 
 After trial and error I have determined that these two steps, in this order, is the fastest way to get the data we want. By first using the `crop()` function, we crop the `mangrove` raster dataset to a *bounding box* equal to the extent of the `bang_sp` object. I think of this as a way to zoom into the dataset so we only see what's in our region of interest. But this still returns data that falls outside of Bangladesh:  
 
