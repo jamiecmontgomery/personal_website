@@ -137,10 +137,10 @@ sf::write_sf(bangladesh, "data/bangladesh.shp")
 
 ## Crop raster data to region extent
 
-Unfortunately, rasters (our mangrove data) do not yet play nicely with simple feature objects (our region shapefile), so we need to convert the `bangladesh` object to a `SpatialPolygonsDataFrame`. This is done using the `sf::as()`. You pass your simple feature object - in our case `bangladesh` - to `as()` and tell it to convert to a `Spatial` object. This returns the same polygons but as a `SpatialPolygonsDataFrame`.
+Unfortunately, rasters (our mangrove data) do not yet play nicely with simple feature objects (our region shapefile), so we need to convert the `bangladesh` object to a `SpatialPolygonsDataFrame`. This is done using `as()`. You pass your simple feature object - in our case `bangladesh` - to `as()` and tell it to convert to a `Spatial` object. This returns the same polygons but as a `SpatialPolygonsDataFrame`.
 
 ```{r bang_sp}
-bang_sp <- sf::as(bangladesh, 'Spatial')
+bang_sp <- as(bangladesh, 'Spatial')
 bang_sp
 ```
 
