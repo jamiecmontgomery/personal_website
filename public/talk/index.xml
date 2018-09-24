@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks on Jamie Afflerbach</title>
-    <link>/talk/</link>
+    <link>http://www.jamieafflerbach.com/talk/</link>
     <description>Recent content in Recent &amp; Upcoming Talks on Jamie Afflerbach</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.jamieafflerbach.com/talk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Creating a personal website with blogdown</title>
-      <link>/talk/blogdown_website/</link>
+      <link>http://www.jamieafflerbach.com/talk/blogdown_website/</link>
       <pubDate>Wed, 14 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/talk/blogdown_website/</guid>
+      <guid>http://www.jamieafflerbach.com/talk/blogdown_website/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ocean Health Index in the US Northeast</title>
-      <link>/talk/ohi-ne/</link>
+      <link>http://www.jamieafflerbach.com/talk/ohi-ne/</link>
       <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/talk/ohi-ne/</guid>
+      <guid>http://www.jamieafflerbach.com/talk/ohi-ne/</guid>
       <description></description>
     </item>
     
