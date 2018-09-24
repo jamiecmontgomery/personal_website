@@ -1,0 +1,139 @@
+---
+title: Cropping rasters down to size
+author: Jamie Afflerbach
+date: '2018-04-26'
+slug: cropping-rasters-down-to-size
+categories: []
+tags: ["spatial", "Ocean Health Index"]
+---
+
+
+
+<p><em>This blog post was originally written for <a href="http://ohi-science.org/news/cropping-rasters-down-to-size">OHI-Science.org</a></em></p>
+<p>A significant portion of my work on the Ocean Health Index (OHI) involves working with <a href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm">raster data</a>, a specific type of spatial data where values are held in grid cells. The data I work with varies from high resolution, remotely sensed data on <a href="https://www.nodc.noaa.gov/sog/cortad/">sea surface temperature</a> to coarse, modeled data on global <a href="http://www.seaaroundus.org/data/#/spatial-catch">fish catch</a>. When I was working on the <a href="http://ohi-science.org/ohi-global/">global assessment</a>, I dealt with raster data at a global scale.</p>
+<p><em>Examples of raster data used in the Ocean Health Index:</em> <img src="/img/example_rasters.png" /></p>
+<p>Now that I am working on a regional assessment in the <a href="http://www.ohi-northeast.org/">US Northeast</a>, I often need to use the same data from the global assessment but cropped to my regional scale. Since I know I am not the only one doing this (we currently have <a href="http://ohi-science.org/projects/ohi-assessments/">over 20 OHI+ assessments occurring around the world</a>), I wanted to share my process for making our global raster layers usable at regional scales.</p>
+<p>To demonstrate how to crop a global raster layer to a regional scale, here are step-by-step instructions you can follow along with on your computer using the programming language R, which we use for OHI assessments. Essentially, we are going to treat a country’s spatial boundaries like a cookie cutter. When we use it on a global mangrove raster layer for the whole world, we will end up with mangrove data only in the shape of the cookie cutter, in a process I’ve named “crop &amp; mask.”</p>
+<p>We will do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Read in a global mangrove dataset</li>
+<li>Select a single country’s spatial boundary from the OHI global region file</li>
+<li><code>crop</code> the mangrove data to a <em>bounding box</em> equal to the extent of the region</li>
+<li><code>mask</code> out the mangrove data to retain only the data within region boundaries</li>
+</ol>
+<p>The packages you will need are <a href="https://cran.r-project.org/web/packages/raster/vignettes/Raster.pdf"><code>raster</code></a>, <a href="https://r-spatial.github.io/sf/"><code>sf</code></a>, and <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a>.</p>
+<pre class="r"><code>## load these three packages using the library() function
+library(raster)
+library(sf)
+library(dplyr)</code></pre>
+<p>Throughout this post, I’ll use the <code>packagename::function</code> nomenclature to identify which package functions come from.</p>
+<div id="load-raster-data" class="section level2">
+<h2>Load raster data</h2>
+<p>For this blog, I will use a raster that contains global mangrove data. This file is too large to store on our <a href="https://github.com/OHI-Science/">OHI-Science GitHub account</a>, where most of our OHI data is held. Instead, it is stored on a server at NCEAS and can be downloaded <a href="https://ohi.nceas.ucsb.edu/data/data/mangrove_2012_mw_km2.tif">here</a>.</p>
+<p>Some important information about this dataset:</p>
+<blockquote>
+<p>This is a slightly modified version of the “MFW, Mangrove Forest Cover Loss since 2000 in areas with year 2000 Mangrove Forest” dataset from: Hamilton, S. E., &amp; Casey, D. (2016). <a href="http://faculty.salisbury.edu/~sehamilton/mangroves/index.html">Creation of a high spatio-temporal resolution global database of continuous mangrove forest cover for the 21st century (CGMFC-21)</a>. Global Ecology and Biogeography, 25(6), 729-738. <a href="doi:10.1111/geb.1244" class="uri">doi:10.1111/geb.1244</a>.</p>
+<p>The raster data is provided at a 30 meter resolution, which is awesome, but it can be difficult to work with due to its large size and time required to process it. To alleviate this problem, we created a ~500 meter resolution raster and converted it to the Mollweide coordinate reference system. The units for these data are area of mangrove per cell in square kilometers. Consequently, summing the raster cells in a region will provide the total area of mangrove forest in km<sup>2</sup> (cell values range from 0 to 0.274979).</p>
+<p>The R scripts we used to estimate mangrove extent and trend are available from <a href="https://github.com/OHI-Science/ohiprep/tree/master/globalprep/hab_mangrove/v2015">GitHub</a>.</p>
+<p>These data could be useful for estimating mangrove cover in regions without local mangrove surveys.</p>
+</blockquote>
+<p>I have downloaded this data onto my personal computer and saved it in a folder called <code>big</code>.</p>
+<p>Let’s first take a look at the downloaded mangrove data. Since mangroves tend to be limited to coastal regions at tropical latitudes, it is difficult to make sense of this data when visualizing it at a global scale, even when I make all cells black in color. This is also due to the high resolution of the data.</p>
+<p>Can you see the dots!?</p>
+<pre class="r"><code>## I&#39;ve saved this raster in a folder called `big` on my personal drive. You will need to replace this file path with where the file is located on your own computer.
+mangrove &lt;- raster(&#39;/home/afflerbach/big/mangrove_2012_mw_km2.tif&#39;)
+
+##setting plot margins
+par(mar = c(0.1, 0.1, 0.1, 0.3))
+plot(mangrove, col = &quot;black&quot;, axes = FALSE)</code></pre>
+<p><img src="/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/mangrove-1.png" width="672" /></p>
+<p>Fortunately, R gives us some options to explore the data more closely. We can zoom in using <code>raster::select()</code> to make more sense of the speckles we see currently. The <code>select()</code> function allows you to select an area on the plot with your cursor. By saving your selection to a variable (in our case <code>s</code>) you can then plot just that piece of the raster.</p>
+<div class="figure">
+<img src="/img/select_mangrove.gif" />
+
+</div>
+<p>OK that looks more like it!</p>
+</div>
+<div id="load-ohi-global-regions" class="section level2">
+<h2>Load OHI global regions</h2>
+<p>We provide a shapefile of 240 global regions including country exclusive economic zones (EEZ) and high seas regions. You are able to load it and select the country(s) of interest for your analyses. This is useful for anyone that wants to use data provided at the global level, but cropped down to a region of interest. You can download the shapefile <a href="https://mazu.nceas.ucsb.edu/data/#ohi_regions">here</a>. Again, this file is too large to host on GitHub so I will download it onto my personal computer and save it in the <code>big</code> folder.</p>
+<div class="figure">
+<img src="/img/eezs.png" />
+
+</div>
+<p>Once downloaded, you will have two different regions files, one in a <strong>Mollweide</strong> projection and one in <strong>WGS84</strong>. You can select whichever suits your needs. If you need more information on coordinate reference systems see <a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf">here</a>.</p>
+<p>Since the mangrove data is already in a Mollweide projection, we will use the regions file in the same projection, <code>regions_mol</code>. I am going to use the function <code>st_read()</code> to load the shapefile. This comes from the <code>sf</code> package and is a preferred method of loading and working with spatial data as opposed to using <code>readOGR()</code> from the <code>rgdal</code> package. The <code>st_read()</code> function will read in the shapefile as a <strong>simple feature</strong> object, meaning the spatial information is stored in a dataframe. This allows you to use data wrangling tools such as <code>dplyr</code> to work with the data.</p>
+<pre class="r"><code>## use st_read to read in the global regions shapefile as a simple feature object
+regions &lt;- st_read(&quot;/home/afflerbach/big/regions/regions_mol.shp&quot;, quiet = TRUE)</code></pre>
+<p>The <code>regions</code> object is a simple feature with an attribute table in the form of a dataframe that lists some important variables including the type of region (land or EEZ), name, our OHI three-letter key, and total area.</p>
+<pre class="r"><code>head(regions)</code></pre>
+<pre><code>## Simple feature collection with 6 features and 7 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 883504 ymin: -1914692 xmax: 16892390 ymax: 458736.6
+## epsg (SRID):    NA
+## proj4string:    +proj=moll +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs
+##   rgn_typ ant_typ rgn_id ant_id             rgn_nam rgn_key      are_km2
+## 1     eez     eez      1      1       Cocos Islands     CCK 470116.60060
+## 2    land    land      1      1       Cocos Islands     CCK     17.94724
+## 3     eez     eez     10     10               Nauru     NRU 310565.14721
+## 4    land    land     10     10               Nauru     NRU     22.78557
+## 5     eez     eez    100    100 Republique du Congo     COG  39863.59682
+## 6    land    land    100    100 Republique du Congo     COG 346305.36416
+##                         geometry
+## 1 MULTIPOLYGON (((9921659.093...
+## 2 MULTIPOLYGON (((9573533.319...
+## 3 MULTIPOLYGON (((16870312.59...
+## 4 MULTIPOLYGON (((16730961.91...
+## 5 MULTIPOLYGON (((1200386.757...
+## 6 MULTIPOLYGON (((1172410.299...</code></pre>
+<p>Let’s plot the object to make sure what we have is what we expect. With simple features, you need to tell <code>plot()</code> which column to show, otherwise R will create a plot for every column, which we do not need! Here I am plotting just the <code>rgn_id</code> column. When plotting an sf object, you need to plot based on column location, and <code>rgn_id</code> is the third column:</p>
+<pre class="r"><code>plot(regions[3])</code></pre>
+<p><img src="/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/plot_rgns-1.png" width="672" /></p>
+<p>OK this looks like what we want!</p>
+</div>
+<div id="select-region-of-interest" class="section level2">
+<h2>Select region of interest</h2>
+<p>For the sake of demonstration, we are going to use Bangladesh as our region of interest. Since we loaded the shapefile as a simple feature object, we can now select Bangladesh using <code>dplyr::filter()</code>. When we plot our new object, we see there are two distinct polygons included - the land (lime green) and (teal) eez polygons for Bangladesh.</p>
+<pre class="r"><code># filter the regions you want:
+bangladesh &lt;- regions %&gt;% 
+  dplyr::filter(rgn_nam == &quot;Bangladesh&quot;)
+
+plot(bangladesh[1], key.pos = 1)</code></pre>
+<p><img src="/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/plot_region-1.png" width="672" /></p>
+<p>This looks like what we want, so I recommend saving this object with <code>st_write()</code> to use in other parts of your analysis.</p>
+<pre class="r"><code># save the output (saving as an ESRI Shapefile):
+sf::write_sf(bangladesh, &quot;data/bangladesh.shp&quot;)</code></pre>
+</div>
+<div id="crop-raster-data-to-region-extent" class="section level2">
+<h2>Crop raster data to region extent</h2>
+<p>Unfortunately, rasters (our mangrove data) do not yet play nicely with simple feature objects (our region shapefile), so we need to convert the <code>bangladesh</code> object to a <code>SpatialPolygonsDataFrame</code>. This is done using <code>as()</code>. You pass your simple feature object - in our case <code>bangladesh</code> - to <code>as()</code> and tell it to convert to a <code>Spatial</code> object. This returns the same polygons but as a <code>SpatialPolygonsDataFrame</code>.</p>
+<pre class="r"><code>bang_sp &lt;- as(bangladesh, &#39;Spatial&#39;)
+bang_sp</code></pre>
+<pre><code>## class       : SpatialPolygonsDataFrame 
+## features    : 2 
+## extent      : 8265652, 8898467, 2280053, 3246484  (xmin, xmax, ymin, ymax)
+## coord. ref. : +proj=moll +lon_0=0 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0 
+## variables   : 7
+## names       : rgn_typ, ant_typ, rgn_id, ant_id,    rgn_nam, rgn_key,   are_km2 
+## min values  :     eez,     eez,    204,    204, Bangladesh,     BGD, 139812.14 
+## max values  :    land,    land,    204,    204, Bangladesh,     BGD,  84563.26</code></pre>
+<p>In a <code>SpatialPolygonsDataFrame</code>, attribute data is stored as a <code>data.frame</code> in the data slot, but the actual geometric features are stored in a polygons slot. This structure can be confusing to work with but until the <code>raster</code> package improves compatibility with <code>sf</code> objects, it is necessary to use <code>SpatialPolygonsDataFrames</code> with the <code>raster</code> package.</p>
+<p>Now we can use <code>bang_sp</code> to get the mangrove data that we are interested in, which is all mangrove habitat within the borders of Bangladesh. This requires two steps:<br />
+1. <code>raster::crop()</code><br />
+2. <code>raster::mask()</code></p>
+<p>After trial and error I have determined that these two steps, in this order, is the fastest way to get the data we want. By first using the <code>crop()</code> function, we crop the <code>mangrove</code> raster dataset to a <em>bounding box</em> equal to the extent of the <code>bang_sp</code> object. I think of this as a way to zoom into the dataset so we only see what’s in our region of interest. But this still returns data that falls outside of Bangladesh:</p>
+<pre class="r"><code>bang_man &lt;- raster::crop(mangrove, bang_sp)
+plot(bang_man, axes = FALSE)
+plot(bang_sp, add = TRUE, box = FALSE, axes = FALSE)</code></pre>
+<p><img src="/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/crop_mangrove_data-1.png" width="672" /></p>
+<p>You can see that <code>bang_man</code> is a scaled down version of the mangrove data, only showing us what mangrove data exists within the <em>bounding box</em> of the Bangladesh polygon. To remove the data that falls outside of the country boundary, we now need to use <code>raster::mask()</code>. This function uses a <code>SpatialPolygonsDataFrame</code> as a “cookie cutter” and keeps only the raster data that falls within the polygon.</p>
+<pre class="r"><code>bang_man_mask &lt;- raster::mask(bang_man, bang_sp)
+plot(bang_man_mask, axes = FALSE)
+plot(bang_sp, add = TRUE)</code></pre>
+<p><img src="/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/mask-1.png" width="672" /></p>
+<p>Now that we have the data we want, mangrove data for Bangladesh, we can save this data using <code>writeRaster()</code>.</p>
+<pre class="r"><code>writeRaster(bang_man_mask, filename = &quot;bangladesh_mangrove_data.tif&quot;)</code></pre>
+<p>For a more thorough tutorial on working with raster data see my <a href="http://jafflerbach.github.io/spatial-analysis-R/"><em>Intro to Spatial Analysis in R</em></a>.</p>
+<p>Happy cropping!</p>
+</div>

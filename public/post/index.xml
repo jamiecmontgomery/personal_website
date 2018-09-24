@@ -13,12 +13,13 @@
     
     
     <item>
-      <title>Cropping (rasters) down to size</title>
+      <title>Cropping rasters down to size</title>
       <link>/post/cropping-rasters-down-to-size/</link>
-      <pubDate>Wed, 18 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/cropping-rasters-down-to-size/</guid>
-      <description>A significant portion of my early work on the Ocean Health Index (OHI) involves working with raster data, a specific type of spatial data where values are held in grid cells of various sizes. The data I work with varies from Sea Surface Temperature at (X) degree cell size to global fish catch data at half-degree cells. Since I was working on the [global assessment], I was working with raster data at the global scale.</description>
+      <description>This blog post was originally written for OHI-Science.org
+A significant portion of my work on the Ocean Health Index (OHI) involves working with raster data, a specific type of spatial data where values are held in grid cells. The data I work with varies from high resolution, remotely sensed data on sea surface temperature to coarse, modeled data on global fish catch. When I was working on the global assessment, I dealt with raster data at a global scale.</description>
     </item>
     
     <item>

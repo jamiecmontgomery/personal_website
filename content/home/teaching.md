@@ -19,7 +19,14 @@ weight = 60
 
 **[Intro to Spatial Analysis in R](https://github.com/jafflerbach/spatial-analysis-R)** (focus on rasters)
 
+**[Data Wrangling & Visualization](http://ohi-science.org/data-science-training/ggplot2.html)**
+Taught at the [Monterey Bay Aquarium Research Institute Software Carpentry](https://jules32.github.io/2017-11-30-MBARI/)
+Moss Landing, CA
+November 30 - December 1, 2017
+
 **[Data Wrangling](http://www.datacarpentry.org/R-ecology-lesson/03-dplyr.html) and [Visualization](http://www.datacarpentry.org/R-ecology-lesson/04-visualization-ggplot2.html)** (SWC for Ecology Materials)
 [UC Merced Software Carpentry](https://snacktavish.github.io/2017-08-17-Yosemite/)
 Merced, CA
 August 18, 2017
+
+
