@@ -33,12 +33,16 @@ filter_default = 0
   tag = "*"
 
 [[filter]]
-  name = "Deep Learning"
-  tag = ".deep-learning"
+  name = "Ocean Health Index"
+  tag = ".ohi"
 
 [[filter]]
-  name = "Other"
-  tag = ".demo"
+  name = "Cumulative Human Impacts"
+  tag = ".cumulative-impacts"
+  
+[[filter]]
+  name = "Data-Limited Fisheries"
+  tag = "datalimited"
 
 +++
 
