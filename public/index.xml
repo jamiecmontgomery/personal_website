@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jamie Afflerbach on Jamie Afflerbach</title>
-    <link>http://www.jamieafflerbach.com/</link>
+    <link>/</link>
     <description>Recent content in Jamie Afflerbach on Jamie Afflerbach</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,40 +12,40 @@
     
     <item>
       <title>Cumulative Human Impacts</title>
-      <link>http://www.jamieafflerbach.com/project/cumulativehumanimpacts/</link>
+      <link>/project/cumulativehumanimpacts/</link>
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/project/cumulativehumanimpacts/</guid>
+      <guid>/project/cumulativehumanimpacts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Trade‐offs for data‐limited fisheries when using harvest strategies based on catch‐only models</title>
-      <link>http://www.jamieafflerbach.com/publication/datalimited_mse/</link>
+      <link>/publication/datalimited_mse/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/datalimited_mse/</guid>
+      <guid>/publication/datalimited_mse/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A pan-Arctic assessment of the status of marine social-ecological systems</title>
-      <link>http://www.jamieafflerbach.com/publication/arctic_ohi/</link>
+      <link>/publication/arctic_ohi/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/arctic_ohi/</guid>
+      <guid>/publication/arctic_ohi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cropping rasters down to size</title>
-      <link>http://www.jamieafflerbach.com/post/cropping-rasters-down-to-size/</link>
+      <link>/post/cropping-rasters-down-to-size/</link>
       <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/post/cropping-rasters-down-to-size/</guid>
+      <guid>/post/cropping-rasters-down-to-size/</guid>
       <description>&lt;p&gt;&lt;em&gt;This blog post was originally written for &lt;a href=&#34;http://ohi-science.org/news/cropping-rasters-down-to-size&#34;&gt;OHI-Science.org&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;A significant portion of my work on the Ocean Health Index (OHI) involves working with &lt;a href=&#34;http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/what-is-raster-data.htm&#34;&gt;raster data&lt;/a&gt;, a specific type of spatial data where values are held in grid cells. The data I work with varies from high resolution, remotely sensed data on &lt;a href=&#34;https://www.nodc.noaa.gov/sog/cortad/&#34;&gt;sea surface temperature&lt;/a&gt; to coarse, modeled data on global &lt;a href=&#34;http://www.seaaroundus.org/data/#/spatial-catch&#34;&gt;fish catch&lt;/a&gt;. When I was working on the &lt;a href=&#34;http://ohi-science.org/ohi-global/&#34;&gt;global assessment&lt;/a&gt;, I dealt with raster data at a global scale.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Examples of raster data used in the Ocean Health Index:&lt;/em&gt; &lt;img src=&#34;http://www.jamieafflerbach.com/img/example_rasters.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Examples of raster data used in the Ocean Health Index:&lt;/em&gt; &lt;img src=&#34;/img/example_rasters.png&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now that I am working on a regional assessment in the &lt;a href=&#34;http://www.ohi-northeast.org/&#34;&gt;US Northeast&lt;/a&gt;, I often need to use the same data from the global assessment but cropped to my regional scale. Since I know I am not the only one doing this (we currently have &lt;a href=&#34;http://ohi-science.org/projects/ohi-assessments/&#34;&gt;over 20 OHI+ assessments occurring around the world&lt;/a&gt;), I wanted to share my process for making our global raster layers usable at regional scales.&lt;/p&gt;
 &lt;p&gt;To demonstrate how to crop a global raster layer to a regional scale, here are step-by-step instructions you can follow along with on your computer using the programming language R, which we use for OHI assessments. Essentially, we are going to treat a country’s spatial boundaries like a cookie cutter. When we use it on a global mangrove raster layer for the whole world, we will end up with mangrove data only in the shape of the cookie cutter, in a process I’ve named “crop &amp;amp; mask.”&lt;/p&gt;
 &lt;p&gt;We will do the following:&lt;/p&gt;
@@ -80,10 +80,10 @@ mangrove &amp;lt;- raster(&amp;#39;/home/afflerbach/big/mangrove_2012_mw_km2.tif
 ##setting plot margins
 par(mar = c(0.1, 0.1, 0.1, 0.3))
 plot(mangrove, col = &amp;quot;black&amp;quot;, axes = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://www.jamieafflerbach.com/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/mangrove-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/mangrove-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Fortunately, R gives us some options to explore the data more closely. We can zoom in using &lt;code&gt;raster::select()&lt;/code&gt; to make more sense of the speckles we see currently. The &lt;code&gt;select()&lt;/code&gt; function allows you to select an area on the plot with your cursor. By saving your selection to a variable (in our case &lt;code&gt;s&lt;/code&gt;) you can then plot just that piece of the raster.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://www.jamieafflerbach.com/img/select_mangrove.gif&#34; /&gt;
+&lt;img src=&#34;/img/select_mangrove.gif&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;OK that looks more like it!&lt;/p&gt;
@@ -92,7 +92,7 @@ plot(mangrove, col = &amp;quot;black&amp;quot;, axes = FALSE)&lt;/code&gt;&lt;/p
 &lt;h2&gt;Load OHI global regions&lt;/h2&gt;
 &lt;p&gt;We provide a shapefile of 240 global regions including country exclusive economic zones (EEZ) and high seas regions. You are able to load it and select the country(s) of interest for your analyses. This is useful for anyone that wants to use data provided at the global level, but cropped down to a region of interest. You can download the shapefile &lt;a href=&#34;https://mazu.nceas.ucsb.edu/data/#ohi_regions&#34;&gt;here&lt;/a&gt;. Again, this file is too large to host on GitHub so I will download it onto my personal computer and save it in the &lt;code&gt;big&lt;/code&gt; folder.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://www.jamieafflerbach.com/img/eezs.png&#34; /&gt;
+&lt;img src=&#34;/img/eezs.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;Once downloaded, you will have two different regions files, one in a &lt;strong&gt;Mollweide&lt;/strong&gt; projection and one in &lt;strong&gt;WGS84&lt;/strong&gt;. You can select whichever suits your needs. If you need more information on coordinate reference systems see &lt;a href=&#34;https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/OverviewCoordinateReferenceSystems.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -123,7 +123,7 @@ regions &amp;lt;- st_read(&amp;quot;/home/afflerbach/big/regions/regions_mol.shp
 ## 6 MULTIPOLYGON (((1172410 -55...&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Let’s plot the object to make sure what we have is what we expect. With simple features, you need to tell &lt;code&gt;plot()&lt;/code&gt; which column to show, otherwise R will create a plot for every column, which we do not need! Here I am plotting just the &lt;code&gt;rgn_id&lt;/code&gt; column. When plotting an sf object, you need to plot based on column location, and &lt;code&gt;rgn_id&lt;/code&gt; is the third column:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(regions[3])&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://www.jamieafflerbach.com/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/plot_rgns-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/plot_rgns-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;OK this looks like what we want!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;select-region-of-interest&#34; class=&#34;section level2&#34;&gt;
@@ -134,7 +134,7 @@ bangladesh &amp;lt;- regions %&amp;gt;%
   dplyr::filter(rgn_nam == &amp;quot;Bangladesh&amp;quot;)
 
 plot(bangladesh[1], key.pos = 1)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://www.jamieafflerbach.com/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/plot_region-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/plot_region-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;This looks like what we want, so I recommend saving this object with &lt;code&gt;st_write()&lt;/code&gt; to use in other parts of your analysis.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# save the output (saving as an ESRI Shapefile):
 sf::write_sf(bangladesh, &amp;quot;data/bangladesh.shp&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
@@ -160,12 +160,12 @@ bang_sp&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bang_man &amp;lt;- raster::crop(mangrove, bang_sp)
 plot(bang_man, axes = FALSE)
 plot(bang_sp, add = TRUE, box = FALSE, axes = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://www.jamieafflerbach.com/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/crop_mangrove_data-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/crop_mangrove_data-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;You can see that &lt;code&gt;bang_man&lt;/code&gt; is a scaled down version of the mangrove data, only showing us what mangrove data exists within the &lt;em&gt;bounding box&lt;/em&gt; of the Bangladesh polygon. To remove the data that falls outside of the country boundary, we now need to use &lt;code&gt;raster::mask()&lt;/code&gt;. This function uses a &lt;code&gt;SpatialPolygonsDataFrame&lt;/code&gt; as a “cookie cutter” and keeps only the raster data that falls within the polygon.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bang_man_mask &amp;lt;- raster::mask(bang_man, bang_sp)
 plot(bang_man_mask, axes = FALSE)
 plot(bang_sp, add = TRUE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;http://www.jamieafflerbach.com/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/mask-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2018-04-26-cropping-rasters-down-to-size_files/figure-html/mask-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now that we have the data we want, mangrove data for Bangladesh, we can save this data using &lt;code&gt;writeRaster()&lt;/code&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;writeRaster(bang_man_mask, filename = &amp;quot;bangladesh_mangrove_data.tif&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For a more thorough tutorial on working with raster data see my &lt;a href=&#34;http://jafflerbach.github.io/spatial-analysis-R/&#34;&gt;&lt;em&gt;Intro to Spatial Analysis in R&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
@@ -176,19 +176,19 @@ plot(bang_sp, add = TRUE)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Creating a personal website with blogdown</title>
-      <link>http://www.jamieafflerbach.com/talk/blogdown_website/</link>
+      <link>/talk/blogdown_website/</link>
       <pubDate>Wed, 14 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/talk/blogdown_website/</guid>
+      <guid>/talk/blogdown_website/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Visualizing growth in global seafood production</title>
-      <link>http://www.jamieafflerbach.com/post/global_seafood_growth_dataviz/</link>
+      <link>/post/global_seafood_growth_dataviz/</link>
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/post/global_seafood_growth_dataviz/</guid>
+      <guid>/post/global_seafood_growth_dataviz/</guid>
       <description>&lt;p&gt;I’m excited to be part of a new research group - the &lt;a href=&#34;http://www.cart-sci.org/&#34;&gt;Conservation Aquaculture Research Team&lt;/a&gt; at NCEAS. Our group is interested in helping shape the future of &lt;strong&gt;sustainable aquaculture&lt;/strong&gt;. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the &lt;a href=&#34;http://www.fao.org/home/en/&#34;&gt;Food and Agriculture Organization&lt;/a&gt; (FAO). This also gave me the opportunity to play with some of the packages out there that create dynamic visualizations. I’ve used the &lt;a href=&#34;https://plot.ly/ggplot2/getting-started/&#34;&gt;&lt;code&gt;plotly&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://github.com/mages/googleVis#googlevis&#34;&gt;&lt;code&gt;googlevis&lt;/code&gt;&lt;/a&gt; R packages to create interactive plots, and the &lt;a href=&#34;https://yihui.name/animation/&#34;&gt;&lt;code&gt;animation&lt;/code&gt;&lt;/a&gt; package to create gifs from raster data (e.g. Sea Surface Temperature over time), but I’ve never created a high-quality dynamic visualization. I know &lt;a href=&#34;https://d3js.org/&#34;&gt;D3.js&lt;/a&gt; is often used to create beautiful figures, but I don’t have the time to learn D3.js (yet) and I figured there &lt;em&gt;had&lt;/em&gt; to be a way to do something fancy in R. And of course, I was right. So this is my process of creating a dynamic visualization with the &lt;a href=&#34;https://github.com/thomasp85/tweenr&#34;&gt;&lt;code&gt;tweenr&lt;/code&gt;&lt;/a&gt; package. ___&lt;/p&gt;
 &lt;div id=&#34;installation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Installation&lt;/h2&gt;
@@ -216,7 +216,7 @@ spp &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/CART-sci/stor
 &lt;p&gt;By using a second dataset on global food supply of seafood, I can calculate the amount of fish caught for consumption. Why not only use this dataset? Because this one does not differentiate between wild capture and aquaculture.&lt;/p&gt;
 &lt;p&gt;If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://www.jamieafflerbach.com/img/fao_query.png&#34; /&gt;
+&lt;img src=&#34;/img/fao_query.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I’ll wrangle these two datasets together as best I can.&lt;/p&gt;
@@ -287,7 +287,7 @@ plot_data &amp;lt;- data %&amp;gt;%
     
 static_plot&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://www.jamieafflerbach.com/img/static.png&#34; /&gt;
+&lt;img src=&#34;/img/static.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -306,7 +306,7 @@ static_plot&lt;/code&gt;&lt;/pre&gt;
       
 gganimate(dynam_plot, filename = &amp;quot;fao_gganimate.gif&amp;quot;, title_frame = F)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://www.jamieafflerbach.com/img/fao_gganimate.gif&#34; /&gt;
+&lt;img src=&#34;/img/fao_gganimate.gif&#34; /&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -340,7 +340,7 @@ tween_plot &amp;lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color 
     
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;http://www.jamieafflerbach.com/img/fao_aq_capture_fig.gif&#34; /&gt;
+&lt;img src=&#34;/img/fao_aq_capture_fig.gif&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, &lt;code&gt;geom_segment()&lt;/code&gt;). While I could keep tweaking this forever, I think it’s good enough as is. The whole process of learning how to use &lt;code&gt;tweenr&lt;/code&gt; took me just a couple hours and I’m excited for the next opportunity to make something like this!&lt;/p&gt;
@@ -351,82 +351,82 @@ gganimate(tween_plot, title_frame = FALSE, interval = 0.05)&lt;/code&gt;&lt;/pre
     
     <item>
       <title>Cumulative human impacts in the Bering Strait Region</title>
-      <link>http://www.jamieafflerbach.com/publication/bsr/</link>
+      <link>/publication/bsr/</link>
       <pubDate>Tue, 31 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/bsr/</guid>
+      <guid>/publication/bsr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data-Limited Fisheries</title>
-      <link>http://www.jamieafflerbach.com/project/datalimited/</link>
+      <link>/project/datalimited/</link>
       <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/project/datalimited/</guid>
+      <guid>/project/datalimited/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ocean Health Index</title>
-      <link>http://www.jamieafflerbach.com/project/oceanhealthindex/</link>
+      <link>/project/oceanhealthindex/</link>
       <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/project/oceanhealthindex/</guid>
+      <guid>/project/oceanhealthindex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Drivers and implications of change in global ocean health over the past five years</title>
-      <link>http://www.jamieafflerbach.com/publication/ohi_fiveyears_plos/</link>
+      <link>/publication/ohi_fiveyears_plos/</link>
       <pubDate>Wed, 05 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/ohi_fiveyears_plos/</guid>
+      <guid>/publication/ohi_fiveyears_plos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Our path to better science in less time using open data science tools</title>
-      <link>http://www.jamieafflerbach.com/publication/path_to_science_ecoevo/</link>
+      <link>/publication/path_to_science_ecoevo/</link>
       <pubDate>Tue, 23 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/path_to_science_ecoevo/</guid>
+      <guid>/publication/path_to_science_ecoevo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aligning marine species range data to better serve science and conservation</title>
-      <link>http://www.jamieafflerbach.com/publication/iucn-aquamaps/</link>
+      <link>/publication/iucn-aquamaps/</link>
       <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/iucn-aquamaps/</guid>
+      <guid>/publication/iucn-aquamaps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ocean Health Index in the US Northeast</title>
-      <link>http://www.jamieafflerbach.com/talk/ohi-ne/</link>
+      <link>/talk/ohi-ne/</link>
       <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/talk/ohi-ne/</guid>
+      <guid>/talk/ohi-ne/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Applying a New Ensemble Approach to Estimating Stock Status of Marine Fisheries Around the World</title>
-      <link>http://www.jamieafflerbach.com/publication/fish_status_cons_letters_2017/</link>
+      <link>/publication/fish_status_cons_letters_2017/</link>
       <pubDate>Wed, 12 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/fish_status_cons_letters_2017/</guid>
+      <guid>/publication/fish_status_cons_letters_2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Improving estimates of population status and trend with superensemble models</title>
-      <link>http://www.jamieafflerbach.com/publication/ensembles_fish_and_fisheries_2017/</link>
+      <link>/publication/ensembles_fish_and_fisheries_2017/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/ensembles_fish_and_fisheries_2017/</guid>
+      <guid>/publication/ensembles_fish_and_fisheries_2017/</guid>
       <description></description>
     </item>
     

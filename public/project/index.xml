@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Jamie Afflerbach</title>
-    <link>http://www.jamieafflerbach.com/project/</link>
+    <link>/project/</link>
     <description>Recent content in Projects on Jamie Afflerbach</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Mon, 24 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.jamieafflerbach.com/project/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cumulative Human Impacts</title>
-      <link>http://www.jamieafflerbach.com/project/cumulativehumanimpacts/</link>
+      <link>/project/cumulativehumanimpacts/</link>
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/project/cumulativehumanimpacts/</guid>
+      <guid>/project/cumulativehumanimpacts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data-Limited Fisheries</title>
-      <link>http://www.jamieafflerbach.com/project/datalimited/</link>
+      <link>/project/datalimited/</link>
       <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/project/datalimited/</guid>
+      <guid>/project/datalimited/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ocean Health Index</title>
-      <link>http://www.jamieafflerbach.com/project/oceanhealthindex/</link>
+      <link>/project/oceanhealthindex/</link>
       <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/project/oceanhealthindex/</guid>
+      <guid>/project/oceanhealthindex/</guid>
       <description></description>
     </item>
     

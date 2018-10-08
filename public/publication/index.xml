@@ -2,121 +2,121 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Publications on Jamie Afflerbach</title>
-    <link>http://www.jamieafflerbach.com/publication/</link>
+    <link>/publication/</link>
     <description>Recent content in Publications on Jamie Afflerbach</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.jamieafflerbach.com/publication/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Trade‐offs for data‐limited fisheries when using harvest strategies based on catch‐only models</title>
-      <link>http://www.jamieafflerbach.com/publication/datalimited_mse/</link>
+      <link>/publication/datalimited_mse/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/datalimited_mse/</guid>
+      <guid>/publication/datalimited_mse/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A pan-Arctic assessment of the status of marine social-ecological systems</title>
-      <link>http://www.jamieafflerbach.com/publication/arctic_ohi/</link>
+      <link>/publication/arctic_ohi/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/arctic_ohi/</guid>
+      <guid>/publication/arctic_ohi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cumulative human impacts in the Bering Strait Region</title>
-      <link>http://www.jamieafflerbach.com/publication/bsr/</link>
+      <link>/publication/bsr/</link>
       <pubDate>Tue, 31 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/bsr/</guid>
+      <guid>/publication/bsr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Drivers and implications of change in global ocean health over the past five years</title>
-      <link>http://www.jamieafflerbach.com/publication/ohi_fiveyears_plos/</link>
+      <link>/publication/ohi_fiveyears_plos/</link>
       <pubDate>Wed, 05 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/ohi_fiveyears_plos/</guid>
+      <guid>/publication/ohi_fiveyears_plos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Our path to better science in less time using open data science tools</title>
-      <link>http://www.jamieafflerbach.com/publication/path_to_science_ecoevo/</link>
+      <link>/publication/path_to_science_ecoevo/</link>
       <pubDate>Tue, 23 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/path_to_science_ecoevo/</guid>
+      <guid>/publication/path_to_science_ecoevo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aligning marine species range data to better serve science and conservation</title>
-      <link>http://www.jamieafflerbach.com/publication/iucn-aquamaps/</link>
+      <link>/publication/iucn-aquamaps/</link>
       <pubDate>Wed, 03 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/iucn-aquamaps/</guid>
+      <guid>/publication/iucn-aquamaps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Applying a New Ensemble Approach to Estimating Stock Status of Marine Fisheries Around the World</title>
-      <link>http://www.jamieafflerbach.com/publication/fish_status_cons_letters_2017/</link>
+      <link>/publication/fish_status_cons_letters_2017/</link>
       <pubDate>Wed, 12 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/fish_status_cons_letters_2017/</guid>
+      <guid>/publication/fish_status_cons_letters_2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Improving estimates of population status and trend with superensemble models</title>
-      <link>http://www.jamieafflerbach.com/publication/ensembles_fish_and_fisheries_2017/</link>
+      <link>/publication/ensembles_fish_and_fisheries_2017/</link>
       <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/ensembles_fish_and_fisheries_2017/</guid>
+      <guid>/publication/ensembles_fish_and_fisheries_2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A global survey of TURF-reserves, Territorial Use Rights for Fisheries coupled with marine reserves</title>
-      <link>http://www.jamieafflerbach.com/publication/turfs_gecco_2014/</link>
+      <link>/publication/turfs_gecco_2014/</link>
       <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/turfs_gecco_2014/</guid>
+      <guid>/publication/turfs_gecco_2014/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Eastern Pacific reef fish responses to coral recovery following El Niño disturbances</title>
-      <link>http://www.jamieafflerbach.com/publication/fish_response_el_nino_meps/</link>
+      <link>/publication/fish_response_el_nino_meps/</link>
       <pubDate>Thu, 09 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/fish_response_el_nino_meps/</guid>
+      <guid>/publication/fish_response_el_nino_meps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Reef coral reproduction in the equatorial eastern Pacific: Costa Rica, Panamá, and the Galápagos Islands (Ecuador). VII. Siderastreidae, Psammocora stellata and Psammocora profundacella.</title>
-      <link>http://www.jamieafflerbach.com/publication/coral_repro_2012/</link>
+      <link>/publication/coral_repro_2012/</link>
       <pubDate>Sat, 01 Sep 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/coral_repro_2012/</guid>
+      <guid>/publication/coral_repro_2012/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Environmental determinants of motile cryptofauna on an eastern Pacific coral reef</title>
-      <link>http://www.jamieafflerbach.com/publication/cryptofauna_meps_2011/</link>
+      <link>/publication/cryptofauna_meps_2011/</link>
       <pubDate>Wed, 05 Oct 2011 00:00:00 +0000</pubDate>
       
-      <guid>http://www.jamieafflerbach.com/publication/cryptofauna_meps_2011/</guid>
+      <guid>/publication/cryptofauna_meps_2011/</guid>
       <description></description>
     </item>
     
