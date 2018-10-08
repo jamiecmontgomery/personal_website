@@ -12,7 +12,7 @@ weight = 5
   interests = [
     "Marine Conservation",
     "Data Science",
-    "Fisheries",
+    "Data-Limited Fisheries",
     "Environmental Synthesis Science"
   ]
 
