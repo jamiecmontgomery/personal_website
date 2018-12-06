@@ -19,6 +19,10 @@ weight = 60
 
 **[Intro to Spatial Analysis in R](https://github.com/jafflerbach/spatial-analysis-R)** (focus on rasters)
 
+**[Software Carpentry for R at Woods Hole Oceanographic Institute](https://jules32.github.io/2018-10-22-whoi/)**
+Woods Hole, MA
+October 22 - October 23, 2018
+
 **[Data Wrangling & Visualization](http://ohi-science.org/data-science-training/ggplot2.html)**
 Taught at the [Monterey Bay Aquarium Research Institute Software Carpentry](https://jules32.github.io/2017-11-30-MBARI/)
 Moss Landing, CA
