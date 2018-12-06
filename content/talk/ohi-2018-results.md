@@ -2,8 +2,8 @@
 date = "2018-12-05T00:00:00"
 
 title = "Global Ocean Health Index results for 2018"
-#time_start = 
-#time_end = 
+time_start = 
+time_end = 
 abstract = ""
 abstract_short = ""
 event = "NCEAS Roundtable"
