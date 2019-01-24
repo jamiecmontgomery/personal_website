@@ -27,7 +27,7 @@ abstract = "Marine social-ecological conditions in the Arctic are rapidly changi
 image_preview = ""
 
 # Is this a selected publication? (true/false)
-selected = true
+selected = false
 
 # Projects (optional).
 #   Associate this publication with one or more of your projects.
