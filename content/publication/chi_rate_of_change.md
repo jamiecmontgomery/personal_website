@@ -8,20 +8,22 @@ math = true
 publication_types = ["2"]
 publication = "In *Nature Scientific Reports*."
 publication_short = "In *Scientific Reports*"
-selected = false
+selected = true
 title = "Recent pace of change in human impact on the world’s ocean"
 url_code = "https://github.com/OHI-Science/impact_acceleration"
 url_dataset = "https://knb.ecoinformatics.org/view/doi:10.5063/F12B8WBS"
 url_pdf = "https://www.nature.com/articles/s41598-019-47201-9"
-url_project = "project/oceanhealthindex/"
-
-# Is this a selected publication? (true/false)
-selected = true
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
 image = "chi_trend.png"
 caption = "Rate of change in Cumulative Human Impact"
+
+# Projects (optional).
+#   Associate this publication with one or more of your projects.
+#   Simply enter the filename (excluding '.md') of your project file in `content/project/`.
+projects = ["cumulative-impacts"]
+
 
 +++
 
