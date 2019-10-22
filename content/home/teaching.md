@@ -19,6 +19,10 @@ weight = 60
 
 **[Intro to Spatial Analysis in R](https://github.com/jafflerbach/spatial-analysis-R)** (focus on rasters)
 
+**[Open Data Science Training at the University of Queensland](http://ohi-science.org/uq-training/)** 
+Brisbane, Queensland, Australia
+June 18 - 19, 2019
+
 **[Software Carpentry for R at Woods Hole Oceanographic Institute](https://jules32.github.io/2018-10-22-whoi/)**
 Woods Hole, MA
 October 22 - October 23, 2018
