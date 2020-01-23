@@ -61,8 +61,8 @@ defaultContentLanguageInSubdir = false
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "montgomery@nceas.ucsb.edu"
   address = "Office 317-A, Suite 300, 735 State Street, Santa Barbara, CA 93101"
-  twitter = "jafflerbach"
-  github = "jafflerbach"
+  twitter = "jamiecmonty"
+  github = "jamiecmontgomery"
 
   # Enable Keybase in Contact widget by entering your keybase.io username.
   keybase = ""
@@ -220,7 +220,7 @@ defaultContentLanguageInSubdir = false
   [[params.social]]
     icon = "twitter"
     icon_pack = "fa"
-    link = "//twitter.com/jafflerbach"
+    link = "//twitter.com/jamiecmonty"
 
   [[params.social]]
     icon = "google-scholar"
@@ -230,7 +230,7 @@ defaultContentLanguageInSubdir = false
   [[params.social]]
     icon = "github"
     icon_pack = "fa"
-    link = "//github.com/jafflerbach"
+    link = "//github.com/jamiecmontgomery"
 
 
 # Navigation Links
