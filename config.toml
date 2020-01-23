@@ -3,7 +3,7 @@
 
 # The URL of your website.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-baseurl = "http://www.jamieafflerbach.com/"
+baseurl = "http://www.jamiecmontgomery.com/"
 
 # Title of your site
 title = "Jamie Montgomery"
@@ -215,7 +215,7 @@ defaultContentLanguageInSubdir = false
   [[params.social]]
     icon = "envelope"
     icon_pack = "fa"
-    link = "mailto:afflerbach@nceas.ucsb.edu"
+    link = "mailto:montgomery@nceas.ucsb.edu"
 
   [[params.social]]
     icon = "twitter"
