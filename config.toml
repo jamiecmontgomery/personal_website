@@ -6,7 +6,7 @@
 baseurl = "http://www.jamieafflerbach.com/"
 
 # Title of your site
-title = "Jamie Afflerbach"
+title = "Jamie Montgomery"
 
 # Your copyright notice - appears in site footer.
 # To display a copyright symbol, type `&copy;`.
@@ -50,7 +50,7 @@ defaultContentLanguageInSubdir = false
   font = "default"
 
   # Your details.
-  name = "Jamie Afflerbach"
+  name = "Jamie (Afflerbach) Montgomery"
   role = "Marine Data Scientist"
 
   # Organizations/Affiliations.
@@ -59,7 +59,7 @@ defaultContentLanguageInSubdir = false
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
-  email = "afflerbach@nceas.ucsb.edu"
+  email = "montgomery@nceas.ucsb.edu"
   address = "Office 317-A, Suite 300, 735 State Street, Santa Barbara, CA 93101"
   twitter = "jafflerbach"
   github = "jafflerbach"
