@@ -8,7 +8,8 @@ tags: []
 ---
 
 ```{r setup, include=FALSE, message = FALSE, warning = FALSE}
-knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE, fig.align = "center")
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE, fig.align = "center",
+                      widgetframe_self_contained = FALSE, widgetframe_isolate_widgets = TRUE)
 
 library(mapview)
 library(tidyverse)
@@ -22,6 +23,8 @@ library(ggrepel)
 library(patchwork)
 library(ggmap)
 library(ggtext)
+library(widgetframe)
+library(htmlwidgets)
 
 tweet_data <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets_post_apr_2015.csv")
 mapviewOptions(basemaps = c("CartoDB.Positron", "OpenStreetMap"))
@@ -87,7 +90,8 @@ kable(sample_n(tweet_data %>% select(-user_id,  -geo_coordinates, -lat, -lon), 7
 ### Tweets over time
 
 Almost immediately after plotting tweets over time you can see that the total number of geotagged tweets is going down over time. Most noticeably, there is a significant drop in tweets at the end of April, 2015. It seems this is due "a change in Twitter’s ‘post Tweet’ user-interface design results in fewer Tweets being geo-tagged" ( [source](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline)). The first 4 months of 2015 have 15,720 tweets, or roughly 19% of all tweets. To reduce a skew in the data and remove geotagged tweets that may have been geotagged without knowledge by the user in those months, *I moved forward with all tweets from May 1, 2015 through the end of 2019*.
-```{r tweets_over_time, fig.width = 8, fig.height = 4}
+
+```{r tweets_over_time, fig.width = 10, fig.height = 5}
 time_df <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets.csv") %>%
   group_by(date) %>%
   summarize(count = n())
@@ -144,14 +148,16 @@ tweet_sf <- tweet_data %>%
   st_set_crs(4326)
 
 #map
-leaflet(tweet_data) %>%
+cluster_map <- leaflet(tweet_data) %>%
   # Base groups
   addProviderTiles(providers$CartoDB.Positron) %>%
   # Overlay groups %>%
     addCircleMarkers(data = tweet_data, lng = ~lon, lat = ~lat, popup = ~full_text,
                    radius = 3, stroke = FALSE, fillOpacity = 0.5, clusterOptions = markerClusterOptions())
-```
 
+#saveWidget(cluster_map, "~/github/personal_website/static/leaflet/cluster_map.html")
+frameWidget(cluster_map, width='90%')
+```
 
 
 ### Tweet density
@@ -159,7 +165,8 @@ leaflet(tweet_data) %>%
 Each hexagon shows the log10 density of tweets in that area. The highest number of tweets in a single location is around 11,000 (deep purple hex). This includes the default Santa Barbara coordinate used for geotagging from the city of Santa Barbara without a precise location
 
 ```{r, fig.width = 8}
-hex_grid <- read_sf("~/github/sb_sense_of_place/data/sb_area_hexagons.shp")
+hex_grid <- read_sf("~/github/sb_sense_of_place/data/sb_area_hexagons.shp") %>%
+  st_set_crs(st_crs(tweet_sf))
 
 hex_tweet_count <- hex_grid %>%
   mutate(tweet_count = lengths(st_intersects(hex_grid, tweet_sf)),
@@ -216,7 +223,6 @@ The following map shows areas that have more tweets from locals (orange) or tour
 
 ```{r, fig.width = 8}
 
-hex_grid <- read_sf("~/github/sb_sense_of_place/data/sb_area_hexagons.shp")
 locals   <- tweet_data_users_sf %>% filter(user_type == "local")
 tourists <- tweet_data_users_sf %>% filter(user_type == "tourist")
 
@@ -346,7 +352,8 @@ To link tweet locations to what exists at those locations we need to use a spati
 The CPAD is a GIS dataset depicting lands that are owned in fee and protected for open space purposes by over 1,000 public agencies or non-profit organizations. 
 
 ```{r, echo = FALSE}
-cpad <- read_sf("~/github/sb_sense_of_place/data/cpad_fixed.shp")
+cpad <- read_sf("~/github/sb_sense_of_place/data/cpad_fixed.shp") %>%
+  st_set_crs(st_crs(tweet_sf))
 
 cpad_map <- mapview(cpad, zcol = "SITE_NAME", legend = FALSE)
 cpad_map@map %>% setView(lng = -119.714, lat = 34.426, zoom = 13)
@@ -693,4 +700,4 @@ p1 + p2 + plot_layout(ncol=1)
 
 
 
-This project was funded by Oceankind. All code is available at this [github repo](https://github.com/ohi-science/sb_sense_of_place). Twitter data is kept offline and secure at the National Center for Ecological Analysis & Synthesis.
+All code is available at this [github repo](https://github.com/ohi-science/sb_sense_of_place). Twitter data is kept offline and secure at the National Center for Ecological Analysis & Synthesis.
