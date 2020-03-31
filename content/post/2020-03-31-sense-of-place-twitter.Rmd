@@ -7,6 +7,28 @@ categories: []
 tags: ["spatial"]
 ---
 
+```{r setup, include=FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE, fig.align = "center")
+
+library(mapview)
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(kableExtra)
+library(sp)
+library(ggpol) #for the facet_share function
+library(RColorBrewer)
+library(ggrepel)
+library(patchwork)
+library(ggmap)
+library(ggtext)
+
+tweet_data <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets_post_apr_2015.csv")
+mapviewOptions(basemaps = c("CartoDB.Positron", "OpenStreetMap"))
+
+register_google(Sys.getenv("GOOGLE_ACCESS_TOKEN"))
+```
+
 # Summary
 
 **The aim of this project was to evaluate whether or not geotagged social media data can be useful in providing insight into a region's "Sense of Place" using Santa Barbara as a case study.** 
@@ -51,3 +73,82 @@ Twitter data was obtained freely through an established partnership between UCSB
 Crimson Hexagon only allows 10,000 randomly selected tweets to be exported, manually, at a time in .xls format. Due to this restriction, data was manually downloaded for every 2 days in order to capture all tweets (`r emo::ji('sweat')`). This took a significant amount of point and click time as you can imagine!
 
 Once downloaded, the twitter data did not contain all desired information, including whether or not the tweet was geotagged which was vital to this project. To get this information I stepped outside of my R comfort zone and used the python `twarc` library. This library can  be used to "rehydrate" twitter data using individual tweet ids, and  then store all associated tweet information as .json files. From here I was able to remove all tweets that did not have a geotag, giving a total of **79,981** tweets.
+
+
+## Twitter data
+
+Here is a sample of the tweet data:
+
+```{r sample_tweet_table}
+kable(sample_n(tweet_data %>% select(-user_id,  -geo_coordinates, -lat, -lon), 7)) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 11, fixed_thead = T)
+```
+
+### Tweets over time
+
+Almost immediately after plotting tweets over time you can see that the total number of geotagged tweets is going down over time. Most noticeably, there is a significant drop in tweets at the end of April, 2015. It seems this is due "a change in Twitter’s ‘post Tweet’ user-interface design results in fewer Tweets being geo-tagged" ( [source](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline)). The first 4 months of 2015 have 15,720 tweets, or roughly 19% of all tweets. To reduce a skew in the data and remove geotagged tweets that may have been geotagged without knowledge by the user in those months, *I moved forward with all tweets from May 1, 2015 through the end of 2019*.
+```{r tweets_over_time}
+time_df <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets.csv") %>%
+  group_by(date) %>%
+  summarize(count = n())
+
+ggplot(time_df, aes(x = date, y = count)) +
+  annotate("rect", fill = "gray80", alpha = 0.4, 
+        xmin = as.Date("2015-04-30"), xmax = as.Date("2020-01-01"),
+        ymin = -Inf, ymax = 170)  +
+  geom_line() +
+  geom_smooth() +
+  theme_minimal() +
+  geom_label(
+    data = data.frame(x = c(as.Date("2015-06-15")),
+                      y = c(215),
+                      label = c("User interface change, results in \nfewer Tweets being geo-tagged")),
+    aes(x = x, y = y, label = label), 
+    hjust = 0, 
+    lineheight = .8, 
+    size = 3,
+    inherit.aes = FALSE, 
+    label.size = 0
+  ) +
+  geom_curve(
+    data = data.frame(x = c(as.Date("2015-06-15")),
+                      y = c(214), 
+                      xend = c(as.Date("2015-04-30")),
+                      yend = c(207)),
+    mapping = aes(x = x, y = y, xend = xend, yend = yend),
+    colour = "black",
+    size = 0.5,
+    curvature = 0.05,
+    arrow = arrow(length = unit(0.01, "npc"), type = "closed"),
+    inherit.aes = FALSE) +
+  labs(x = "",
+       y = "Count",
+       title = "Number of geotagged tweets in Santa Barbara") +
+  geom_label(x = as.Date("2019-01-01"), y = 150, 
+            label = "Final dataset included tweets \nfrom April 30, 2015 onwards",
+            size = 3,   
+    label.size = 0)
+```
+
+### Tweet map
+
+The spatial distribution of tweets highlights areas of higher population density and tourist areas in downtown Santa Barbara.
+
+There is a single coordinate that has over 11,000 tweets reported across all years. It is near De La Vina between Islay and Valerio. There is nothing remarkable about this site so I assume it is the default coordinate when people tag "Santa Barbara" generally. The coordinate is 34.4258, -119.714.
+
+As you zoom in on the map, clusters will disaggregate. You can click on blue points to see the tweet.
+
+```{r, fig.width = 8}
+tweet_sf <- tweet_data %>%
+  st_as_sf(coords = c("lon", "lat"), remove = F) %>%
+  st_set_crs(4326)
+
+#map
+leaflet(tweet_data) %>%
+  # Base groups
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  # Overlay groups %>%
+    addCircleMarkers(data = tweet_data, lng = ~lon, lat = ~lat, popup = ~full_text,
+                   radius = 3, stroke = FALSE, fillOpacity = 0.5, clusterOptions = markerClusterOptions())
+```
+
