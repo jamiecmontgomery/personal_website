@@ -4,7 +4,7 @@ author: Jamie Montgomery
 date: '2020-03-31'
 slug: santa-barbara-twitter
 categories: []
-tags: ["spatial", "Ocean Health Index"]
+tags: ["spatial"]
 ---
 
 # Summary
