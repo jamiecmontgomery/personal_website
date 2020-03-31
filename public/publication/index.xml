@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publications on Jamie Afflerbach</title>
+    <title>Publications on Jamie Montgomery</title>
     <link>/publication/</link>
-    <description>Recent content in Publications on Jamie Afflerbach</description>
+    <description>Recent content in Publications on Jamie Montgomery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -11,6 +11,42 @@
     
 	<atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Changes in ocean health in British Columbia from 2001 to 2016</title>
+      <link>/publication/ohibc/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/ohibc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blue Growth Potential to Mitigate Climate Change through Seaweed Offsetting</title>
+      <link>/publication/seaweed/</link>
+      <pubDate>Mon, 23 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/seaweed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recent pace of change in human impact on the world’s ocean</title>
+      <link>/publication/chi_rate_of_change/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/chi_rate_of_change/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quantifying uncertainty in the wild‐caught fisheries goal of the Ocean Health Index</title>
+      <link>/publication/ohi_fish_uncertainty/</link>
+      <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/publication/ohi_fish_uncertainty/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Trade‐offs for data‐limited fisheries when using harvest strategies based on catch‐only models</title>

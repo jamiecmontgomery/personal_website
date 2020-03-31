@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
   <meta name="generator" content="Hugo 0.37.1" />
-  <meta name="author" content="Jamie Afflerbach">
+  <meta name="author" content="Jamie (Afflerbach) Montgomery">
 
   
   
@@ -20,7 +20,7 @@
   <meta name="description" content="I’m excited to be part of a new research group - the Conservation Aquaculture Research Team at NCEAS. Our group is interested in helping shape the future of sustainable aquaculture. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the Food and Agriculture Organization (FAO).">
 
   
-  <link rel="alternate" hreflang="en-us" href="/post/global_seafood_growth_dataviz/">
+  <link rel="alternate" hreflang="en-us" href="../../post/global_seafood_growth_dataviz/">
 
   
 
@@ -55,7 +55,7 @@
   
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
   
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="../../styles.css">
   
 
   
@@ -74,24 +74,24 @@
   
 
   
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Jamie Afflerbach">
-  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Jamie Afflerbach">
+  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Jamie Montgomery">
+  <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Jamie Montgomery">
   
 
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/icon-192.png">
 
-  <link rel="canonical" href="/post/global_seafood_growth_dataviz/">
+  <link rel="canonical" href="../../post/global_seafood_growth_dataviz/">
 
   <meta property="twitter:card" content="summary_large_image">
   
-  <meta property="twitter:site" content="@jafflerbach">
-  <meta property="twitter:creator" content="@jafflerbach">
+  <meta property="twitter:site" content="@jamiecmonty">
+  <meta property="twitter:creator" content="@jamiecmonty">
   
-  <meta property="og:site_name" content="Jamie Afflerbach">
+  <meta property="og:site_name" content="Jamie Montgomery">
   <meta property="og:url" content="/post/global_seafood_growth_dataviz/">
-  <meta property="og:title" content="Visualizing growth in global seafood production | Jamie Afflerbach">
+  <meta property="og:title" content="Visualizing growth in global seafood production | Jamie Montgomery">
   <meta property="og:description" content="I’m excited to be part of a new research group - the Conservation Aquaculture Research Team at NCEAS. Our group is interested in helping shape the future of sustainable aquaculture. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the Food and Agriculture Organization (FAO).">
   <meta property="og:locale" content="en-us">
   
@@ -102,7 +102,7 @@
 
   
 
-  <title>Visualizing growth in global seafood production | Jamie Afflerbach</title>
+  <title>Visualizing growth in global seafood production | Jamie Montgomery</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -121,7 +121,7 @@
         <span class="icon-bar"></span>
       </button>
       
-      <a class="navbar-brand" href="/">Jamie Afflerbach</a>
+      <a class="navbar-brand" href="../../">Jamie Montgomery</a>
     </div>
 
     
@@ -141,7 +141,7 @@
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>Home</span>
             
@@ -160,7 +160,7 @@
         
 
         <li class="nav-item">
-          <a href="/#publications_selected">
+          <a href="../../#publications_selected">
             
             <span>Publications</span>
             
@@ -179,7 +179,7 @@
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Posts</span>
             
@@ -198,7 +198,7 @@
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Projects</span>
             
@@ -217,7 +217,7 @@
         
 
         <li class="nav-item">
-          <a href="/#teaching">
+          <a href="../../#teaching">
             
             <span>Teaching</span>
             
@@ -236,7 +236,7 @@
         
 
         <li class="nav-item">
-          <a href="/#contact">
+          <a href="../../#contact">
             
             <span>Contact</span>
             
@@ -274,7 +274,7 @@
     </time>
   </span>
   <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jamie Afflerbach">
+    <meta itemprop="name" content="Jamie (Afflerbach) Montgomery">
   </span>
 
   
@@ -364,7 +364,7 @@ spp &lt;- read_csv(&quot;https://raw.githubusercontent.com/CART-sci/storymap/mas
 <p>By using a second dataset on global food supply of seafood, I can calculate the amount of fish caught for consumption. Why not only use this dataset? Because this one does not differentiate between wild capture and aquaculture.</p>
 <p>If you’re interested in the data I used, here is a screenshot of the manual query on FAOSTAT.</p>
 <div class="figure">
-<img src="/img/fao_query.png" />
+<img src="../../img/fao_query.png" />
 
 </div>
 <p>I am still hopeful that someone, somewhere will create an FAO R package that lets me query all of their data directly from R. In the meantime, I’ll wrangle these two datasets together as best I can.</p>
@@ -435,7 +435,7 @@ plot_data &lt;- data %&gt;%
     
 static_plot</code></pre>
 <div class="figure">
-<img src="/img/static.png" />
+<img src="../../img/static.png" />
 
 </div>
 </div>
@@ -454,7 +454,7 @@ static_plot</code></pre>
       
 gganimate(dynam_plot, filename = &quot;fao_gganimate.gif&quot;, title_frame = F)</code></pre>
 <div class="figure">
-<img src="/img/fao_gganimate.gif" />
+<img src="../../img/fao_gganimate.gif" />
 
 </div>
 </div>
@@ -488,7 +488,7 @@ tween_plot &lt;- ggplot(data_tween, aes(x = x, y = y, frame = .frame, color = id
     
 gganimate(tween_plot, title_frame = FALSE, interval = 0.05)</code></pre>
 <div class="figure">
-<img src="/img/fao_aq_capture_fig.gif" />
+<img src="../../img/fao_aq_capture_fig.gif" />
 
 </div>
 <p>I spent a lot of time messing with the text sizes, colors, label placement, etc. I also learned how to add an arrow (thanks, <code>geom_segment()</code>). While I could keep tweaking this forever, I think it’s good enough as is. The whole process of learning how to use <code>tweenr</code> took me just a couple hours and I’m excited for the next opportunity to make something like this!</p>
@@ -502,11 +502,11 @@ gganimate(tween_plot, title_frame = FALSE, interval = 0.05)</code></pre>
 
 <div class="article-tags">
   
-  <a class="btn btn-primary btn-outline" href="/tags/aquaculture">aquaculture</a>
+  <a class="btn btn-primary btn-outline" href="../../tags/aquaculture">aquaculture</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/data-visualization">data visualization</a>
+  <a class="btn btn-primary btn-outline" href="../../tags/data-visualization">data visualization</a>
   
-  <a class="btn btn-primary btn-outline" href="/tags/rstats">rstats</a>
+  <a class="btn btn-primary btn-outline" href="../../tags/rstats">rstats</a>
   
 </div>
 
@@ -585,7 +585,7 @@ gganimate(tween_plot, title_frame = FALSE, interval = 0.05)</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
     
     
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     

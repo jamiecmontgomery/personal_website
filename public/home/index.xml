@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Homes on Jamie Afflerbach</title>
+    <title>Homes on Jamie Montgomery</title>
     <link>/home/</link>
-    <description>Recent content in Homes on Jamie Afflerbach</description>
+    <description>Recent content in Homes on Jamie Montgomery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -73,6 +73,8 @@
       
       <guid>/home/teaching/</guid>
       <description>Tutorials: Intro to Spatial Analysis in R (focus on rasters)
+Open Data Science Training at the University of Queensland Brisbane, Queensland, Australia June 18 - 19, 2019
+Software Carpentry for R at Woods Hole Oceanographic Institute Woods Hole, MA October 22 - October 23, 2018
 Data Wrangling &amp;amp; Visualization Taught at the Monterey Bay Aquarium Research Institute Software Carpentry Moss Landing, CA November 30 - December 1, 2017
 Data Wrangling and Visualization (SWC for Ecology Materials) UC Merced Software Carpentry Merced, CA August 18, 2017</description>
     </item>

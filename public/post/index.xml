@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Jamie Afflerbach</title>
+    <title>Posts on Jamie Montgomery</title>
     <link>/post/</link>
-    <description>Recent content in Posts on Jamie Afflerbach</description>
+    <description>Recent content in Posts on Jamie Montgomery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
@@ -11,6 +11,16 @@
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Santa Barbara&#39;s nature-based &#39;Sense of Place&#39;, as told by twitter</title>
+      <link>/post/santa-barbara-twitter/</link>
+      <pubDate>Tue, 31 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/santa-barbara-twitter/</guid>
+      <description>Summary The aim of this project was to evaluate whether or not geotagged social media data can be useful in providing insight into a region’s “Sense of Place” using Santa Barbara as a case study.
+Sense of Place can be defined as the connection people feel to their geographic surroundings, including both the natural and built environment. Locations with a strong sense of place often have a strong identity felt by both locals and visitors.</description>
+    </item>
     
     <item>
       <title>Cropping rasters down to size</title>
