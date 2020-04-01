@@ -80,10 +80,11 @@ Once downloaded, the twitter data did not contain all desired information, inclu
 
 Here is a sample of the tweet data:
 
-```{r sample_tweet_table}
+```{r}
 kable(sample_n(tweet_data %>% select(-user_id,  -geo_coordinates, -lat, -lon), 7)) %>%
   kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 11, fixed_thead = T)
 ```
+
 
 Trying basic leaflet map
 

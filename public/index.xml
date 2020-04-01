@@ -92,7 +92,7 @@ library(sf)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;why-santa-barbara&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Why Santa Barbara?&lt;/h1&gt;
 &lt;p&gt;The easy answer - I live here! Since I know the city and surrounding areas rather well, I could quickly look at spatial patterns and understand what exists at that location. The total number of tweets coming from Santa Barbara is also manageable compared to a much larger urban city.&lt;/p&gt;
-&lt;p&gt;Also, Santa Barbara is known for being a tourist town, and having beautiful natural and built landscapes (ok - I might be a bit biased here). Santa Barbara sits between the mountains and the ocean just 1.5 hours north of LA and has excellent recreation, dining, entertainment options. It’s no surprise that a lot of UCSB students end up sticking around after graduation, myself included 🙋‍♂️.&lt;/p&gt;
+&lt;p&gt;Also, Santa Barbara is known for being a tourist town, and having beautiful natural and built landscapes (ok - I might be a bit biased here). Santa Barbara sits between the mountains and the ocean just 1.5 hours north of LA and has excellent recreation, dining, entertainment options. It’s no surprise that a lot of UCSB students end up sticking around after graduation, myself included 🙋‍♀️.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;finding-the-data&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Finding the data&lt;/h1&gt;
@@ -146,53 +146,117 @@ date
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-May
+Oct
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-30
+6
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-13:11:23
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-2017
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-My kumquat-eating friend… @ Carpinteria, California &lt;a href=&#34;https://t.co/2h8QbCnsgs&#34; class=&#34;uri&#34;&gt;https://t.co/2h8QbCnsgs&lt;/a&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Carpinteria, CA
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-5
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-2017-05-30
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-May
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-3
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-23:31:47
+21:12:40
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
 2016
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-&lt;p&gt;I love Tuesdays!
-With krstout20&lt;/p&gt;
-#santabarbara #paragliding #xshot #sunskis #gopro @ Douglas… &lt;a href=&#34;https://t.co/5AQ7sH4Uup&#34; class=&#34;uri&#34;&gt;https://t.co/5AQ7sH4Uup&lt;/a&gt;
+New arrivals.. come in now for first dibs #shopsmall #carpinteria #firstdibs #itsfallyall @… &lt;a href=&#34;https://t.co/btiN0seGGY&#34; class=&#34;uri&#34;&gt;https://t.co/btiN0seGGY&lt;/a&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+santa barbara
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2016-10-06
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sep
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+02:39:59
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2015
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+My sun sets to rise again. #⛅️ #Carp @ Las Palmas! &lt;a href=&#34;https://t.co/KiyTCrkduI&#34; class=&#34;uri&#34;&gt;https://t.co/KiyTCrkduI&lt;/a&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+SuperMinSJ
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2015-09-02
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Mar
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+20:52:24
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2019
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+World of Pinot Noir is a perfect combo of work and play, with a ton of learning mixed in. Great people who run the event hosting great people who exude raw passion for this variety. I love… &lt;a href=&#34;https://t.co/Ck0R9b8iT3&#34; class=&#34;uri&#34;&gt;https://t.co/Ck0R9b8iT3&lt;/a&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Central Coast Ca
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2019-03-04
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Mar
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+00:05:27
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2019
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+You’ve got to get yourself together
+You’ve got stuck in a moment
+And now you can’t get out of it #santabarbra #unitedstatesofamerica #instausa #bucketlistadventures #usa #bucketlist… &lt;a href=&#34;https://t.co/iDRATS9MCT&#34; class=&#34;uri&#34;&gt;https://t.co/iDRATS9MCT&lt;/a&gt;
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 NA
@@ -201,63 +265,94 @@ NA
 0
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-5
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-2016-05-03
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Mar
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-29
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-01:49:37
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-2019
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-&lt;span class=&#34;citation&#34;&gt;@maizahixson&lt;/span&gt; got buckwild with her installation of feline fuckery !!
-#artshow #pressroom #vagina #femaleartist @ The Press Room &lt;a href=&#34;https://t.co/WWfP68XPDF&#34; class=&#34;uri&#34;&gt;https://t.co/WWfP68XPDF&lt;/a&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-805
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
 0
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
 3
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-2019-03-29
+2019-03-07
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Nov
+Feb
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-5
+4
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-00:14:58
+04:36:53
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2015
+2016
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-We love our neighbors and are grateful for &lt;span class=&#34;citation&#34;&gt;@leighaschoff&lt;/span&gt; for being just down the street! Go there for… &lt;a href=&#34;https://t.co/oQyyhsFkOz&#34; class=&#34;uri&#34;&gt;https://t.co/oQyyhsFkOz&lt;/a&gt;
+Turtles sunning themselves today while we ate lunch! Way too cute! Look at his little legs @… &lt;a href=&#34;https://t.co/ksRnXgJk0z&#34; class=&#34;uri&#34;&gt;https://t.co/ksRnXgJk0z&lt;/a&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Oxnard, CA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2016-02-04
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Apr
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+15:20:57
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2018
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Happy Monday go out there and enjoy the week. Oh , and make sure you get your coffee intake. en… &lt;a href=&#34;https://t.co/b3GKVsvuBG&#34; class=&#34;uri&#34;&gt;https://t.co/b3GKVsvuBG&lt;/a&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Oakland, CA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+2018-04-23
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sep
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+11
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+16:43:58
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+2019
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+🦋Allowed Me To Introduce You To Monarch International Institute’s New House 🏠 When You #pray And Aligned Your Mission With Your Passion…Everything Falls In Place Beautifully💕 Providing Excellence Self Improvement,… &lt;a href=&#34;https://t.co/LigqdZChbi&#34; class=&#34;uri&#34;&gt;https://t.co/LigqdZChbi&lt;/a&gt;
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 Santa Barbara
@@ -269,106 +364,10 @@ Santa Barbara
 0
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-11
+9
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-2015-11-05
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Jan
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-29
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-19:05:57
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-2016
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Okay let’s be careful with the sun shine even though the temperature is cold ! More sunblock… &lt;a href=&#34;https://t.co/4LCW4SxRHq&#34; class=&#34;uri&#34;&gt;https://t.co/4LCW4SxRHq&lt;/a&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Kuala Lumpur, Malaysia
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-2016-01-29
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Aug
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-16
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-04:04:48
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-2017
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Hey man! Don’t be lazy! Let’s do it 👊🏽💪🏽 #graciebarra #santabarbara #porrada #believeinyourself… &lt;a href=&#34;https://t.co/8MuY6OtTaw&#34; class=&#34;uri&#34;&gt;https://t.co/8MuY6OtTaw&lt;/a&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Virginia, USA
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-0
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-8
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-2017-08-16
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Jul
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-17:45:09
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-2015
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Just added another LEED* Gold plaque to our green bling wall in the main #UCSBhousing office. The… &lt;a href=&#34;https://t.co/86XMqOCvAE&#34; class=&#34;uri&#34;&gt;https://t.co/86XMqOCvAE&lt;/a&gt;
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Santa Barbara, Ca
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:right;&#34;&gt;
-7
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-2015-07-01
+2019-09-11
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
