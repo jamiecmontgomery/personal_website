@@ -14,7 +14,6 @@ library(mapview)
 library(tidyverse)
 library(sf)
 library(leaflet)
-library(kableExtra)
 library(sp)
 library(ggpol) #for the facet_share function
 library(RColorBrewer)
@@ -75,16 +74,11 @@ Crimson Hexagon only allows 10,000 randomly selected tweets to be exported, manu
 
 Once downloaded, the twitter data did not contain all desired information, including whether or not the tweet was geotagged which was vital to this project. To get this information I stepped outside of my R comfort zone and used the python `twarc` library. This library can  be used to "rehydrate" twitter data using individual tweet ids, and  then store all associated tweet information as .json files. From here I was able to remove all tweets that did not have a geotag, giving a total of **79,981** tweets.
 
+## Twitter data
 
-Trying basic leaflet map
+Here is a sample of the tweet data:
 
-```{r out.width = '100%'}
-dc_crime <- sf::st_read("https://opendata.arcgis.com/datasets/dc3289eab3d2400ea49c154863312434_8.geojson", quiet = TRUE)
-
-leaflet() %>% 
-  addProviderTiles(providers$CartoDB.Positron)%>% 
-  addCircles(data = dc_crime, color = "#800000")
-```
+![](/img/tweet_table.png)
 
 ### Tweets over time
 
@@ -248,10 +242,7 @@ dictionary$word
 
 Let's look at some examples of what tweets qualified as "nature-based".
 
-```{r}
-DT::datatable(sample_n(nature_df %>% filter(nature_word == 1) %>% select(date, full_text, user_location, user_type, nature_word), 7))
-```
-
+![](/img/nature_tweet_table.png)
 
 
 ### Proportion of tweets considered "nature-based" over time
