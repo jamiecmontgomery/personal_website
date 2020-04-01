@@ -148,7 +148,7 @@ tweet_sf <- tweet_data %>%
   st_set_crs(4326)
 
 #map
-cluster_map <- leaflet(tweet_data) %>%
+leaflet(tweet_data) %>%
   # Base groups
   addProviderTiles(providers$CartoDB.Positron) %>%
   # Overlay groups %>%
@@ -156,29 +156,8 @@ cluster_map <- leaflet(tweet_data) %>%
                    radius = 3, stroke = FALSE, fillOpacity = 0.5, clusterOptions = markerClusterOptions())
 
 #saveWidget(cluster_map, "~/github/personal_website/static/leaflet/cluster_map.html")
-frameWidget(cluster_map, width='90%')
+#frameWidget(cluster_map, width='90%')
 ```
-
-
-### Tweet density
-
-Each hexagon shows the log10 density of tweets in that area. The highest number of tweets in a single location is around 11,000 (deep purple hex). This includes the default Santa Barbara coordinate used for geotagging from the city of Santa Barbara without a precise location
-
-```{r, fig.width = 8}
-hex_grid <- read_sf("~/github/sb_sense_of_place/data/sb_area_hexagons.shp") %>%
-  st_set_crs(st_crs(tweet_sf))
-
-hex_tweet_count <- hex_grid %>%
-  mutate(tweet_count = lengths(st_intersects(hex_grid, tweet_sf)),
-         log_tweet_count = log10(tweet_count))
-
-log_hex_map <-mapview(hex_tweet_count %>% filter(tweet_count > 0), #remove hexes with no tweets
-                 zcol = "log_tweet_count", layer.name = "Count (log10)", 
-                 col.regions = colorRampPalette(brewer.pal(9, "BuPu")[2:9]), legend.opacity = 0.5)
-
-log_hex_map@map %>% setView(lng = -119.714, lat = 34.426, zoom = 13)
-```
-
 
 # Defining tourists & locals
 
@@ -222,6 +201,9 @@ ggmap(sb.map,  legend="none") +
 The following map shows areas that have more tweets from locals (orange) or tourists (purple). Note the values indicate the log10 of the absolute difference between number of tweets from each user group. So if a hex is purple and has a value of 2, this means there are 100 times more tweets from tourists than locals at that location.
 
 ```{r, fig.width = 8}
+
+hex_grid <- read_sf("~/github/sb_sense_of_place/data/sb_area_hexagons.shp") %>%
+  st_set_crs(st_crs(tweet_data_users_sf))
 
 locals   <- tweet_data_users_sf %>% filter(user_type == "local")
 tourists <- tweet_data_users_sf %>% filter(user_type == "tourist")
