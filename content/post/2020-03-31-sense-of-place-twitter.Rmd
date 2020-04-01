@@ -28,8 +28,6 @@ library(ggtext)
 
 tweet_data <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets_post_apr_2015.csv")
 mapviewOptions(basemaps = c("CartoDB.Positron", "OpenStreetMap"))
-
-register_google(Sys.getenv("GOOGLE_ACCESS_TOKEN"))
 ```
 
 # Summary
@@ -133,30 +131,6 @@ ggplot(time_df, aes(x = date, y = count)) +
     label.size = 0)
 ```
 
-### Tweet map
-
-The spatial distribution of tweets highlights areas of higher population density and tourist areas in downtown Santa Barbara.
-
-There is a single coordinate that has over 11,000 tweets reported across all years. It is near De La Vina between Islay and Valerio. There is nothing remarkable about this site so I assume it is the default coordinate when people tag "Santa Barbara" generally. The coordinate is 34.4258, -119.714.
-
-As you zoom in on the map, clusters will disaggregate. You can click on blue points to see the tweet.
-
-```{r out.width = '100%'}
-tweet_sf <- tweet_data %>%
-  st_as_sf(coords = c("lon", "lat"), remove = F) %>%
-  st_set_crs(4326)
-
-#map
-leaflet(tweet_data) %>%
-  # Base groups
-  addProviderTiles(providers$CartoDB.Positron) %>%
-  # Overlay groups %>%
-    addCircleMarkers(data = tweet_data, lng = ~lon, lat = ~lat, popup = ~full_text,
-                   radius = 3, stroke = FALSE, fillOpacity = 0.5, clusterOptions = markerClusterOptions())
-
-#saveWidget(cluster_map, "~/github/personal_website/static/leaflet/cluster_map.html")
-```
-
 Trying basic leaflet map
 
 ```{r out.width = '100%'}
@@ -165,41 +139,4 @@ dc_crime <- sf::st_read("https://opendata.arcgis.com/datasets/dc3289eab3d2400ea4
 leaflet() %>% 
   addProviderTiles(providers$CartoDB.Positron)%>% 
   addCircles(data = dc_crime, color = "#800000")
-```
-
-# Defining tourists & locals
-
-This project aimed to understand if and how preferences differ between tourists and locals for nature-based places within the Santa Barbara area. In order to test this I needed to come up with a way to identify tourists or locals. I ended up using a two step process:
-
-1. If the user has self-identified their location as somewhere in the Santa Barbara area, they are designated a *local*. This includes Carpinteria, Santa Barbara, Montecito, Goleta, Gaviota and UCSB 
-2. For the remainder, we use the number of times they have tweeted from Santa Barbara within a year to designate user type. If someone has tweeted across more than 2 months in the same year from Santa Barbara, they are identified as a local. This is consistent with how [Eric Fischer](https://www.citylab.com/transportation/2015/02/where-do-locals-go-in-major-cities-check-out-this-interactive-world-map/385768/) determined tourists in his work. 
-
-This is not fool-proof and there are definitely instances where people visit and tweet from Santa Barbara more than two months a year, especially if they are visiting family or live within a couple hours driving distance, but without more data (and time) to determine where "tourists" truly live, this will have to do.
-
-
-```{r, echo = FALSE}
-tweet_data_users <- read_csv("~/github/sb_sense_of_place/data/geotag_sb_tweets_user_type.csv")
-
-tweet_data_users_sf <- tweet_data_users %>%
-  st_as_sf(coords = c("lon", "lat"), remove = F) %>%
-  st_set_crs(4326)
-```
-
-There are `r nrow(filter(tweet_data_users, user_type == "tourist"))` tweets from tourists and `r nrow(filter(tweet_data_users, user_type == "local"))` tweets from locals (`r round(nrow(filter(tweet_data_users, user_type == "tourist"))/nrow(tweet_data_users)*100,0)`% and `r round(nrow(filter(tweet_data_users, user_type == "local"))/nrow(tweet_data_users)*100,0)`%). There are `r nrow(tweet_data_users%>%filter(user_type == "tourist") %>% select(user_type, user_id) %>% distinct())` unique tourists and just `r nrow(tweet_data_users%>%filter(user_type == "local") %>% select(user_type, user_id) %>% distinct())` unique local users.
-
-```{r}
-#santa barbara
-sb.map <- get_map("santa barbara, california", zoom = 14, maptype = "toner-lite") 
-
-ggmap(sb.map,  legend="none") +
-  coord_equal() +
-    labs(x = NULL, y = NULL) +
-    theme(axis.text = element_blank()) +
-    geom_point(data = tweet_data_users_sf, aes(x = lon, y = lat, color = user_type),
-               size = 0.55, alpha = 0.3) + 
-    scale_color_manual(values = c("red", "blue")) +
-  labs(fill = "User type",
-       title = "Santa Barbara tweets from <b style='color:#FF0000'>locals</b> and <b style='color:#0000FF'>tourists</b>") +
-  theme(plot.title = element_markdown(lineheight = 1.1),
-        legend.position = "none")
 ```

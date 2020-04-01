@@ -9,7 +9,7 @@ tags: []
 
 ```{r include=FALSE, eval=FALSE}
 # render magic
-rmarkdown::render("index.Rmd")
+#rmarkdown::render("index.Rmd")
 ```
 
 ```{r message=FALSE}
