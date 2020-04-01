@@ -14,6 +14,20 @@ library(mapview)
 library(tidyverse)
 library(sf)
 library(leaflet)
+library(kableExtra)
+library(sp)
+library(ggpol) #for the facet_share function
+library(RColorBrewer)
+library(ggrepel)
+library(patchwork)
+library(ggmap)
+library(ggtext)
+
+
+tweet_data <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets_post_apr_2015.csv")
+mapviewOptions(basemaps = c("CartoDB.Positron", "OpenStreetMap"))
+
+register_google(Sys.getenv("GOOGLE_ACCESS_TOKEN"))
 ```
 
 # Summary
