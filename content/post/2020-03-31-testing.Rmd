@@ -29,6 +29,6 @@ library(leaflet)
 
 ```{r out.width = '100%'}
 leaflet() %>% 
-  addTiles() %>% 
+  addProviderTiles(providers$CartoDB.Positron)%>% 
   addCircles(data = dc_crime, color = "#800000")
 ```

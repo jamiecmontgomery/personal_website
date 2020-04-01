@@ -139,7 +139,7 @@ There is a single coordinate that has over 11,000 tweets reported across all yea
 
 As you zoom in on the map, clusters will disaggregate. You can click on blue points to see the tweet.
 
-```{r, fig.width = 8}
+```{r out.width = '100%'}
 tweet_sf <- tweet_data %>%
   st_as_sf(coords = c("lon", "lat"), remove = F) %>%
   st_set_crs(4326)
