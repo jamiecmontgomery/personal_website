@@ -1,8 +1,8 @@
 ---
 title: "Testing"
 author: Jamie Montgomery
-date: '2020-03-31'
-slug: santa-barbara-twitter
+date: '2020-04-01'
+slug: testing
 categories: []
 tags: []
 ---
@@ -14,7 +14,7 @@ rmarkdown::render("index.Rmd")
 
 ```{r message=FALSE}
 library(tidyverse)
-# library(sf)
+library(sf)
 ```
 
 # Leaflet 
