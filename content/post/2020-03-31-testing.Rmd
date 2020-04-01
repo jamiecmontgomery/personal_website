@@ -1,0 +1,34 @@
+---
+title: "Testing"
+author: Jamie Montgomery
+date: '2020-03-31'
+slug: santa-barbara-twitter
+categories: []
+tags: []
+---
+
+```{r include=FALSE, eval=FALSE}
+# render magic
+rmarkdown::render("index.Rmd")
+```
+
+```{r message=FALSE}
+library(tidyverse)
+# library(sf)
+```
+
+# Leaflet 
+
+```{r cache=TRUE}
+dc_crime <- sf::st_read("https://opendata.arcgis.com/datasets/dc3289eab3d2400ea49c154863312434_8.geojson", quiet = TRUE)
+```
+
+```{r}
+library(leaflet)
+```
+
+```{r out.width = '100%'}
+leaflet() %>% 
+  addTiles() %>% 
+  addCircles(data = dc_crime, color = "#800000")
+```
