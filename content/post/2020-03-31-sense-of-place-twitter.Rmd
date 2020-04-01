@@ -30,13 +30,12 @@ mapviewOptions(basemaps = c("CartoDB.Positron", "OpenStreetMap"))
 register_google(Sys.getenv("GOOGLE_ACCESS_TOKEN"))
 ```
 
-# Summary
 
 **The aim of this project was to evaluate whether or not geotagged social media data can be useful in providing insight into a region's "Sense of Place" using Santa Barbara as a case study.** 
 
 Sense of Place can be defined as the connection people feel to their geographic surroundings, including both the natural and built environment. Locations with a strong sense of place often have a strong identity felt by both locals and visitors. 
 
-# Why Santa Barbara?
+### Why Santa Barbara?
 
 The easy answer - I live here! Since I know the city and surrounding areas rather well, I could quickly look at spatial patterns and know what is happening in different locations. The total number of tweets coming from Santa Barbara is also more manageable compared to a much larger, urban city.
 
@@ -76,7 +75,7 @@ Here is a sample of the tweet data:
 
 Almost immediately after plotting tweets over time you can see that the total number of geotagged tweets is going down over time. Most noticeably, there is a significant drop in tweets at the end of April, 2015. It seems this is due "a change in Twitter’s ‘post Tweet’ user-interface design results in fewer Tweets being geo-tagged" ( [source](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline)). The first 4 months of 2015 have 15,720 tweets, or roughly 19% of all tweets. To reduce a skew in the data and remove geotagged tweets that may have been geotagged without knowledge by the user in those months, *I moved forward with all tweets from May 1, 2015 through the end of 2019*.
 
-```{r tweets_over_time, out.width = '100%'}
+```{r tweets_over_time, fig.height = 4}
 time_df <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets.csv") %>%
   group_by(date) %>%
   summarize(count = n())
@@ -225,7 +224,7 @@ ggmap(sb.map,  legend="none") +
 
 All groups show increases in proportion of tweets that are nature based over time, even as the number of geotagged tweets declines. 
 
-```{r}
+```{r, fig.height = 4}
 nature_prop <- nature_df %>% 
                group_by(date, nature_word) %>%
                summarize(count = n()) %>%
@@ -338,7 +337,7 @@ ggplot(top_20, aes(x = reorder(SITE_NAME, count), fill = tweet_type, y = count))
   labs(x = "",
        y = "Number of tweets",
        fill = "",
-       title = "Top 20 most tweeted from protected areas* in Santa Barbara") +
+       title = "Top 20 most tweeted from CPAD areas in Santa Barbara") +
   scale_fill_manual(values = c("darkgreen", "gray"), labels = c("Nature-based", "Other")) +
   theme(legend.position = "none",
         plot.title = element_text(hjust = 3.3),
@@ -393,11 +392,11 @@ p1 <- ggplot(twt_df, aes(x = local, y = tourist)) +
     curvature = 0.05,
     arrow = arrow(length = unit(0.01, "npc"), type = "closed"),
     inherit.aes = FALSE) +
-  labs(x = "Locals", y = "Tourists", title = "Proportion of <b style='color:#FF0000'>locals</b> & <b style='color:#0000FF'>tourists</b> visiting protected areas") +
+  labs(x = "Locals", y = "Tourists", title = "Proportion of <b style='color:#FF0000'>locals</b> & <b style='color:#0000FF'>tourists</b> vi\nsiting prCPADreas") +
   ggplot2::annotate("rect", fill = "gray80", alpha = 0.5, 
         xmin = -Inf, xmax = 0.03,
         ymin = -Inf, ymax = 0.03) +
-  theme(plot.title = element_markdown(lineheight = 1.1, size = 14),
+  theme(plot.title = element_markdown(lineheight = 1.1, size = 12),
         legend.position = "none") +
    geom_label(
     data = data.frame(x = 0.015,
@@ -425,8 +424,7 @@ p1 <- ggplot(twt_df, aes(x = local, y = tourist)) +
 
 ```
 
-```{r, fig.width = 10, fig.height = 6}
-
+```{r, fig.height = 5}4
 lower_end <- twt_df %>% 
   filter(local < 0.04 & tourist < 0.04) %>%
   mutate(local = ifelse(is.na(local), 0, local),

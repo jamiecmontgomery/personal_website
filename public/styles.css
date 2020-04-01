@@ -127,7 +127,7 @@ a:focus {
 img,
 video {
   height: auto;
-  max-width: 500px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -666,8 +666,8 @@ article .article-metadata {
 .article-style video {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 0;
+  margin-bottom: 0;
   padding: 0;
 }
 
@@ -678,13 +678,15 @@ article .article-metadata {
 }
 
 .article-style figure {
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
 }
 
 .article-style figure img {
   margin-top: 0;
   margin-bottom: 0;
+  width: 100%;
 }
 
 .article-widget {
