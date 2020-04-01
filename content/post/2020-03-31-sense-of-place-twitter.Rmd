@@ -424,7 +424,7 @@ p1 <- ggplot(twt_df, aes(x = local, y = tourist)) +
 
 ```
 
-```{r, fig.height = 5}4
+```{r, fig.height = 4}
 lower_end <- twt_df %>% 
   filter(local < 0.04 & tourist < 0.04) %>%
   mutate(local = ifelse(is.na(local), 0, local),
@@ -448,7 +448,7 @@ p1+p2 + plot_layout(ncol=2)
 
 ## Sentiment Analysis
 
-Lastly, I wanted to do a sentiment analysis to try and understand patterns and trends in the general sentiment of tweets.
+Lastly, I wanted to do a sentiment analysis to see if the general feeling of nature-based tweets was positive/negative and how they are changing over time. Using the `tidytext` package, I applied a general sentiment lexicon "bing" to every single tweet in the dataset.
 
 The top graphs show the total number of geotagged tweets, which has gone down over time across all groups. The bottom graphs shows average daily sentiment scores over time. Above 0 is positive, below 0 is negative. We see that tweets are mostly positive and growing over time.
 
@@ -595,7 +595,7 @@ p1  + p3 + p5+ p2 + p4 + p6 + plot_layout(ncol=3)
 
 ----
 
-# Geotagged social media data in conservation
+## Geotagged social media data in conservation
 
 Geotagged social media data has been used in recent years to study people's interaction with the natural environment in various ways, many of which are focused on tourism:  
 
@@ -606,22 +606,22 @@ Geotagged social media data has been used in recent years to study people's inte
 
 This project differed in that I wanted to map the spatial patterns of tourists and locals, and understand how these two user groups engage with and perceive the natural environment of Santa Barbara. 
 
-# Future research opportunities
+## Future research opportunities
 
 **Examining scale**
 
 Applying the same or similar method to other regions of different geographic and population sizes could reveal more interesting information and provide context for the patterns and trends we see in Santa Barbara.
 
 Is Santa Barbara unique in that:  
-- tourists and locals have similar spatial patterns  
-- 24% of all geo-tagged tweets are nature-based  
-- Proportion of nature-based tweets is increasing as geotagged tweets decrease overall, and positive sentiment is increasing over time  
+ * tourists and locals have similar spatial patterns  
+ * 24% of all geo-tagged tweets are nature-based  
+ * Proportion of nature-based tweets is increasing as geotagged tweets decrease overall, and positive sentiment is increasing over time  
 
 We might expect the tourist/local alignment to differentiate when looking at highly urban areas (LA, San Francisco), show more alignment in other suburban areas (e.g. Santa Cruz), and maybe not exist in rural locations.
 
 If we look at proportion of tweets that are nature-based across these rural-suburban-urban scales, we may reveal where sentiments or Sense of Place around the natural environment are higher or lower. For example, we would expect a lower proportion of nature-based tweets in New York compared to Santa Barbara. We could also compare the city to state level. Across all geotgagged tweets in California, what is the proportion of nature-based tweets?
 
-# Areas for refinement
+## Areas for refinement
 
 If this method is replicated going forward, there are a few areas where refinement and better data could be improved.
 
@@ -638,4 +638,5 @@ The CPAD dataset is good but not perfect. Some place names needed to be edited a
 There is inherent bias in using social media data to draw broader conclusions about a community. Not everyone has access to social media or uses social media in a similar manner. There are differences across all demographics (genders, ages, ethinicities, economic status) and these were not taken into consideration during this project but should be considered if this is to be expanded upon. There are also differences in who decides to make their account public and explicilty chooses to geotag their tweet (Sloan & Morgan 2015).
 
 
+<br>
 All code is available at this [github repo](https://github.com/ohi-science/sb_sense_of_place). Twitter data is kept offline and secure at the National Center for Ecological Analysis & Synthesis.
