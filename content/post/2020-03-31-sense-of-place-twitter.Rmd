@@ -157,6 +157,16 @@ leaflet(tweet_data) %>%
 #saveWidget(cluster_map, "~/github/personal_website/static/leaflet/cluster_map.html")
 ```
 
+Trying basic leaflet map
+
+```{r out.width = '100%'}
+dc_crime <- sf::st_read("https://opendata.arcgis.com/datasets/dc3289eab3d2400ea49c154863312434_8.geojson", quiet = TRUE)
+
+leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron)%>% 
+  addCircles(data = dc_crime, color = "#800000")
+```
+
 # Defining tourists & locals
 
 This project aimed to understand if and how preferences differ between tourists and locals for nature-based places within the Santa Barbara area. In order to test this I needed to come up with a way to identify tourists or locals. I ended up using a two step process:
