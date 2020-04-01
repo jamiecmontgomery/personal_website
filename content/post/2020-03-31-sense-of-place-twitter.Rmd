@@ -78,7 +78,12 @@ Once downloaded, the twitter data did not contain all desired information, inclu
 
 Here is a sample of the tweet data:
 
-<img src = "/img/tweet_table.png", width = "15" height = "12">
+```{r}
+table <-DT::datatable(sample_n(tweet_data %>% select(-user_id,  -geo_coordinates, -lat, -lon), 7)) 
+
+widgetframe::frameWidget(table)
+```
+
 
 ### Tweets over time
 
