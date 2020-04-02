@@ -53,9 +53,9 @@ Also, Santa Barbara is known for being a tourist town, and having beautiful natu
 
 # Findings
 
-Not surprisingly, tourists and locals both tweet about nature. Tourists tweet about nature more - nearly 42% of all tourist tweets were nature-based, compared to 30% of local tweets. Spatial patterns reveal that tourists tend to stick to popular tourist sites in town including the wharf, waterfront, zoo, santa barbara bowl and more. Santa barbara locals are also found at these sites just not as in high a proportion. Overall there is significant overlap in tourist and local patterns within the downtown area, indicating that tourists and locals alike share a fondness for the same areas and things.
+Not surprisingly, tourists and locals both tweet about nature. Tourists tweet about nature more - nearly 42% of all tourist tweets were nature-based, compared to 30% of local tweets. Spatial patterns reveal that tourists tend to stick to popular tourist sites in town including the wharf, waterfront, zoo, santa barbara bowl and more. Santa Barbara locals are also found at these sites just not as in high a proportion. Overall there is significant overlap in tourist and local patterns within the downtown area, indicating that tourists and locals alike share a fondness for the same areas and things.
 
-In the end, geotagged twitter data gives you the opportunity to examine a lot of different things about a region. Since "sense of place" is such a difficult concept to quantify,  
+This project proves that geotagged twitter data gives you the opportunity to examine how people move within a region, what they care about at certain areas and how user-groups align. Since "Sense of Place" is such a difficult concept to quantify, I think the power of an analysis like this lies in comparison to other regions. If we see that Santa Barbara has a higher than normal rate of visitation to natural areas, or positive sentiment around nature-based tweets compared to other similar regions then maybe we can feel more confident in saying that Santa Barbara has a strong nature-based Sense of Place.
 
 ----
 
@@ -81,7 +81,7 @@ The dataset contained `r nrow(filter(tweet_data_users, user_type == "tourist"))`
 
 Here is a sample of the tweet data:
 
-![](/img/tweet_table.png){width=100%}
+![](/img/tweet_table.png)
 
 ### Tweets over time
 
@@ -605,41 +605,55 @@ p6 <- ggplot(data = combo, aes(x = date, y = avg_score, color = type)) +
 p1  + p3 + p5+ p2 + p4 + p6 + plot_layout(ncol=3)
 ```
 
+### What are people tweeting about?
+
+To see what people are tweeting about I applied a **Term Frequency-Inverse Term Frequency (TF-IDF)** analysis, which identifies words within tweets that are not only most common (e.g. "the", "to", "santa barbara"), but most "important". TF-IDF is measure of how important a word is to a document in a corpus of documents, or in this case how important a word is to all nature-based tweets.
+
+Clearly **beach** is the winner here!
+
+![](/img/sb_nature_tweets_top_words.png)
+
+I applied the same analysis to each CPAD areas. Admittedly, this will be most interesting for people familiar to Santa Barbara. Douglas Family Preserve is a known off-leash dog park, which is why we see "dog" and "leash" at the 2 and 3 spots. Ellwood Mesa has a small Monarch butterfly preserve, hence the presence of "butterfly", and East Beach is the place to go to play beach volleyball.
+
+![](/img/cpad_tweets_top_words.png)
+
+And finally, I couldn't end the project without doing a wordcloud for all of Santa Barbara!
+
+![](/img/wordcloud_top_100_all_sb.png)
+
 ----
 
-## Geotagged social media data in conservation
+## Closing thoughts
+
+### Geotagged social media data in conservation
 
 Geotagged social media data has been used in recent years to study people's interaction with the natural environment in various ways, many of which are focused on tourism:  
 
-- Quantifying nature-based tourism (Wood et al. 2013, Kim et al. 2019)  
-- Mapping tourist footprints (Runge & Daigle 2020), flows (Chua et al. 2016), and hot spots (Garcia-Palomares et al. 2015)  
-- Understand tourist preferences in nature based places such as Kruger National Park (Hausmann et al. 2017, Levin et al. 2017, Tenkanen  et al. 2017)  
-- Monitor and measure environmental conditions of places (e.g. Great Barrier Reef, Becken et al. 2017)  
+- Quantifying nature-based tourism ( [Wood et al. 2013](https://www.nature.com/articles/srep02976/), [Kim et al. 2019](https://www.sciencedirect.com/science/article/pii/S0261517718303091)) 
+- Mapping tourist footprints ( [Runge & Daigle 2020](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0227189), flows ([Chua et al. 2016](https://www.sciencedirect.com/science/article/abs/pii/S0261517716301005)), and hot spots ([Garcia-Palomares et al. 2015](https://www.sciencedirect.com/science/article/abs/pii/S0143622815001952)) 
+- Understand tourist preferences in nature based places such as Kruger National Park ([Hausmann et al. 2017](https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/conl.12343), [Levin et al. 2017](https://www.landscapevalues.org/publications/crowd_JAPG_final.pdf), [Tenkanen  et al. 2017](https://www.nature.com/articles/s41598-017-18007-4)) 
+- Monitor and measure environmental conditions of places (e.g. Great Barrier Reef, [Becken et al. 2017](https://www.ncbi.nlm.nih.gov/pubmed/28779604)) 
 
 This project differed in that I wanted to map the spatial patterns of tourists and locals, and understand how these two user groups engage with and perceive the natural environment of Santa Barbara. 
 
-## Future research opportunities
+### Future research opportunities
 
-**Examining scale**
+Applying the same or similar method to other regions of different geographic and population sizes could reveal more interesting information and provide context for the patterns and trends we see in Santa Barbara. We might expect the tourist/local alignment to differentiate when looking at highly urban areas (LA, San Francisco), show more alignment in other suburban areas (e.g. Santa Cruz), and maybe not exist in rural locations.
 
-Applying the same or similar method to other regions of different geographic and population sizes could reveal more interesting information and provide context for the patterns and trends we see in Santa Barbara.
-
-Is Santa Barbara unique in that:  
+By making comparisons to more rural and urban regions, we could start asking if Santa Barbara is unique in that:  
 
 * tourists and locals have similar spatial patterns  
-* 24% of all geo-tagged tweets are nature-based  
-* Proportion of nature-based tweets is increasing as geotagged tweets decrease overall, and positive sentiment is increasing over time  
-
-We might expect the tourist/local alignment to differentiate when looking at highly urban areas (LA, San Francisco), show more alignment in other suburban areas (e.g. Santa Cruz), and maybe not exist in rural locations.
+* 24% of all geo-tagged tweets are nature-based (seems high!) 
+* the proportion of nature-based tweets is increasing as geotagged tweets decrease overall, and positive sentiment is increasing over time  
 
 If we look at proportion of tweets that are nature-based across these rural-suburban-urban scales, we may reveal where sentiments or Sense of Place around the natural environment are higher or lower. For example, we would expect a lower proportion of nature-based tweets in New York compared to Santa Barbara. We could also compare the city to state level. Across all geotgagged tweets in California, what is the proportion of nature-based tweets?
 
-## Areas for refinement
+### Areas for refinement
 
 If this method is replicated going forward, there are a few areas where refinement and better data could be improved.
 
 **Identifying tourists and locals**  
-If we had access to a larger twitter dataset, we could identify where tourists are "from" (or where they tweet more consistently) to confirm their tourist status, instead of relying on the number of months a user tweets within an area.
+If I had access to a larger twitter dataset, I could identify where tourists are "from" (or where they tweet more consistently) to confirm their tourist status, instead of relying on the number of months a user tweets within an area.
 
 **Nature-based dictionary**   
 The dictionary compiled for this project was based solely on my own perspective of nature-based words. It also leaned heavily on what I would expect people to tweet about in Santa Barbara (e.g. "lobster", "islands", "wharf"). Ideally a dictionary used to identify nature-based tweets would be developed using more robust methods across a more geographically representative area. 
