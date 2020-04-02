@@ -61,7 +61,7 @@ This project proves that geotagged twitter data gives you the opportunity to exa
 
 # Getting twitter data
 
-Going into this project, I thought that twitter data would be easily accessibly based on the number of different projects I had been seeing that used Twitter data and related R packages. But I quickly learned that this was not the case and Twitter only allows free public access to past 9 days of tweets. This was a problem since we wanted all tweets from January 1, 2015 - December 31, 2019.
+When I started working on this I thought that twitter data would be easily accessibly based on the number of different projects I had been seeing that used Twitter data and related R packages. But I quickly learned that this was not the case and Twitter only allows free public access to past 9 days of tweets. This was a problem since we wanted all tweets from January 1, 2015 - December 31, 2019.
 
 Twitter data was obtained freely through an established partnership between UCSB Library and Crimson Hexagon. Before downloading, the data was queried to meet the following conditions:
 
@@ -85,7 +85,7 @@ Here is a sample of the tweet data:
 
 ### Tweets over time
 
-Almost immediately after plotting tweets over time you can see that the total number of geotagged tweets is going down over time. Most noticeably, there is a significant drop in tweets at the end of April, 2015. It seems this is due "a change in Twitter’s ‘post Tweet’ user-interface design results in fewer Tweets being geo-tagged" ( [source](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline)). The first 4 months of 2015 have 15,720 tweets, or roughly 19% of all tweets. To reduce a skew in the data and remove geotagged tweets that may have been geotagged without knowledge by the user in those months, *I moved forward with all tweets from May 1, 2015 through the end of 2019*.
+The total number of geotagged tweets is going down over time and, most noticeably, there is a significant drop in tweets at the end of April, 2015. It seems this is due "a change in Twitter’s ‘post Tweet’ user-interface design results in fewer Tweets being geo-tagged" ( [source](https://developer.twitter.com/en/docs/tweets/data-dictionary/guides/tweet-timeline)). The first 4 months of 2015 have 15,720 tweets, or roughly 19% of all tweets. To reduce a skew in the data and remove geotagged tweets that may have been geotagged without knowledge by the user in those months, *I moved forward with all tweets from May 1, 2015 through the end of 2019*.
 
 ```{r tweets_over_time, fig.height = 4}
 time_df <- read_csv("~/github/sb_sense_of_place/data/geotagged_sb_tweets.csv") %>%
@@ -183,7 +183,7 @@ ggmap(sb.map,  legend="none") +
 
 
 ```{r}
-
+#not sure this code is used anywhere else...
 hex_grid <- read_sf("~/github/sb_sense_of_place/data/sb_area_hexagons.shp") %>%
   st_set_crs(st_crs(tweet_data_users_sf))
 
@@ -196,7 +196,7 @@ tourists <- tweet_data_users_sf %>% filter(user_type == "tourist")
 
 # What tweets are "nature-based"?
 
-For this project, we wanted to understand how these two groups engage with the natural environment within Santa Barbara, and whether or not patterns through time and space could be used to understand what is and is not important to people.
+The next step was to understand how these two groups engage with the natural environment within Santa Barbara, and whether or not patterns through time and space could be used to understand what is and is not important to tourists & locals.
 
 Ideally I would've used an established nature "lexicon" (*definition: the vocabulary of a language, an individual speaker or group of speakers, or a subject*) but my search for such a thing turned up empty. So, I created my own dictionary of 67 words that I think would qualify a tweet as being "nature-based". These include recreational words, natural features, animals, and environmental words. I fully recognize this is a dictionary that is biased towards my view of nature-based words and tailored to best capture Santa Barbara centric tweets. I would not recommend this dictionary be used for other non-coastal California areas.
 
@@ -364,6 +364,8 @@ ggplot(top_20, aes(x = reorder(SITE_NAME, count), fill = tweet_type, y = count))
               data = top_20_prop, hjust = -0.05, size = 3) +
   ylim(0, 1510)
 ```
+
+What I take away from this is that most of the designated CPAD areas have a majority of nature-based tweets, indicating that most visitors to these areas are there to engage with nature.
 
 # Do tourists and locals visit the same or different natural sites?
 
@@ -630,7 +632,7 @@ And finally, I couldn't end the project without doing a wordcloud for all of San
 Geotagged social media data has been used in recent years to study people's interaction with the natural environment in various ways, many of which are focused on tourism:  
 
 - Quantifying nature-based tourism ( [Wood et al. 2013](https://www.nature.com/articles/srep02976/), [Kim et al. 2019](https://www.sciencedirect.com/science/article/pii/S0261517718303091)) 
-- Mapping tourist footprints ( [Runge & Daigle 2020](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0227189), flows ([Chua et al. 2016](https://www.sciencedirect.com/science/article/abs/pii/S0261517716301005)), and hot spots ([Garcia-Palomares et al. 2015](https://www.sciencedirect.com/science/article/abs/pii/S0143622815001952)) 
+- Mapping tourist footprints ( [Runge & Daigle 2020](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0227189)), flows ([Chua et al. 2016](https://www.sciencedirect.com/science/article/abs/pii/S0261517716301005)), and hot spots ([Garcia-Palomares et al. 2015](https://www.sciencedirect.com/science/article/abs/pii/S0143622815001952)) 
 - Understand tourist preferences in nature based places such as Kruger National Park ([Hausmann et al. 2017](https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/conl.12343), [Levin et al. 2017](https://www.landscapevalues.org/publications/crowd_JAPG_final.pdf), [Tenkanen  et al. 2017](https://www.nature.com/articles/s41598-017-18007-4)) 
 - Monitor and measure environmental conditions of places (e.g. Great Barrier Reef, [Becken et al. 2017](https://www.ncbi.nlm.nih.gov/pubmed/28779604)) 
 
