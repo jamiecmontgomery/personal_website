@@ -33,17 +33,29 @@ register_google(Sys.getenv("GOOGLE_ACCESS_TOKEN"))
 
 **The aim of this project was to evaluate whether or not geotagged social media data can be useful in providing insight into a region's "Sense of Place" using Santa Barbara as a case study.** 
 
-Sense of Place can be defined as the connection people feel to their geographic surroundings, including both the natural and built environment. Locations with a strong sense of place often have a strong identity felt by both locals and visitors. 
+How and where people experience and value coastal and ocean areas can reveal places we deem special. Sense of place can be defined as the connection people feel to their geographic surroundings, including both the natural and built environment. Locations with a strong sense of place often have a strong identity felt by both locals and visitors. Sense of place is important for the well-being of both people and the places we value because we are likely to take better care of places that are most important to us. 
+
+Sense of place has been qualitatively studied over time, but more quantitative studies have been lacking due to limited data. Thanks to location-based social media data we now have unprecedented amounts of location and sentiment data, allowing more quantitative exploration of the shared meaning of place.
+
+This project used geotagged twitter data from Santa Barbara, California to see if we can measure Sense of Place with social media data. Specifically I used the data to:  
+
+1. look at how people use natural spaces
+2. understand spatial patterns of different user-groups (tourists and locals) 
+3. apply a sentiment analysis to learn how positive or negative nature-based tweets are over time
+
+within Santa Barbara.
 
 ### Why Santa Barbara?
 
-The easy answer - I live here! Since I know the city and surrounding areas rather well, I could quickly look at spatial patterns and know what is happening in different locations. The total number of tweets coming from Santa Barbara is also more manageable compared to a much larger, urban city.
+The easy answer - I live here! Since I know the city and surrounding areas rather well, I could quickly look at spatial patterns and know what is happening in different locations. The total number of tweets coming from Santa Barbara is also more manageable compared to a much larger, urban city. Additionally, this project was done to look specifically at coastal Sense of Place, requiring a location along the coast.
 
 Also, Santa Barbara is known for being a tourist town, and having beautiful natural and built landscapes (ok - I might be a bit biased here) and therefore provides a unique opportunity to look at two distinct "user-groups" (tourists and locals).
 
 # Findings
 
-Not surprisingly, tourists and locals both tweet about nature. Tourists tweet about nature more - nearly 42% of all tourist tweets were nature-based, compared to 30% of local tweets. Spatial patterns reveal that tourists tend to stick to popular tourist sites in town including the wharf, waterfront, zoo, santa barbara bowl and more. Santa barbara locals are also found at these sites just not as in high a proportion. Overall there is significant overlap in tourist and local patterns within the downtown area, indicating that tourists and locals alike share a fondness for the same areas and things. 
+Not surprisingly, tourists and locals both tweet about nature. Tourists tweet about nature more - nearly 42% of all tourist tweets were nature-based, compared to 30% of local tweets. Spatial patterns reveal that tourists tend to stick to popular tourist sites in town including the wharf, waterfront, zoo, santa barbara bowl and more. Santa barbara locals are also found at these sites just not as in high a proportion. Overall there is significant overlap in tourist and local patterns within the downtown area, indicating that tourists and locals alike share a fondness for the same areas and things.
+
+In the end, geotagged twitter data gives you the opportunity to examine a lot of different things about a region. Since "sense of place" is such a difficult concept to quantify,  
 
 ----
 
@@ -194,9 +206,11 @@ nature_df <- read_csv("~/github/sb_sense_of_place/data/tweets_nature_categorized
 dictionary$word
 ```
 
-Let's look at some examples of what tweets qualified as "nature-based".
+Let's look at some examples of what tweets qualified as "nature-based". Most of these are in fact nature-based but clearly the third one about burritos and burgers is not. It looks like this tweet was tagged at a local restaurant called "Sandbar" which is why it gets marked as having a nature word ("sand"). This group of tweets also highlights some of the issues with how we assigned locals and tourists. That same user lists their location as "Folsom, CA" which is 6 hours from Santa Barbara. But my method assigned this person as a local which means they must have tweeted from Santa Barbara in at least 3 unique months in a year. One reason for this may be that students at SB City College or UC Santa Barbara are local for most of the year but still use their home location in their twitter profile `r emo::ji('shrug')`.
 
 ![](/img/nature_tweet_table.png)
+
+<br>
 
 Again, we see most of the nature-based tweets in Santa Barbara are clustered around high density population centers including State Street, the harbor and the wharf.
 
@@ -265,9 +279,11 @@ ggplot(combo, aes(x = date, y = nature_prop, color = user_type)) +
                       labels = c("All tweets", "Tourists", "Locals"))
 ```
 
-## Are tweets in protected areas more often nature-based?
+### Are tweets in natural areas more often nature-based?
 
-To link tweet locations to what exists at those locations we need to use a spatial dataset that tells us what is there. This could be roads, city parcel information, or in our case we are using protected areas from the [California Protected Areas Database](https://www.calands.org/). 
+You would think yes, but this dataset gives us an opportunity to look at what is being tweeted from areas that are designated as "protected" by using the [California Protected Areas Database](https://www.calands.org/). The use of the word "protected" here is a bit loose and includes areas like the Santa Barbara Bowl (an outdoor music venue), and a maritime museum. But, generally, these designated areas are known for their access to nature.
+
+You can see the designated areas within the southern part of Santa Barbara county below:
 
 ```{r}
 cpad <- read_sf("~/github/sb_sense_of_place/data/cpad_fixed.shp") %>%
@@ -295,7 +311,9 @@ nature_sf <- nature_df %>%
 
 <br>
 
-We can look at the top 20 most popular tweeted-from sites. The green highlighted portion represents nature-based tweets. The number indicates what percentage of all tweets are nature-based at each site. Names in **bold** indicate over 50% of tweets are nature-based.
+By overlaying the twitter dataset with this map I can look at the number of tweets per area, types of tweets (nature or not) and who is tweeting/visiting these areas. This chart shows the top 20 most popular tweeted-from sites. The green highlighted portion represents nature-based tweets. The number indicates what percentage of all tweets are nature-based at each site. Names in **bold** indicate over 50% of tweets are nature-based.
+
+One surprising thing is the most tweeted from place is Manning Park in Montectio. Even though I've lived in Santa Barbara for 9 years, I had never heard of this small park! I dug into this and it looks like the default geotag for "Montecito, California" uses a coordinate that just happens to fall within the park boundaries, which explains why we see a smaller proportion of nature-based tweets from this "nature-based area".
 
 ```{r, echo = FALSE}
 nature_tweets <- nature_sf %>%
@@ -381,7 +399,7 @@ p1 <- ggplot(twt_df, aes(x = local, y = tourist)) +
   geom_abline(color = "gray") +
   theme_classic() +
   theme(legend.position = "none") +
-  geom_text_repel(aes(label = label), size = 2.75, min.segment.length = 0.5, point.padding = 0.3, segment.alpha =0.4) +
+  geom_text_repel(aes(label = label), size = 2.2, min.segment.length = 0.5, point.padding = 0.3, segment.alpha =0.4) +
   geom_curve(data = data.frame(x = 0.03,
                       y = 0.005, 
                       xend = 0.1,
@@ -392,11 +410,14 @@ p1 <- ggplot(twt_df, aes(x = local, y = tourist)) +
     curvature = 0.05,
     arrow = arrow(length = unit(0.01, "npc"), type = "closed"),
     inherit.aes = FALSE) +
-  labs(x = "Locals", y = "Tourists", title = "Proportion of <b style='color:#FF0000'>locals</b> & <b style='color:#0000FF'>tourists</b> vi\nsiting prCPADreas") +
+  labs(x = "Locals",
+       y = "Tourists", 
+       title = "Proportion of <b style='color:#FF0000'>locals</b> & <b style='color:#0000FF'>tourists</b> visiting",
+       subtitle = "CPAD areas") +
   ggplot2::annotate("rect", fill = "gray80", alpha = 0.5, 
         xmin = -Inf, xmax = 0.03,
         ymin = -Inf, ymax = 0.03) +
-  theme(plot.title = element_markdown(lineheight = 1.1, size = 12),
+  theme(plot.title = element_markdown(lineheight = 1.1, size = 11),
         legend.position = "none") +
    geom_label(
     data = data.frame(x = 0.015,
@@ -439,7 +460,7 @@ p2 <- ggplot(lower_end, aes(x = local, y = tourist)) +
   geom_abline(color = "gray") +
   theme_classic() +
   theme(legend.position = "none") +
-  geom_text_repel(aes(label = label), size = 2.75,min.segment.length = 0.5, point.padding = 0.3, segment.alpha =0.4) +
+  geom_text_repel(aes(label = label), size = 2.2, min.segment.length = 0.5, point.padding = 0.3, segment.alpha =0.4) +
   labs(x = "Locals", y = "", title = "")
 
 p1+p2 + plot_layout(ncol=2)
@@ -448,9 +469,11 @@ p1+p2 + plot_layout(ncol=2)
 
 ## Sentiment Analysis
 
-Lastly, I wanted to do a sentiment analysis to see if the general feeling of nature-based tweets was positive/negative and how they are changing over time. Using the `tidytext` package, I applied a general sentiment lexicon "bing" to every single tweet in the dataset.
+Lastly, I wanted to do a sentiment analysis to see if the general feeling of nature-based tweets was positive/negative and how they are changing over time. Using the `tidytext` package, I applied a general sentiment lexicon called *bing* to every single tweet in the dataset. The *bing* lexicon "categorizes words in a binary fashion into positive and negative categories". From here we can look at averages over time. While there are expected fluctuations in tweet sentiments day by day, I applied a smoothed mean for a better look at changes over time. 
 
-The top graphs show the total number of geotagged tweets, which has gone down over time across all groups. The bottom graphs shows average daily sentiment scores over time. Above 0 is positive, below 0 is negative. We see that tweets are mostly positive and growing over time.
+The top graphs show the total number of geotagged tweets, which has gone down over time across all groups. The bottom graphs shows average daily sentiment scores over time. Above 0 is positive, below 0 is negative. 
+
+**We see that on average tweets from Santa Barbara are positive and continue to grow in "positivity" over time**
 
 ```{r}
 #sentiment score over time for all tweets
@@ -472,9 +495,9 @@ allsb <- bind_rows(sb, sb_nat)
 
 
 labels <- data.frame(type = c("Nature-based", "Non-nature based", "All"), 
-                     avg_score = c(0.7, 0.3, 0.6)) %>%
+                     avg_score = c(0.7, 0.28, 0.6)) %>%
                      mutate(date = 
-                              c(as.Date("2019-12-01"), 
+                              c(as.Date("2019-08-01"), 
                                 as.Date("2018-07-01"), 
                                 as.Date("2018-10-20")))
 
@@ -492,7 +515,7 @@ p2 <- ggplot(data = allsb, aes(x = date, y = avg_score, color = type)) +
   theme_classic() +
   theme(legend.position = "none") +
   labs(y = "Score", x= "", title = "Average sentiment") +
-  geom_text(data = labels, aes(x = date, y = avg_score, label = type), size = 3) +
+  geom_text(data = labels, aes(x = date, y = avg_score, label = type), size = 2.5) +
   scale_x_date(expand = expand_scale(mult = c(0, 0.1))) +
   scale_colour_manual(values = c("black", "darkgreen", "gray50", "black", "darkgreen", "gray50"),
                       labels = c("Nature-based", "Non nature-based", "All" ))
@@ -511,13 +534,7 @@ t_nn <- bing_scores  %>%
   summarize(avg_score = mean(score)) %>%
   mutate(type = "Tourist non-nature")
 
-
 combo <- bind_rows(t_n, t_nn)
-
-
-labels <- data.frame(type = c("Nature based", "Non-nature based"), 
-                     avg_score = c(0.71, 0.5)) %>%
-                     mutate(date = as.Date("2019-11-15"))
 
 tourist_tweet_count <- tweet_data_users %>% 
                         filter(date > "2015-04-28",
@@ -538,11 +555,10 @@ p4 <- ggplot(data = combo, aes(x = date, y = avg_score, color = type)) +
   geom_smooth(se = F) +
   theme_classic() +
   theme(legend.position = "none") +
-  labs(y = "", x= "", title = "") +
-  geom_text(data = labels, aes(x = date, y = avg_score, label = type), size = 3.5) +
+  labs(y = "", x= "", title = "")  +
   scale_x_date(expand = expand_scale(mult = c(0, 0.1))) +
   scale_colour_manual(values = c("darkgreen","gray30", "darkgreen", "gray50"),
-                      labels = c("Nature-based", "Non nature-based"))
+                      labels = c("", ""))
 
 ```
 
@@ -561,9 +577,6 @@ l_nn <- bing_scores  %>%
 
 combo <- bind_rows(l_n, l_nn)
 
-labels <- data.frame(type = c("Nature based", "Non-nature based"), 
-                     avg_score = c(0.62, 0.73)) %>%
-                     mutate(date = as.Date("2020-01-30"))
 
 local_tweet_count <- tweet_data_users %>% 
                         filter(date > "2015-04-28",
@@ -584,10 +597,9 @@ p6 <- ggplot(data = combo, aes(x = date, y = avg_score, color = type)) +
   theme_classic() +
   theme(legend.position = "none") +
   labs(y = "", x= "", title = "") +
-  geom_text(data = labels, aes(x = date, y = avg_score, label = type), size = 3.5) +
   scale_x_date(expand = expand_scale(mult = c(0, 0.1))) +
   scale_colour_manual(values = c("darkgreen","gray30", "darkgreen", "gray50"),
-                      labels = c("Nature-based", "Non nature-based"))
+                      labels = c("", ""))
 
 
 p1  + p3 + p5+ p2 + p4 + p6 + plot_layout(ncol=3)
@@ -613,9 +625,10 @@ This project differed in that I wanted to map the spatial patterns of tourists a
 Applying the same or similar method to other regions of different geographic and population sizes could reveal more interesting information and provide context for the patterns and trends we see in Santa Barbara.
 
 Is Santa Barbara unique in that:  
- * tourists and locals have similar spatial patterns  
- * 24% of all geo-tagged tweets are nature-based  
- * Proportion of nature-based tweets is increasing as geotagged tweets decrease overall, and positive sentiment is increasing over time  
+
+* tourists and locals have similar spatial patterns  
+* 24% of all geo-tagged tweets are nature-based  
+* Proportion of nature-based tweets is increasing as geotagged tweets decrease overall, and positive sentiment is increasing over time  
 
 We might expect the tourist/local alignment to differentiate when looking at highly urban areas (LA, San Francisco), show more alignment in other suburban areas (e.g. Santa Cruz), and maybe not exist in rural locations.
 
