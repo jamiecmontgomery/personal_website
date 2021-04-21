@@ -50,17 +50,17 @@ defaultContentLanguageInSubdir = false
   font = "default"
 
   # Your details.
-  name = "Jamie (Afflerbach) Montgomery"
-  role = "Marine Data Scientist"
+  name = "Jamie Montgomery"
+  role = "Master's of Environmental Data Science Program Coordinator"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "National Center for Ecological Analysis & Synthesis (NCEAS)", url = "https://www.nceas.ucsb.edu/" } ]
+  organizations = [ {name = "Bren School of Environmental Science & Management", url = "https://bren.ucsb.edu/masters-programs/master-environmental-data-science"}, { name = "National Center for Ecological Analysis & Synthesis (NCEAS)", url = "https://www.nceas.ucsb.edu/" } ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
-  email = "montgomery@nceas.ucsb.edu"
-  address = "Office 317-A, Suite 300, 735 State Street, Santa Barbara, CA 93101"
+  email = "jmontgomery@bren.ucsb.edu"
+  address = ""
   twitter = "jamiecmonty"
   github = "jamiecmontgomery"
 
