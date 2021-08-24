@@ -1,42 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Jamie Montgomery</title>
-    <link>/project/</link>
+    <link>http://www.jamiecmontgomery.com/project/</link>
     <description>Recent content in Projects on Jamie Montgomery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Mon, 24 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 24 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cumulative Human Impacts</title>
-      <link>/project/cumulativehumanimpacts/</link>
+      <link>http://www.jamiecmontgomery.com/project/cumulativehumanimpacts/</link>
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/project/cumulativehumanimpacts/</guid>
-      <description></description>
+      <guid>http://www.jamiecmontgomery.com/project/cumulativehumanimpacts/</guid>
+      <description>Estimating and tracking human impacts on marine ecosystems</description>
     </item>
     
     <item>
       <title>Data-Limited Fisheries</title>
-      <link>/project/datalimited/</link>
+      <link>http://www.jamiecmontgomery.com/project/datalimited/</link>
       <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/datalimited/</guid>
-      <description></description>
+      <guid>http://www.jamiecmontgomery.com/project/datalimited/</guid>
+      <description>A working group focused on developing new methods for assessing the status of data poor fish stocks globally.</description>
     </item>
     
     <item>
       <title>Ocean Health Index</title>
-      <link>/project/oceanhealthindex/</link>
+      <link>http://www.jamiecmontgomery.com/project/oceanhealthindex/</link>
       <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/project/oceanhealthindex/</guid>
-      <description></description>
+      <guid>http://www.jamiecmontgomery.com/project/oceanhealthindex/</guid>
+      <description>The Ocean Health Index is a framework to measure the health of the oceans. Understanding the state of our oceans is a first step towards ensuring they can continue providing humans benefits now and in the future.</description>
     </item>
     
   </channel>

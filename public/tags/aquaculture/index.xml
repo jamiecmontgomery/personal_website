@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aquaculture on Jamie Montgomery</title>
+    <link>http://www.jamiecmontgomery.com/tags/aquaculture/</link>
+    <description>Recent content in aquaculture on Jamie Montgomery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Tue, 23 Jan 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/tags/aquaculture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualizing growth in global seafood production</title>
+      <link>http://www.jamiecmontgomery.com/post/global_seafood_growth_dataviz/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jamiecmontgomery.com/post/global_seafood_growth_dataviz/</guid>
+      <description>Creating a dynamic figure using gganimate and tweenr.</description>
+    </item>
+    
+  </channel>
+</rss>

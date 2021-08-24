@@ -1,44 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Jamie Montgomery</title>
-    <link>/post/</link>
+    <link>http://www.jamiecmontgomery.com/post/</link>
     <description>Recent content in Posts on Jamie Montgomery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0800</lastBuildDate>
-    
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Santa Barbara&#39;s nature-based &#39;Sense of Place&#39;, as told by twitter</title>
-      <link>/post/santa-barbara-twitter/</link>
+      <link>http://www.jamiecmontgomery.com/post/santa-barbara-twitter/</link>
       <pubDate>Tue, 31 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/santa-barbara-twitter/</guid>
+      <guid>http://www.jamiecmontgomery.com/post/santa-barbara-twitter/</guid>
       <description>The aim of this project was to evaluate whether or not geotagged social media data can be useful in providing insight into a region’s “Sense of Place” using Santa Barbara as a case study.
 How and where people experience and value coastal and ocean areas can reveal places we deem special. Sense of place can be defined as the connection people feel to their geographic surroundings, including both the natural and built environment.</description>
     </item>
     
     <item>
       <title>Cropping rasters down to size</title>
-      <link>/post/cropping-rasters-down-to-size/</link>
+      <link>http://www.jamiecmontgomery.com/post/cropping-rasters-down-to-size/</link>
       <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/cropping-rasters-down-to-size/</guid>
+      <guid>http://www.jamiecmontgomery.com/post/cropping-rasters-down-to-size/</guid>
       <description>This blog post was originally written for OHI-Science.org
 A significant portion of my work on the Ocean Health Index (OHI) involves working with raster data, a specific type of spatial data where values are held in grid cells. The data I work with varies from high resolution, remotely sensed data on sea surface temperature to coarse, modeled data on global fish catch. When I was working on the global assessment, I dealt with raster data at a global scale.</description>
     </item>
     
     <item>
       <title>Visualizing growth in global seafood production</title>
-      <link>/post/global_seafood_growth_dataviz/</link>
+      <link>http://www.jamiecmontgomery.com/post/global_seafood_growth_dataviz/</link>
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/global_seafood_growth_dataviz/</guid>
-      <description>I’m excited to be part of a new research group - the Conservation Aquaculture Research Team at NCEAS. Our group is interested in helping shape the future of sustainable aquaculture. Over the past couple of decades, farmed seafood has grown significantly and is likely to become the dominant source of where we get our fish as global populations increase. I wanted to take a look at this trend over time using data from the Food and Agriculture Organization (FAO).</description>
+      <guid>http://www.jamiecmontgomery.com/post/global_seafood_growth_dataviz/</guid>
+      <description>Creating a dynamic figure using gganimate and tweenr.</description>
     </item>
     
   </channel>

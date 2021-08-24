@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>datalimited on Jamie Montgomery</title>
+    <link>http://www.jamiecmontgomery.com/tags/datalimited/</link>
+    <description>Recent content in datalimited on Jamie Montgomery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 16 Aug 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/tags/datalimited/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data-Limited Fisheries</title>
+      <link>http://www.jamiecmontgomery.com/project/datalimited/</link>
+      <pubDate>Wed, 16 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jamiecmontgomery.com/project/datalimited/</guid>
+      <description>A working group focused on developing new methods for assessing the status of data poor fish stocks globally.</description>
+    </item>
+    
+  </channel>
+</rss>

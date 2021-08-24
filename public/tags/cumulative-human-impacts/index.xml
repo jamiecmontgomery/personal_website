@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cumulative-human-impacts on Jamie Montgomery</title>
+    <link>http://www.jamiecmontgomery.com/tags/cumulative-human-impacts/</link>
+    <description>Recent content in cumulative-human-impacts on Jamie Montgomery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 24 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/tags/cumulative-human-impacts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cumulative Human Impacts</title>
+      <link>http://www.jamiecmontgomery.com/project/cumulativehumanimpacts/</link>
+      <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jamiecmontgomery.com/project/cumulativehumanimpacts/</guid>
+      <description>Estimating and tracking human impacts on marine ecosystems</description>
+    </item>
+    
+  </channel>
+</rss>

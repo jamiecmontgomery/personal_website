@@ -1,11 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     
     
     <url>
     
-      <loc>/post/santa-barbara-twitter/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication_types/2/</loc>
+      <lastmod>2021-06-22T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/</loc>
+      <lastmod>2021-06-22T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/publication/ohine/</loc>
+      <lastmod>2021-06-22T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/publication_types/</loc>
+      <lastmod>2021-06-22T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/post/santa-barbara-twitter/</loc>
       <lastmod>2020-03-31T00:00:00+00:00</lastmod>
     </url>
     
@@ -14,7 +49,7 @@
     
     <url>
     
-      <loc>/talk/mapview_mapedit/</loc>
+      <loc>http://www.jamiecmontgomery.com/talk/mapview_mapedit/</loc>
       <lastmod>2020-02-04T00:00:00+00:00</lastmod>
     </url>
     
@@ -23,7 +58,7 @@
     
     <url>
     
-      <loc>/publication/ohibc/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/ohibc/</loc>
       <lastmod>2020-01-30T00:00:00+00:00</lastmod>
     </url>
     
@@ -32,7 +67,7 @@
     
     <url>
     
-      <loc>/publication/seaweed/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/seaweed/</loc>
       <lastmod>2019-09-23T00:00:00+00:00</lastmod>
     </url>
     
@@ -41,7 +76,7 @@
     
     <url>
     
-      <loc>/publication/chi_rate_of_change/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/chi_rate_of_change/</loc>
       <lastmod>2019-08-12T00:00:00+00:00</lastmod>
     </url>
     
@@ -50,7 +85,7 @@
     
     <url>
     
-      <loc>/publication/ohi_fish_uncertainty/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/ohi_fish_uncertainty/</loc>
       <lastmod>2019-01-15T00:00:00+00:00</lastmod>
     </url>
     
@@ -59,7 +94,7 @@
     
     <url>
     
-      <loc>/talk/ohi-2018-results/</loc>
+      <loc>http://www.jamiecmontgomery.com/talk/ohi-2018-results/</loc>
       <lastmod>2018-12-05T00:00:00+00:00</lastmod>
     </url>
     
@@ -68,7 +103,7 @@
     
     <url>
     
-      <loc>/project/cumulativehumanimpacts/</loc>
+      <loc>http://www.jamiecmontgomery.com/project/cumulativehumanimpacts/</loc>
       <lastmod>2018-09-24T00:00:00+00:00</lastmod>
     </url>
     
@@ -77,7 +112,34 @@
     
     <url>
     
-      <loc>/publication/datalimited_mse/</loc>
+      <loc>http://www.jamiecmontgomery.com/tags/cumulative-human-impacts/</loc>
+      <lastmod>2018-09-24T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/project/</loc>
+      <lastmod>2018-09-24T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/tags/</loc>
+      <lastmod>2018-09-24T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/publication/datalimited_mse/</loc>
       <lastmod>2018-09-19T00:00:00+00:00</lastmod>
     </url>
     
@@ -86,7 +148,7 @@
     
     <url>
     
-      <loc>/publication/arctic_ohi/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/arctic_ohi/</loc>
       <lastmod>2018-08-29T00:00:00+00:00</lastmod>
     </url>
     
@@ -95,7 +157,7 @@
     
     <url>
     
-      <loc>/post/cropping-rasters-down-to-size/</loc>
+      <loc>http://www.jamiecmontgomery.com/post/cropping-rasters-down-to-size/</loc>
       <lastmod>2018-04-26T00:00:00+00:00</lastmod>
     </url>
     
@@ -104,7 +166,25 @@
     
     <url>
     
-      <loc>/talk/blogdown_website/</loc>
+      <loc>http://www.jamiecmontgomery.com/tags/ocean-health-index/</loc>
+      <lastmod>2018-04-26T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/tags/spatial/</loc>
+      <lastmod>2018-04-26T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/talk/blogdown_website/</loc>
       <lastmod>2018-03-14T00:00:00+00:00</lastmod>
     </url>
     
@@ -113,7 +193,7 @@
     
     <url>
     
-      <loc>/post/global_seafood_growth_dataviz/</loc>
+      <loc>http://www.jamiecmontgomery.com/tags/aquaculture/</loc>
       <lastmod>2018-01-23T00:00:00+00:00</lastmod>
     </url>
     
@@ -122,7 +202,34 @@
     
     <url>
     
-      <loc>/publication/bsr/</loc>
+      <loc>http://www.jamiecmontgomery.com/tags/data-visualization/</loc>
+      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/tags/rstats/</loc>
+      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/post/global_seafood_growth_dataviz/</loc>
+      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/publication/bsr/</loc>
       <lastmod>2017-10-31T00:00:00+00:00</lastmod>
     </url>
     
@@ -131,7 +238,7 @@
     
     <url>
     
-      <loc>/project/datalimited/</loc>
+      <loc>http://www.jamiecmontgomery.com/project/datalimited/</loc>
       <lastmod>2017-08-16T00:00:00+00:00</lastmod>
     </url>
     
@@ -140,7 +247,7 @@
     
     <url>
     
-      <loc>/project/oceanhealthindex/</loc>
+      <loc>http://www.jamiecmontgomery.com/tags/datalimited/</loc>
       <lastmod>2017-08-16T00:00:00+00:00</lastmod>
     </url>
     
@@ -149,7 +256,25 @@
     
     <url>
     
-      <loc>/publication/ohi_fiveyears_plos/</loc>
+      <loc>http://www.jamiecmontgomery.com/project/oceanhealthindex/</loc>
+      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/tags/ohi/</loc>
+      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/publication/ohi_fiveyears_plos/</loc>
       <lastmod>2017-07-05T00:00:00+00:00</lastmod>
     </url>
     
@@ -158,7 +283,7 @@
     
     <url>
     
-      <loc>/publication/path_to_science_ecoevo/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/path_to_science_ecoevo/</loc>
       <lastmod>2017-05-23T00:00:00+00:00</lastmod>
     </url>
     
@@ -167,7 +292,7 @@
     
     <url>
     
-      <loc>/publication/iucn-aquamaps/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/iucn-aquamaps/</loc>
       <lastmod>2017-05-03T00:00:00+00:00</lastmod>
     </url>
     
@@ -176,7 +301,7 @@
     
     <url>
     
-      <loc>/talk/ohi-ne/</loc>
+      <loc>http://www.jamiecmontgomery.com/talk/ohi-ne/</loc>
       <lastmod>2017-05-02T00:00:00+00:00</lastmod>
     </url>
     
@@ -185,7 +310,7 @@
     
     <url>
     
-      <loc>/publication/fish_status_cons_letters_2017/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/fish_status_cons_letters_2017/</loc>
       <lastmod>2017-04-12T00:00:00+00:00</lastmod>
     </url>
     
@@ -194,7 +319,7 @@
     
     <url>
     
-      <loc>/publication/ensembles_fish_and_fisheries_2017/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/ensembles_fish_and_fisheries_2017/</loc>
       <lastmod>2017-01-30T00:00:00+00:00</lastmod>
     </url>
     
@@ -203,16 +328,7 @@
     
     <url>
     
-      <loc>/post/</loc>
-      <lastmod>2017-01-01T00:00:00-08:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/academic/</loc>
+      <loc>http://www.jamiecmontgomery.com/tags/academic/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -221,7 +337,7 @@
     
     <url>
     
-      <loc>/publication/</loc>
+      <loc>http://www.jamiecmontgomery.com/post/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -230,7 +346,7 @@
     
     <url>
     
-      <loc>/talk/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -239,7 +355,16 @@
     
     <url>
     
-      <loc>/publication/turfs_gecco_2014/</loc>
+      <loc>http://www.jamiecmontgomery.com/talk/</loc>
+      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>http://www.jamiecmontgomery.com/publication/turfs_gecco_2014/</loc>
       <lastmod>2014-12-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -248,7 +373,7 @@
     
     <url>
     
-      <loc>/publication/fish_response_el_nino_meps/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/fish_response_el_nino_meps/</loc>
       <lastmod>2014-01-09T00:00:00+00:00</lastmod>
     </url>
     
@@ -257,7 +382,7 @@
     
     <url>
     
-      <loc>/publication/coral_repro_2012/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/coral_repro_2012/</loc>
       <lastmod>2012-09-01T00:00:00+00:00</lastmod>
     </url>
     
@@ -266,7 +391,7 @@
     
     <url>
     
-      <loc>/publication/cryptofauna_meps_2011/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication_types/1/</loc>
       <lastmod>2011-10-05T00:00:00+00:00</lastmod>
     </url>
     
@@ -275,9 +400,8 @@
     
     <url>
     
-      <loc>/publication_types/1/</loc>
+      <loc>http://www.jamiecmontgomery.com/publication/cryptofauna_meps_2011/</loc>
       <lastmod>2011-10-05T00:00:00+00:00</lastmod>
-      <priority>0</priority>
     </url>
     
   
@@ -285,138 +409,7 @@
     
     <url>
     
-      <loc>/publication_types/2/</loc>
-      <lastmod>2020-01-30T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/aquaculture/</loc>
-      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/categories/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/cumulative-human-impacts/</loc>
-      <lastmod>2018-09-24T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/data-visualization/</loc>
-      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/datalimited/</loc>
-      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/</loc>
-      <lastmod>2016-04-20T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/ocean-health-index/</loc>
-      <lastmod>2018-04-26T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/ohi/</loc>
-      <lastmod>2017-08-16T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/project/</loc>
-      <lastmod>2018-09-24T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/publication_types/</loc>
-      <lastmod>2011-10-05T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/rstats/</loc>
-      <lastmod>2018-01-23T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/spatial/</loc>
-      <lastmod>2018-04-26T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>/tags/</loc>
-      <lastmod>2017-01-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
+      <loc>http://www.jamiecmontgomery.com/categories/</loc>
     </url>
     
   

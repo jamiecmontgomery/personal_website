@@ -1,50 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks on Jamie Montgomery</title>
-    <link>/talk/</link>
+    <link>http://www.jamiecmontgomery.com/talk/</link>
     <description>Recent content in Recent &amp; Upcoming Talks on Jamie Montgomery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/talk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Interacting with spatial data in R using mapview and mapedit</title>
-      <link>/talk/mapview_mapedit/</link>
+      <link>http://www.jamiecmontgomery.com/talk/mapview_mapedit/</link>
       <pubDate>Tue, 04 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>/talk/mapview_mapedit/</guid>
+      <guid>http://www.jamiecmontgomery.com/talk/mapview_mapedit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Global Ocean Health Index results for 2018</title>
-      <link>/talk/ohi-2018-results/</link>
+      <link>http://www.jamiecmontgomery.com/talk/ohi-2018-results/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>/talk/ohi-2018-results/</guid>
+      <guid>http://www.jamiecmontgomery.com/talk/ohi-2018-results/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Creating a personal website with blogdown</title>
-      <link>/talk/blogdown_website/</link>
+      <link>http://www.jamiecmontgomery.com/talk/blogdown_website/</link>
       <pubDate>Wed, 14 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/talk/blogdown_website/</guid>
+      <guid>http://www.jamiecmontgomery.com/talk/blogdown_website/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ocean Health Index in the US Northeast</title>
-      <link>/talk/ohi-ne/</link>
+      <link>http://www.jamiecmontgomery.com/talk/ohi-ne/</link>
       <pubDate>Tue, 02 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>/talk/ohi-ne/</guid>
+      <guid>http://www.jamiecmontgomery.com/talk/ohi-ne/</guid>
       <description></description>
     </item>
     

@@ -1,77 +1,73 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Jamie Montgomery</title>
-    <link>/home/</link>
+    <link>http://www.jamiecmontgomery.com/home/</link>
     <description>Recent content in Homes on Jamie Montgomery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/home/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>/home/about/</link>
+      <link>http://www.jamiecmontgomery.com/home/about/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/about/</guid>
-      <description>About Me I am a marine data scientist with the Ocean Health Index at the National Center for Ecological Analysis and Synthesis (NCEAS) in Santa Barbara, California where I am the lead analyst for the US Northeast Ocean Health Index assessment and one of many scientists working on the annual global OHI assessments. My work includes assessing the global status of fisheries using data limited methods and synthesizing large spatial datasets to estimate and track human impacts on the global oceans.</description>
+      <guid>http://www.jamiecmontgomery.com/home/about/</guid>
+      <description>About Me I am the coordinator for the Master&amp;rsquo;s of Environmental Data Science (MEDS) professional degree program at the Bren School of Environmental Science &amp;amp; Management at UC Santa Barbara. Prior to this role, I worked as a marine data scientist at the National Center for Ecological Analysis and Synthesis (NCEAS) with Ben Halpern&amp;rsquo;s lab group. My research portfolio was focused on assessing the health of our oceans and included conservation aquaculture and data-limited fisheries.</description>
     </item>
     
     <item>
       <title>Selected Publications</title>
-      <link>/home/publications_selected/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
+      <link>http://www.jamiecmontgomery.com/home/publications_selected/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/publications_selected/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/publications_selected/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recent Publications</title>
-      <link>/home/publications/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
+      <link>http://www.jamiecmontgomery.com/home/publications/</link>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/publications/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/publications/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recent &amp; Upcoming Talks</title>
-      <link>/home/talks/</link>
+      <link>http://www.jamiecmontgomery.com/home/talks/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/talks/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/talks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recent Posts</title>
-      <link>/home/posts/</link>
+      <link>http://www.jamiecmontgomery.com/home/posts/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/posts/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/posts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Projects</title>
-      <link>/home/projects/</link>
+      <link>http://www.jamiecmontgomery.com/home/projects/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/projects/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Teaching</title>
-      <link>/home/teaching/</link>
+      <link>http://www.jamiecmontgomery.com/home/teaching/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/teaching/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/teaching/</guid>
       <description>Tutorials: Intro to Spatial Analysis in R (focus on rasters)
 Open Data Science Training at the University of Queensland Brisbane, Queensland, Australia June 18 - 19, 2019
 Software Carpentry for R at Woods Hole Oceanographic Institute Woods Hole, MA October 22 - October 23, 2018
@@ -81,19 +77,19 @@ Data Wrangling and Visualization (SWC for Ecology Materials) UC Merced Software 
     
     <item>
       <title>Tags</title>
-      <link>/home/tags/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 -0700</pubDate>
+      <link>http://www.jamiecmontgomery.com/home/tags/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/home/tags/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/tags/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>/home/contact/</link>
+      <link>http://www.jamiecmontgomery.com/home/contact/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/home/contact/</guid>
+      <guid>http://www.jamiecmontgomery.com/home/contact/</guid>
       <description></description>
     </item>
     

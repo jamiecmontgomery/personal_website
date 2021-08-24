@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ocean Health Index on Jamie Montgomery</title>
+    <link>http://www.jamiecmontgomery.com/tags/ocean-health-index/</link>
+    <description>Recent content in Ocean Health Index on Jamie Montgomery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 26 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://www.jamiecmontgomery.com/tags/ocean-health-index/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cropping rasters down to size</title>
+      <link>http://www.jamiecmontgomery.com/post/cropping-rasters-down-to-size/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.jamiecmontgomery.com/post/cropping-rasters-down-to-size/</guid>
+      <description>This blog post was originally written for OHI-Science.org
+A significant portion of my work on the Ocean Health Index (OHI) involves working with raster data, a specific type of spatial data where values are held in grid cells. The data I work with varies from high resolution, remotely sensed data on sea surface temperature to coarse, modeled data on global fish catch. When I was working on the global assessment, I dealt with raster data at a global scale.</description>
+    </item>
+    
+  </channel>
+</rss>
