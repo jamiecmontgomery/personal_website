@@ -24,6 +24,16 @@
   {{ i18n "btn_code" }}
 </a>
 {{ end }}
+{{ with $.Params.url_app }}
+<a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ . | absURL }}" target="_blank" rel="noopener">
+  {{ i18n "btn_app" }}
+</a>
+{{ end }}
+{{ with $.Params.url_dashboard }}
+<a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ . | absURL }}" target="_blank" rel="noopener">
+  {{ i18n "btn_dashboard" }}
+</a>
+{{ end }}
 {{ with $.Params.url_dataset }}
 <a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ . | absURL }}" target="_blank" rel="noopener">
   {{ i18n "btn_dataset" }}
