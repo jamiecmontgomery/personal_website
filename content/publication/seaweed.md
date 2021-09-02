@@ -37,7 +37,7 @@ projects = [""]
 # Links (optional).
 url_pdf = "https://www.sciencedirect.com/science/article/abs/pii/S0960982219308863"
 url_preprint = ""
-url_code = ""
+url_code = "https://github.com/CART-sci/seaweed"
 url_dataset = ""
 url_project = ""
 url_slides = ""
