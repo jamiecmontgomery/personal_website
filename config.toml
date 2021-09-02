@@ -58,7 +58,7 @@ defaultContentLanguageInSubdir = false
   organizations = [ {name = "Bren School of Environmental Science & Management", url = "https://bren.ucsb.edu/masters-programs/master-environmental-data-science"}, { name = "National Center for Ecological Analysis & Synthesis (NCEAS)", url = "https://www.nceas.ucsb.edu/" } ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
-  avatar = "portrait.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
+  avatar = "laguna_headshot.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "jmontgomery@bren.ucsb.edu"
   address = ""
   twitter = "jamiecmonty"
